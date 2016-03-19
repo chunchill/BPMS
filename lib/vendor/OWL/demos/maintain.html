@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+    <title>iX车护平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=gb2312" />
+    <link rel="stylesheet" href="JS/jquery.mobile-1.3.2.min.css">
+
+
+    <!-- Owl Carousel Assets -->
+    <link href="../owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="../owl-carousel/owl.theme.css" rel="stylesheet">
+
+    <script src="JS/jquery.js"></script>
+    <script src="JS/jquery.mobile-1.3.2.min.js"></script>
+<style>
+  .panel-content { 
+    padding:15px; 
+  }
+  </style>
+
+</head>
+<body>
+
+<div data-role="page" id="page1" data-theme="c">
+
+          <p align="center"><a href="#"><img class="popphoto" src="images/17134.png" height="60px"></a><br><font size="2" color="gray">维修及保养</font></p>
+
+
+        <div data-role="content">
+  <form>
+    <ul data-role="listview" data-inset="true">
+        <li data-role="fieldcontain">
+            <label for="name2">故障码</label>
+            <input type="text" name="name2" id="name2" value="" data-clear-btn="true" data-inline="true" data-mini="ture">
+        </li>
+        <li data-role="fieldcontain">
+            <label for="textarea2">故障描述</label>
+        <textarea cols="40" rows="8" name="textarea2" id="textarea2"></textarea>
+        </li>
+        <li data-role="fieldcontain">
+            <label for="select-choice-1" class="select">制造商</label>
+            <select name="select-choice-1" id="select-choice-1">
+                <option value="standard">选择制造商</option>
+                <option value="standard">上海大众</option>
+                <option value="rush">上海通用</option>
+                <option value="express">荣威</option>
+                <option value="overnight">MG</option>
+            </select>
+        </li>
+        <li data-role="fieldcontain">
+            <label for="select-choice-1" class="select">车型</label>
+            <select name="select-choice-1" id="select-choice-1">
+                <option value="standard">选择车型</option>
+                <option value="standard">途安1.4TSI</option>
+                <option value="rush">帕萨特2.0TSI</option>
+            </select>
+        </li>
+        <li data-role="fieldcontain">
+            <label for="select-choice-1" class="select">出厂年份</label>
+            <select name="select-choice-1" id="select-choice-1">
+                <option value="standard">出厂年份</option>
+                <option value="standard">2010</option>
+                <option value="rush">2011</option>
+                <option value="rush">2012</option>
+                <option value="rush">2013</option>
+                <option value="rush">2014</option>
+            </select>
+        </li>
+
+        <li data-role="fieldcontain">
+            <label for="name2">车辆VIN</label>
+            <input type="text" name="name2" id="name2" value="" data-clear-btn="true" data-inline="true" data-mini="ture">
+        </li>
+
+        <li class="ui-body ui-body-b">
+            <fieldset class="ui-grid-a">
+                    <div class="ui-block-a"><button type="submit" data-theme="d" data-icon="back">重置</button></div>
+                    <div class="ui-block-b"><a href="maintaindetail.html" rel="external" data-role="button"   data-icon="search" data-theme="b">查询</a></div>
+            </fieldset>
+        </li>
+    </ul>
+</form>
+        </div>
+
+        <div data-role="content">
+           <p align="center"> <a href="#defaultpanel" data-rel="popup" class="ui-icon-alt" data-role="button" data-icon="grid" data-iconpos="notext" data-inline="true">主菜单</a></p>
+        </div><!-- /content -->
+
+
+  <!-- defaultpanel  -->
+  <div data-role="panel" id="defaultpanel" data-theme="b" data-display="push" data-position="left">	
+    <div class="panel-content">
+      <p align="center">my<font color="orange"><b>iX</b></font>
+     <br><font size="2" >功能列表</font></p>
+
+<ul data-role="listview" data-inset="true" class="ui-icon-alt" data-theme="d">
+    <li data-icon="search"><a href="errorcode.html" rel="external">故障码查询</a></li>
+    <li data-icon="gear"><a href="maintain.html" rel="external">维修保养查询</a></li>
+    <li data-icon="edit"><a href="#">社区服务</a></li>
+    <li data-icon="home"><a href="#" rel="external">备品备件采购</a></li>
+    <li data-icon="bars"><a href="#">我的设置</a></li>
+</ul>
+<br>
+
+<br>
+      <p align="center"><a href="#" data-rel="close"  class="ui-icon-nodisc" data-role="button"  data-icon="forward" data-iconshadow="false" data-iconpos="notext" data-theme="a" >Close</a></p>
+    </div><!-- /content wrapper for padding -->
+  </div><!-- /defaultpanel -->
+
+
+
+        <div data-role="content">
+          <p align="center"><a href="index.html" rel="external"><img class="popphoto" src="images/ix.png" height="40px"></a></p>
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+
+
+    <script src="../owl-carousel/owl.carousel.js"></script>
+
+
+    <!-- Demo -->
+
+    <style>
+    #owl-demo .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    </style>
+
+
+    <script>
+    $(document).ready(function() {
+      $("#owl-demo").owlCarousel({
+
+      navigation : false,
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      singleItem : true
+
+      // "singleItem:true" is a shortcut for:
+      // items : 1, 
+      // itemsDesktop : false,
+      // itemsDesktopSmall : false,
+      // itemsTablet: false,
+      // itemsMobile : false
+
+      });
+    });
+    </script>
+
+
+    <script src="../assets/js/bootstrap-collapse.js"></script>
+    <script src="../assets/js/bootstrap-transition.js"></script>
+    <script src="../assets/js/bootstrap-tab.js"></script>
+
+    <script src="../assets/js/google-code-prettify/prettify.js"></script>
+    <script src="../assets/js/application.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+<title>ry-mobile</title>
+<!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />-->
+<link href="style/themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
+<!--<link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" />-->
+<link rel="stylesheet" href="style/themes/bladecolor.min.css" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="style/themes/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
+<link rel="stylesheet" href="style/themes/jqm-demos.css">
+<link rel="stylesheet" href="style/themes/jquery.mobile.icons.min.css">
+<link rel="stylesheet" href="style/themes/jquery.mobile.structure-1.4.5.min.css">
+<link href="style/themes/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="style/css/site.css" rel="stylesheet" />
+
+<!--<script src="scripts/lib/jquery-1.8.2.js"></script>
+<script src="scripts/lib/jquery.mobile-1.3.2.js"></script>-->
+<script src="lib/vendor/jquery/dist/jquery.js"></script>
+<script src="lib/jquery.mobile-1.4.5.js"></script>
+<link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+<div data-role="page" id="logonView" data-theme="c" style="background-image:url(images/bg/graphy-xs.png)"> 
+  <!--<div data-role="footer" data-position="fixed" data-theme="b"  data-fullscreen="true">
+  <div data-role="navbar" data-iconpos="bottom">
+    <ul>
+      <li><a href="#" rel="external" ><font color="#B1B1B1"><i class="fa fa-user"></i></font></a></li>
+      <li><a href="#" rel="external" ><font color="#B1B1B1"><i class="fa fa-heart"></i></font></a></li>
+      <li><a href="#" rel="external" ><font color="#B1B1B1"><i class="fa fa-envelope"></i></font>&nbsp;&nbsp;<strong>3</strong></a></li>
+    </ul>
+  </div>
+</div>-->
+  
+  <div data-role="content" style="padding: 3px 3px;">
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/bg/banner15.png); background-size:cover; border-color:#E4E4E4;">
+      <p align="center"> <a href="#"> <img class="popphoto" src="images/rmobilelogog2.png" height="64"></a> <br>
+        日盈企业移动应用</p>
+      <div class="ui-nodisc-icon ui-alt-icon"> 
+        <!-- Classes added to the wrapper -->
+        <p align="center"><a href="#defaultpanel" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-btn-b ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">menu</a></p>
+      </div>
+      <p align="center"><a href="#"> <img class="popphoto" src="images/exblack.png" height="14px"></a> </p>
+    </div>
+    <div class="ui-grid-solo">
+      <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/bg/banner13.png); background-size:cover; border-color:#E4E4E4;">
+        <p align="center"><font size="+3" color="gray">用户登录</font></p>
+        <p align="center" style="padding: 8px 24px; padding-bottom:0px;">
+          <input type="email" data-theme="b" data-clear-btn="true" name="email" id="email"  placeholder="用户名" >
+          <input type="password" data-theme="b" data-clear-btn="true" name="password" id="password"  placeholder="密码">
+        </p>
+        <p align="center" style="padding: 4px 24px"> <a href="home.html" rel="external" data-transition="pop" data-role="button" data-inline="false" data-theme="d" style="margin-right:0px" >登录</a> </p>
+        <br>
+      </div>
+    </div>
+    <p align="center"> <font size="-2s">&copy; 江苏日盈电子股份有限公司</font><br>
+      <img class="popphoto" src="images/logo.png" height="18px"> </p>
+    <br>
+    <br>
+  </div>
+  <!-- /content --> 
+  
+  <!-- defaultpanel  -->
+  <div data-role="panel" id="defaultpanel" data-position-fixed="true" data-position="right" data-display="overlay">
+    <p align="center"><a href="#"> <img class="popphoto" src="images/rmobilelogog.png" height="24"></a></p>
+    <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
+      <li><a href="#" rel="external"> <img src="images/unknown.png" alt="help" class="ui-li-icon"><font size="2">帮助</font></a></li>
+      <li><a href="#" rel="external"> <img src="images/message.png" alt="about" class="ui-li-icon"><font size="2">关于</font></a></li>
+    </ul>
+    <div class="ui-nodisc-icon ui-alt-icon"> 
+      <!-- Classes added to the wrapper -->
+      
+      <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
+    </div>
+    
+    <!-- /content wrapper for padding --> 
+  </div>
+  <!-- /defaultpanel --> 
+  
+</div>
+</body>
+</html>
