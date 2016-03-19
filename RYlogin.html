@@ -3,7 +3,7 @@
 <head>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
-   <title>ry-mobile</title>
+   <title>RY-BPMS Login</title>
    <!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />-->
    <link href="style/themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
    <!--<link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" type="text/css" />
@@ -48,8 +48,10 @@
                <!-- Classes added to the wrapper -->
                <p align="center"><a href="#defaultpanel" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-btn-b ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">menu</a></p>
             </div>
-            <p align="center"><a href="#">
-               <img class="popphoto" src="images/exblack.png" height="14px"></a> </p>
+            <p align="center">
+               <a href="#">
+                  <img class="popphoto" src="images/exblack.png" height="14px"></a>
+            </p>
          </div>
          <div class="ui-grid-solo">
             <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner13.png); background-size: cover; border-color: #E4E4E4;">
@@ -66,10 +68,11 @@
                   </div>
                   <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
                      <p>
-                        <center><span data-bind="text: errorMessage"></span></center> </p>
+                        <center><span data-bind="text: errorMessage"></span></center>
+                     </p>
                   </div>
-                 
-          <center><a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">确定</a></center>
+
+                  <center><a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">确定</a></center>
                </div>
             </div>
          </div>
@@ -82,27 +85,29 @@
          <br>
          <br>
       </div>
-   <!-- /content -->
+      <!-- /content -->
 
-   <!-- defaultpanel  -->
-   <div data-role="panel" id="defaultpanel" data-position-fixed="true" data-position="right" data-display="overlay">
-      <p align="center"><a href="#">
-         <img class="popphoto" src="images/rmobilelogog.png" height="24"></a></p>
-      <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
-         <li><a href="#" rel="external">
-            <img src="images/unknown.png" alt="help" class="ui-li-icon"><font size="2">帮助</font></a></li>
-         <li><a href="#" rel="external">
-            <img src="images/message.png" alt="about" class="ui-li-icon"><font size="2">关于</font></a></li>
-      </ul>
-      <div class="ui-nodisc-icon ui-alt-icon">
-         <!-- Classes added to the wrapper -->
+      <!-- defaultpanel  -->
+      <div data-role="panel" id="defaultpanel" data-position-fixed="true" data-position="right" data-display="overlay">
+         <p align="center">
+            <a href="#">
+               <img class="popphoto" src="images/rmobilelogog.png" height="24"></a>
+         </p>
+         <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
+            <li><a href="#" rel="external">
+               <img src="images/unknown.png" alt="help" class="ui-li-icon"><font size="2">帮助</font></a></li>
+            <li><a href="#" rel="external">
+               <img src="images/message.png" alt="about" class="ui-li-icon"><font size="2">关于</font></a></li>
+         </ul>
+         <div class="ui-nodisc-icon ui-alt-icon">
+            <!-- Classes added to the wrapper -->
 
-         <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
+            <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
+         </div>
+
+         <!-- /content wrapper for padding -->
       </div>
-
-      <!-- /content wrapper for padding -->
-   </div>
-   <!-- /defaultpanel -->
+      <!-- /defaultpanel -->
 
    </div>
 </body>
