@@ -62,7 +62,8 @@
           <ul>
             <li><a href="#all" data-ajax="false"  data-theme="b"><i class="fa fa-reorder"></i>&nbsp;全部流程</a></li>
             <li><a href="#due" data-ajax="false" data-theme="b"><i class="fa fa-clock-o"></i>&nbsp;<strong>延迟流程</strong></a></li>
-            <li><a href="#critical" data-ajax="false"><i class="fa fa-exclamation-circle"></i>&nbsp;<strong>重要流程</strong></a></li>
+            <li><a href="#critical" data-ajax="false"><i class="fa fa-exclamation-circle"></i>&nbsp;<strong>重要</strong></a></li>
+            <li><a href="#close" data-ajax="false"><i class="fa fa-check-square"></i>&nbsp;<strong>已关闭</strong></a></li>
           </ul>
         </div>
         <div id="all">
@@ -91,18 +92,14 @@
         </div>
         <div id="due">     
           <form class="ui-filterable">
-            <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索待处理任务...">
+            <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索我的流程...">
           </form>
           <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
-            <li><a href="taskaction.html">
-              <h2>费用报销</h2>
-              <p><font color="0b6d5f"><i class="fa fa-user"></i>&nbsp;邵剑秋 <i class="fa fa-calendar-check-o"></i>&nbsp;<strong>2016-4-1</strong> 14:00 </font></p>
-              <span class="ui-li-count">F</span> </a></li>
+            <li><a href="instancedetail.html">
+              <h2>F001费用申请</h2>
+              <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong></font></p>
+              <span class="ui-li-count">M</span> </a></li>
             </li>
-            <li> <a href="taskaction.html">
-              <h2>事假申请</h2>
-              <p><font color="0b6d5f"><i class="fa fa-user"></i>&nbsp;邵剑秋 <i class="fa fa-calendar-check-o"></i>&nbsp;<strong>2016-4-1</strong> 14:00 </font></p>
-              <span class="ui-li-count">H</span> </a> </li>
           </ul>
           <div class="ui-nodisc-icon ui-alt-icon" > 
             <!-- Classes added to the wrapper -->
@@ -111,13 +108,30 @@
         </div>
         <div id="critical">     
           <form class="ui-filterable">
-            <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索待处理任务...">
+            <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索我的流程...">
           </form>
           <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
-            <li><a href="taskaction.html">
-              <h2>工艺路线主数据维护</h2>
-              <p><font color="0b6d5f"><i class="fa fa-user"></i>&nbsp;邵剑秋 <i class="fa fa-calendar-check-o"></i>&nbsp;<strong>2016-4-1</strong> 14:00 </font></p>
-              <span class="ui-li-count">M</span> </a> </li>
+            <li><a href="instancedetail.html">
+              <h2>F001费用申请</h2>
+              <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong></font></p>
+              <span class="ui-li-count">M</span> </a></li>
+            </li>
+          </ul>
+          <div class="ui-nodisc-icon ui-alt-icon" > 
+            <!-- Classes added to the wrapper -->
+            <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+          </div>
+        </div>
+        <div id="close">     
+          <form class="ui-filterable">
+            <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜我的流程...">
+          </form>
+          <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
+            <li><a href="instancedetail.html">
+              <h2>F001费用申请</h2>
+              <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong></font></p>
+              <span class="ui-li-count">M</span> </a></li>
+            </li>
           </ul>
           <div class="ui-nodisc-icon ui-alt-icon" > 
             <!-- Classes added to the wrapper -->
