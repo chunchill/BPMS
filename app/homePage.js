@@ -1,4 +1,5 @@
 
+BPMN.Services.Utils.checkLoginStatus();
 $(function () {
    var owl = $("#owl-demo");
    owl.owlCarousel({
