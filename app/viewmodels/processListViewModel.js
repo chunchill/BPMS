@@ -11,9 +11,14 @@
         self.size = ko.observable(1);
         self.datasource = ko.observableArray();
 
-
+        var bindRealData = function(){
+            var option = {size:self.size(),start:self.start(),startableByUser:'admin'};
+            BPMS.Services.ProcessDefinitionSvc.getProcessDefinitions(option).then(function (result) {
+                self.datasource(result.data);
+            })
+        }
         //mockdata
-        var mockData = [{
+        var mockData = [{//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
             description: '费用报销',
             name: 'F01',
             category: 'F'
@@ -32,16 +37,23 @@
             self.start(0);
             self.size(1);
             self.datasource([]);
-            var data = mockData.slice(self.start(), self.size());
-            self.datasource(data);
+            var data = mockData.slice(self.start(), self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+            self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+            /*
+             bindRealData();
+            */
         },
 
             self.nextPage = function () {
                 if (self.datasource().length > 0) {
                     var currentIndex = self.start();
                     self.start(currentIndex + self.size());
-                    var data = mockData.slice(self.start(), self.start()+self.size());
-                    self.datasource(data);
+                    var data = mockData.slice(self.start(), self.start()+self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+                    self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+
+                    /*
+                     bindRealData();
+                     */
                 }
             },
 
@@ -49,15 +61,23 @@
                 var currentIndex = self.start();
                 if (currentIndex > 0) {
                     self.start(currentIndex - self.size());
-                    var data = mockData.slice(self.start(), self.start()+self.size());
-                    self.datasource(data);
+                    var data = mockData.slice(self.start(), self.start()+self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+                    self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+
+                    /*
+                     bindRealData();
+                     */
                 }
 
             },
             self.refresh = function(){
                 var currentIndex = self.start();
-                var data = mockData.slice(self.start(), self.start()+self.size());
-                self.datasource(data);
+                var data = mockData.slice(self.start(), self.start()+self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+                self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+
+                /*
+                 bindRealData();
+                 */
             }
 
     }
