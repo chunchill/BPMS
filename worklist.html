@@ -33,6 +33,8 @@
    <script src="lib/knockout.mapping-latest.js"></script>
    <script src="lib/koExternalTemplateEngine_all.js"></script>
    <script src="lib/ko.extentions.js"></script>
+   
+   <script src="lib/vendor/moment/moment.js"></script>
    <script src="lib/vendor/amplify/lib/amplify.js"></script>
    <script src="app/config.js"></script>
    <script src="app/services/util.js"></script>
@@ -59,10 +61,10 @@
             <div data-role="tabs" id="tabs">
                <div data-role="navbar">
                   <ul>
-                     <li><a href="#all" id="temp" data-bind="click: switchTab" data-ajax="false"><i class="fa fa-reorder"></i>&nbsp;<strong>全部</strong></a></li>
-                     <li><a href="#due" data-bind="click: switchTab" data-ajax="false"><i class="fa fa-clock-o"></i>&nbsp;<strong>延迟</strong></a></li>
-                     <li><a href="#critical" data-bind="click: switchTab" data-ajax="false"><i class="fa fa-exclamation-circle"></i>&nbsp;<strong>重要</strong></a></li>
-                     <li><a href="#undo" data-bind="click: switchTab" data-ajax="false"><i class="fa fa-pause"></i>&nbsp;<strong>未完成</strong></a></li>
+                     <li><a href="#all" id="allMenu" data-bind="click: function () { switchTab('all') }" data-ajax="false"><i class="fa fa-reorder"></i>&nbsp;<strong>全部</strong></a></li>
+                     <li><a href="#due" data-bind="click: function () { switchTab('due') }" data-ajax="false"><i class="fa fa-clock-o"></i>&nbsp;<strong>延迟</strong></a></li>
+                     <li><a href="#critical" data-bind="click: function () { switchTab('critical') }" data-ajax="false"><i class="fa fa-exclamation-circle"></i>&nbsp;<strong>重要</strong></a></li>
+                     <li><a href="#undo" data-bind="click: function () { switchTab('undo') }" data-ajax="false"><i class="fa fa-pause"></i>&nbsp;<strong>未完成</strong></a></li>
                   </ul>
                </div>
                <div id="all">
@@ -70,11 +72,16 @@
                      <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索待处理任务...">
                   </form>
                   <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2"
-                     data-bind="jqmTemplate: { name: 'item', foreach: allList }, jqmRefreshList: allList">
+                     data-bind="jqmTemplate: { name: 'item', foreach: all.items }, jqmRefreshList: all.items">
                   </ul>
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
-                     <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+                     <p align="center">
+                        <a data-bind="click: getPrev" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getData" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getNext" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+
+                     </p>
                   </div>
                </div>
                <div id="due">
@@ -94,7 +101,11 @@
                   </ul>
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
-                     <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+                     <p align="center">
+                        <a data-bind="click: getPrev" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getData" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getNext" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                     </p>
                   </div>
                </div>
                <div id="critical">
@@ -109,7 +120,12 @@
                   </ul>
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
-                     <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+
+                     <p align="center">
+                        <a data-bind="click: getPrev" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getData" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getNext" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                     </p>
                   </div>
                </div>
                <div id="undo">
@@ -124,7 +140,12 @@
                   </ul>
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
-                     <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+                     <p align="center">
+                        <a data-bind="click: getPrev" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getData" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getNext" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+
+                     </p>
                   </div>
                </div>
             </div>
