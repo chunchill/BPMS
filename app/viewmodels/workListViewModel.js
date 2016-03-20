@@ -4,9 +4,26 @@
    BPMN.ViewModels = BPMN.ViewModels || {};
    //登录页面viewmodel
    BPMN.ViewModels.WorkListViewModel = function () {
-      var self = this;
-      self.viewItem = function (type, id) {
 
+      var self = this;
+      self.type = ko.observable("all");//all due critical undo
+      self.viewItem = function (id) {
+
+
+      };
+      self.refresh = function () {
+         var type = self.type();
+         var list = self[type + "List"];
+         list.removeAll();
+         taskServices.eoQuickSearch(type).then(function (result) {
+            if (!result.errorMessage || result.errorMessage == "OK") {
+               result.forEach(
+                   function (item) {
+                      list.push(item);
+                   }
+               );
+            }
+         });
 
       };
       self.total = ko.observable();

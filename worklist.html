@@ -75,20 +75,8 @@
                      <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索待处理任务...">
                   </form>
                   <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2"
-                     data-bind="jqmTemplate: { name: 'allItem', foreach: allList }, jqmRefreshList: allList">
-
-                     <!-- <li><a href="taskaction.html">
-                        <h2>审批假期</h2>
-                        <p><font color="0b6d5f"><i class="fa fa-user"></i>&nbsp;邵剑秋 <i class="fa fa-calendar-check-o"></i>&nbsp;<strong>2016-4-1</strong> 14:00 </font></p>
-                        <span class="ui-li-count">2</span> </a></li>
-                     <li><a href="taskaction.html">
-                        <h2>创建主数据</h2>
-                        <p><font color="0b6d5f"><i class="fa fa-user"></i>&nbsp;邵剑秋 <i class="fa fa-calendar-check-o"></i>&nbsp;<strong>2016-4-1</strong> 14:00 </font></p>
-                        <span class="ui-li-count">4</span> </a></li>-->
+                     data-bind="jqmTemplate: { name: 'item', foreach: allList }, jqmRefreshList: allList">
                   </ul>
-
-
-
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
                      <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
@@ -191,7 +179,7 @@
    <script src="lib/vendor/OWL/assets/js/google-code-prettify/prettify.js"></script>
    <script src="lib/vendor/OWL/assets/js/application.js"></script>
 
-   <script type="text/html" id="allItem">
+   <script type="text/html" id="item">
       <li><a href="taskaction.html">
          <h2 data-bind="text: desc"></h2>
          <p style="color: #0b6d5f">
