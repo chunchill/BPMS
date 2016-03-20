@@ -122,7 +122,19 @@
               var token = "Basic " + encodeStr;
               return token;
            };
-
+      var getUrlParams = function (url) {
+         var vars = [], hash;
+         var hashes = url.slice(window.location.href.indexOf('?') + 1).split('&');
+         for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+         }
+         return vars;
+      };
+      var getUrlParam = function (url, key) {
+         return getUrlParams(url)[key];
+      };
       return {
          restfulRequest: restfulRequest,
          base64_encode: base64_encode,
@@ -132,7 +144,9 @@
             var user = localStorage.getItem("bpms_userId");
             if (!user)
                window.location.href = "RYlogin.html";
-         }
+         },
+         getUrlParams: getUrlParams,
+         getUrlParam: getUrlParam
       };
    })();
 

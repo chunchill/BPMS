@@ -14,10 +14,6 @@
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="style/themes/bootstrap.min.css">
 
-   <!-- Owl Carousel Assets -->
-   <link href="lib/vendor/OWL/owl-carousel/owl.carousel.css" rel="stylesheet">
-   <link href="lib/vendor/OWL/owl-carousel/owl.theme.css" rel="stylesheet">
-   <link href="lib/vendor/OWL/owl-carousel/owl.transitions.css" rel="stylesheet">
 
    <!-- Optional theme -->
    <link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
@@ -32,7 +28,6 @@
 
    <script src="lib/vendor/jquery/dist/jquery.js"></script>
    <script src="lib/jquery.mobile-1.4.5.js"></script>
-   <script src="lib/vendor/OWL/owl-carousel/owl.carousel.js"></script>
 
    <script src="lib/knockout-3.2.0.min.js"></script>
    <script src="lib/knockout.mapping-latest.js"></script>
@@ -64,10 +59,10 @@
             <div data-role="tabs" id="tabs">
                <div data-role="navbar">
                   <ul>
-                     <li><a href="#all" data-ajax="false"><i class="fa fa-reorder"></i>&nbsp;<strong>全部</strong></a></li>
-                     <li><a href="#due" data-ajax="false"><i class="fa fa-clock-o"></i>&nbsp;<strong>延迟</strong></a></li>
-                     <li><a href="#critical" data-ajax="false"><i class="fa fa-exclamation-circle"></i>&nbsp;<strong>重要</strong></a></li>
-                     <li><a href="#undo" data-ajax="false"><i class="fa fa-pause"></i>&nbsp;<strong>未完成</strong></a></li>
+                     <li><a href="#all" id="temp" data-bind="click: switchTab" data-ajax="false"><i class="fa fa-reorder"></i>&nbsp;<strong>全部</strong></a></li>
+                     <li><a href="#due" data-bind="click: switchTab" data-ajax="false"><i class="fa fa-clock-o"></i>&nbsp;<strong>延迟</strong></a></li>
+                     <li><a href="#critical" data-bind="click: switchTab" data-ajax="false"><i class="fa fa-exclamation-circle"></i>&nbsp;<strong>重要</strong></a></li>
+                     <li><a href="#undo" data-bind="click: switchTab" data-ajax="false"><i class="fa fa-pause"></i>&nbsp;<strong>未完成</strong></a></li>
                   </ul>
                </div>
                <div id="all">
@@ -173,11 +168,6 @@
          </div>
       </div>
    </div>
-   <script src="lib/vendor/OWL/assets/js/bootstrap-collapse.js"></script>
-   <script src="lib/vendor/OWL/assets/js/bootstrap-transition.js"></script>
-   <script src="lib/vendor/OWL/assets/js/bootstrap-tab.js"></script>
-   <script src="lib/vendor/OWL/assets/js/google-code-prettify/prettify.js"></script>
-   <script src="lib/vendor/OWL/assets/js/application.js"></script>
 
    <script type="text/html" id="item">
       <li><a href="taskaction.html">

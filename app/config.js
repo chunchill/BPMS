@@ -7,7 +7,8 @@
    BPMS.config = {
       serviceUrl: "http://211.144.85.15/bpmn/",
       user: "",
-      pwd: ""
+      pwd: "",
+      pageSize: 5
    };
 
 
