@@ -1,13 +1,13 @@
 /**
  * Created by jasperchiu on 3/19/16.
  */
-(function (BPMN, $, amplify) {
+(function (BPMS, $, amplify) {
 
-    BPMN.Services = BPMN.Services || {};
-    BPMN.Services.RuntimeSvc = (function () {
-        var serviceUrl = BPMN.config.serviceUrl;
+    BPMS.Services = BPMS.Services || {};
+    BPMS.Services.RuntimeSvc = (function () {
+        var serviceUrl = BPMS.config.serviceUrl;
         var getTasks = function (options) {
-            return BPMN.Services.Utils.restfulRequest('getTasks','runtime/tasks', options);
+            return BPMS.Services.Utils.restfulRequest('getTasks','runtime/tasks', options);
         };
 
         return {
@@ -16,4 +16,4 @@
     })();
 
 
-})(window.BPMN = window.BPMN || {}, jQuery, amplify)
+})(window.BPMS = window.BPMS || {}, jQuery, amplify)

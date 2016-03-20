@@ -1,5 +1,5 @@
 
-BPMN.Services.Utils.checkLoginStatus();
+BPMS.Services.Utils.checkLoginStatus();
 $(function () {
    var owl = $("#owl-demo");
    owl.owlCarousel({
@@ -28,5 +28,5 @@ $(function () {
       transitionStyle: "goDown"
    });
 
-   ko.applyBindings(new window.BPMN.ViewModels.HomeViewModel());
+   ko.applyBindings(new window.BPMS.ViewModels.HomeViewModel());
 })

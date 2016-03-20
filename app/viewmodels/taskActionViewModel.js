@@ -2,15 +2,15 @@
 /**
  * Created by jasperchiu on 3/19/16.
  */
-(function(BPMN,$,ko){
+(function(BPMS,$,ko){
 
-    BPMN.ViewModels = BPMN.ViewModels || {};
+    BPMS.ViewModels = BPMS.ViewModels || {};
     //登录页面viewmodel
-    BPMN.ViewModels.DemoViewModel = function(){
+    BPMS.ViewModels.DemoViewModel = function(){
         var self = this;
         self.total = ko.observable();
         self.size = ko.observable();
-        BPMN.Services.IndentitySvc.login().then(function(data){
+        BPMS.Services.IndentitySvc.login().then(function(data){
 
             console.log(JSON.stringify(data));
                 self.total(data.total);
@@ -21,4 +21,4 @@
 
     }
 
-})(window.BPMN = window.BPMN || {}, jQuery, ko)
+})(window.BPMS = window.BPMS || {}, jQuery, ko)

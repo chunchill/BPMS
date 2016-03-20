@@ -3,5 +3,5 @@
  */
 //这个文件主要用来操作dom元素
 $(function () {
-    ko.applyBindings(new window.BPMN.ViewModels.DemoViewModel());
+    ko.applyBindings(new window.BPMS.ViewModels.DemoViewModel());
 })

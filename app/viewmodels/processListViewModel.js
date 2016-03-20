@@ -1,10 +1,11 @@
 /**
  * Created by jasperchiu on 3/19/16.
  */
-(function (BPMN, $, ko) {
 
-    BPMN.ViewModels = BPMN.ViewModels || {};
-    BPMN.ViewModels.ProcessListViewModel = function () {
+(function (BPMS, $, ko) {
+
+    BPMS.ViewModels = BPMS.ViewModels || {};
+    BPMS.ViewModels.ProcessListViewModel = function () {
         var self = this;
         self.start = ko.observable(0);
         self.size = ko.observable(1);
@@ -61,4 +62,4 @@
 
     }
 
-})(window.BPMN = window.BPMN || {}, jQuery, ko)
+})(window.BPMS = window.BPMS || {}, jQuery, ko)

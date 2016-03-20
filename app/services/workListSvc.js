@@ -1,13 +1,13 @@
 /**
  * Created by jasperchiu on 3/19/16.
  */
-(function (BPMN, $, amplify) {
+(function (BPMS, $, amplify) {
 
-   BPMN.Services = BPMN.Services || {};
-   BPMN.Services.WorkListSvc = (function () {
-      var serviceUrl = BPMN.config.serviceUrl;
+   BPMS.Services = BPMS.Services || {};
+   BPMS.Services.WorkListSvc = (function () {
+      var serviceUrl = BPMS.config.serviceUrl;
       var defineLoginRequest = function (option) {
-         var token = BPMN.Services.Utils.getAuthToken(option.username, option.password);
+         var token = BPMS.Services.Utils.getAuthToken(option.username, option.password);
          amplify.request.define('login', 'ajax', {
             type: 'get',
             dataType: "json",
@@ -38,4 +38,4 @@
       };
    })();
 
-})(window.BPMN = window.BPMN || {}, jQuery, amplify)
+})(window.BPMS = window.BPMS || {}, jQuery, amplify)

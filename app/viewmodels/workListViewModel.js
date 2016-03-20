@@ -1,9 +1,9 @@
 
-(function (BPMN, $, ko) {
+(function (BPMS, $, ko) {
 
-   BPMN.ViewModels = BPMN.ViewModels || {};
+   BPMS.ViewModels = BPMS.ViewModels || {};
    //登录页面viewmodel
-   BPMN.ViewModels.WorkListViewModel = function () {
+   BPMS.ViewModels.WorkListViewModel = function () {
 
       var self = this;
       self.type = ko.observable("all");//all due critical undo
@@ -38,4 +38,4 @@
       self.undoList = ko.observableArray();
    };
 
-})(window.BPMN = window.BPMN || {}, jQuery, ko)
+})(window.BPMS = window.BPMS || {}, jQuery, ko)
