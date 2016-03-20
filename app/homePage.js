@@ -1,7 +1,31 @@
-/**
- * Created by jasperchiu on 3/19/16.
- */
-//这个文件主要用来操作dom元素
+
 $(function () {
-    ko.applyBindings(new window.BPMN.ViewModels.HomeViewModel());
+   var owl = $("#owl-demo");
+   owl.owlCarousel({
+      autoPlay: 5000,
+      singleItem: true,
+      autoHeight: true,
+      pagination: false,
+      transitionStyle: "fadeUp"
+   });
+
+   owl = $("#owl-demo1");
+   owl.owlCarousel({
+      autoPlay: 5000,
+      singleItem: true,
+      autoHeight: true,
+      pagination: false,
+      transitionStyle: "goDown"
+   });
+
+   owl = $("#owl-demo2");
+   owl.owlCarousel({
+      autoPlay: 6000,
+      singleItem: true,
+      autoHeight: true,
+      pagination: false,
+      transitionStyle: "goDown"
+   });
+
+   ko.applyBindings(new window.BPMN.ViewModels.HomeViewModel());
 })

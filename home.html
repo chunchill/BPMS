@@ -30,12 +30,19 @@
    <script src="lib/vendor/jquery/dist/jquery.js"></script>
    <script src="lib/jquery.mobile-1.4.5.js"></script>
    <script src="lib/vendor/OWL/owl-carousel/owl.carousel.js"></script>
+   <script src="lib/knockout-3.2.0.min.js"></script>
+   <script src="lib/vendor/amplify/lib/amplify.js"></script>
+   <script src="app/config.js"></script>
    <script src="app/services/util.js"></script>
    <script src="app/services/identitySvc.js"></script>
    <script src="app/services/runtimeSvc.js"></script>
    <script src="app/viewmodels/homeViewModel.js"></script>
    <script src="app/homePage.js"></script>
    <link rel="shortcut icon" href="favicon.ico">
+   <!--我的任务 worklist.html
+      启动流程 processlist.html
+      我的流程 instancelist.html
+      -->
 </head>
 <body>
    <div data-role="page" id="logonView" data-theme="c" style="background-image: url(images/bg/graphy-xs.png)">
@@ -57,19 +64,22 @@
          </div>
          <div class="ui-grid-b">
             <div class="ui-block-a">
-               <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; border-color: #E4E4E4;">
-                  <font color="#0b6d5f" size="+1">我的任务</font>
-                  <br>
-                  <a href="#"><i class="fa fa-refresh"></i></a>
-                  <div class="ui-grid-a">
-                     <div class="ui-block-a" style="height: 4em;">
-                        <p style="text-align: left;"><a href="worklist.html"><font color="#0b6d5f"><i class="fa fa-3x fa-tasks"></i></font></a></p>
-                     </div>
-                     <div class="ui-block-b">
-                        <p style="text-align: right;"><font color="black" size="5"><b>18</b></font></p>
+               <a href="worklist.html">
+                  <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; border-color: #E4E4E4;">
+                     <font color="#0b6d5f" size="+1">我的任务</font>
+                     <br>
+                     <i class="fa fa-refresh"></i>
+                     <div class="ui-grid-a">
+                        <div class="ui-block-a" style="height: 4em;">
+                           <p style="text-align: left;"><font color="#0b6d5f"><i class="fa fa-3x fa-tasks"></i></font></p>
+                        </div>
+                        <div class="ui-block-b">
+                           <p style="text-align: right;"><font color="black" size="5"><b>18</b></font></p>
+                        </div>
                      </div>
                   </div>
-               </div>
+               </a>
+
             </div>
             <div class="ui-grid-solo">
                <div id="owl-demo2" class="owl-carousel owl-theme">
@@ -83,7 +93,7 @@
                               <p style="text-align: center"><a href="driverindex.html" rel="external"><font color="#0b6d5f">&nbsp;<i class="fa fa-3x fa-check"></i></font></a></p>
                            </div>
                            <div class="ui-block-b">
-                              <a href="#">
+                              <a href="javascript:void(0)">
                                  <p style="text-align: center"><font size="5">6</font></p>
                               </a>
                            </div>
@@ -91,7 +101,7 @@
                               <p style="text-align: center"><a href="driverindex.html" rel="external"><font color="red">&nbsp;<i class="fa fa-3x fa-exclamation-circle"></i></font></a></p>
                            </div>
                            <div class="ui-block-d">
-                              <a href="#">
+                              <a href="javascript:void(0)">
                                  <p style="text-align: center"><font size="5">12</font></p>
                               </a>
                            </div>
@@ -128,19 +138,21 @@
          </div>
          <div class="ui-grid-b">
             <div class="ui-block-a">
-               <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; border-color: #E4E4E4;">
-                  <font color="#0b6d5f" size="+1">我的流程</font>
-                  <br>
-                  <a href="#"><i class="fa fa-refresh"></i></a>
-                  <div class="ui-grid-a">
-                     <div class="ui-block-a">
-                        <p style="text-align: left;"><a href="instancelist.html"><font color="#0b6d5f"><i class="fa fa-3x fa-folder-open"></i></font></a></p>
-                     </div>
-                     <div class="ui-block-b" style="height: 4em;">
-                        <p style="text-align: right;"><font color="black" size="5"><b>10</b></font></p>
+               <a href="instancelist.html">
+                  <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; border-color: #E4E4E4;">
+                     <font color="#0b6d5f" size="+1">我的流程</font>
+                     <br>
+                     <i class="fa fa-refresh"></i>
+                     <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                           <p style="text-align: left;"><font color="#0b6d5f"><i class="fa fa-3x fa-folder-open"></i></font></p>
+                        </div>
+                        <div class="ui-block-b" style="height: 4em;">
+                           <p style="text-align: right;"><font color="black" size="5"><b>10</b></font></p>
+                        </div>
                      </div>
                   </div>
-               </div>
+               </a>
             </div>
             <div class="ui-block-b">
                <div id="owl-demo1" class="owl-carousel owl-theme">
@@ -266,12 +278,11 @@
                <img src="images/bpm.png" alt="启动流程" class="ui-li-icon"><font size="3">启动流程</font></a></li>
             <li><a href="instancelist.html" rel="external">
                <img src="images/folder.png" alt="我的流程" class="ui-li-icon"><font size="3">我的流程</font></a></li>
-            <li><a href="help.html" rel="external">
+            <li><a href="javascript:void(0);" rel="external">
                <img src="images/pie25.png" alt="报表" class="ui-li-icon"><font size="3">报表</font></a></li>
          </ul>
          <div class="ui-nodisc-icon ui-alt-icon">
             <!-- Classes added to the wrapper -->
-
             <p style="text-align: center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
          </div>
 
@@ -288,50 +299,14 @@
          width: 100%;
          height: auto;
       }
-   </style>
-   <style>
+
       #owl-demo2 .item img {
          display: block;
          width: 100%;
          height: auto;
       }
    </style>
-   <script>
-      $(document).ready(function () {
 
-         var owl = $("#owl-demo");
-         owl.owlCarousel({
-
-            autoPlay: 5000,
-            singleItem: true,
-            autoHeight: true,
-            pagination: false,
-            transitionStyle: "fadeUp"
-         });
-
-         owl = $("#owl-demo1");
-         owl.owlCarousel({
-
-            autoPlay: 5000,
-            singleItem: true,
-            autoHeight: true,
-            pagination: false,
-            transitionStyle: "goDown"
-         });
-
-         owl = $("#owl-demo2");
-
-         owl.owlCarousel({
-
-            autoPlay: 6000,
-            singleItem: true,
-            autoHeight: true,
-            pagination: false,
-            transitionStyle: "goDown"
-         });
-
-      });
-   </script>
    <script src="lib/vendor/OWL/assets/js/bootstrap-collapse.js"></script>
    <script src="lib/vendor/OWL/assets/js/bootstrap-transition.js"></script>
    <script src="lib/vendor/OWL/assets/js/bootstrap-tab.js"></script>
