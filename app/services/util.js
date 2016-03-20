@@ -1,11 +1,11 @@
 /**
  * Created by jasperchiu on 3/19/16.
  */
-(function (BPMN, $, amplify) {
-   BPMN.Services = BPMN.Services || {};
-   BPMN.Services.Utils = (function () {
+(function (BPMS, $, amplify) {
+   BPMS.Services = BPMS.Services || {};
+   BPMS.Services.Utils = (function () {
       var restfulRequest = function (resourceId, url, options) {
-         var serviceUrl = BPMN.config.serviceUrl;
+         var serviceUrl = BPMS.config.serviceUrl;
          var token = window.localStorage.getItem("bpms_token");
          amplify.request.define(resourceId, 'ajax', {
             type: 'get',
@@ -137,4 +137,4 @@
       };
    })();
 
-})(window.BPMN = window.BPMN || {}, jQuery, amplify)
+})(window.BPMS = window.BPMS || {}, jQuery, amplify)

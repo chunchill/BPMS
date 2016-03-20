@@ -1,5 +1,5 @@
 
 $(function () {
 
-   ko.applyBindings(new window.BPMN.ViewModels.WorkListViewModel());
+   ko.applyBindings(new window.BPMS.ViewModels.WorkListViewModel());
 })

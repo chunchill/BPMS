@@ -1,9 +1,9 @@
-(function (BPMN, $, ko) {
+(function (BPMS, $, ko) {
 
-   BPMN.ViewModels = BPMN.ViewModels || {};
-   BPMN.ViewModels.HomeViewModel = function () {
+   BPMS.ViewModels = BPMS.ViewModels || {};
+   BPMS.ViewModels.HomeViewModel = function () {
       var self = this;
 
    };
 
-})(window.BPMN = window.BPMN || {}, jQuery, ko)
+})(window.BPMS = window.BPMS || {}, jQuery, ko)
