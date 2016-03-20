@@ -35,6 +35,9 @@
    <script src="lib/vendor/OWL/owl-carousel/owl.carousel.js"></script>
 
    <script src="lib/knockout-3.2.0.min.js"></script>
+   <script src="lib/knockout.mapping-latest.js"></script>
+   <script src="lib/koExternalTemplateEngine_all.js"></script>
+   <script src="lib/ko.extentions.js"></script>
    <script src="lib/vendor/amplify/lib/amplify.js"></script>
    <script src="app/config.js"></script>
    <script src="app/services/util.js"></script>
@@ -49,7 +52,7 @@
       <div data-role="content" style="padding: 3px 3px;">
          <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner13.png); background-size: cover; border-color: #E4E4E4;">
             <p align="center">
-               <img class="popphoto" src="images/bpmslogo.png" height="18px"><br>
+               <img class="popphoto" src="images/bpmslogo.png" height="18"><br>
                <font size="+1"><b>我的任务</b></font>
             </p>
             <div class="ui-nodisc-icon ui-alt-icon">
@@ -71,21 +74,21 @@
                   <form class="ui-filterable">
                      <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索待处理任务...">
                   </form>
-                  <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
-                     <li><a href="taskaction.html">
-                        <h2>审批费用</h2>
+                  <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2"
+                     data-bind="jqmTemplate: { name: 'allItem', foreach: allList }, jqmRefreshList: allList">
+
+                     <!-- <li><a href="taskaction.html">
+                        <h2>审批假期</h2>
                         <p><font color="0b6d5f"><i class="fa fa-user"></i>&nbsp;邵剑秋 <i class="fa fa-calendar-check-o"></i>&nbsp;<strong>2016-4-1</strong> 14:00 </font></p>
-                        <span class="ui-li-count">3</span> </a></li>
-                     </li>
-            <li><a href="taskaction.html">
-               <h2>审批假期</h2>
-               <p><font color="0b6d5f"><i class="fa fa-user"></i>&nbsp;邵剑秋 <i class="fa fa-calendar-check-o"></i>&nbsp;<strong>2016-4-1</strong> 14:00 </font></p>
-               <span class="ui-li-count">2</span> </a></li>
+                        <span class="ui-li-count">2</span> </a></li>
                      <li><a href="taskaction.html">
                         <h2>创建主数据</h2>
                         <p><font color="0b6d5f"><i class="fa fa-user"></i>&nbsp;邵剑秋 <i class="fa fa-calendar-check-o"></i>&nbsp;<strong>2016-4-1</strong> 14:00 </font></p>
-                        <span class="ui-li-count">4</span> </a></li>
+                        <span class="ui-li-count">4</span> </a></li>-->
                   </ul>
+
+
+
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
                      <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
@@ -100,11 +103,11 @@
                         <h2>费用报销</h2>
                         <p><font color="0b6d5f"><i class="fa fa-user"></i>&nbsp;邵剑秋 <i class="fa fa-calendar-check-o"></i>&nbsp;<strong>2016-4-1</strong> 14:00 </font></p>
                         <span class="ui-li-count">F</span> </a></li>
-                     </li>
-            <li><a href="taskaction.html">
-               <h2>事假申请</h2>
-               <p><font color="0b6d5f"><i class="fa fa-user"></i>&nbsp;邵剑秋 <i class="fa fa-calendar-check-o"></i>&nbsp;<strong>2016-4-1</strong> 14:00 </font></p>
-               <span class="ui-li-count">H</span> </a></li>
+
+                     <li><a href="taskaction.html">
+                        <h2>事假申请</h2>
+                        <p><font color="0b6d5f"><i class="fa fa-user"></i>&nbsp;邵剑秋 <i class="fa fa-calendar-check-o"></i>&nbsp;<strong>2016-4-1</strong> 14:00 </font></p>
+                        <span class="ui-li-count">H</span> </a></li>
                   </ul>
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
@@ -146,12 +149,13 @@
          <p align="center">
             <font size="-2s">&copy; 江苏日盈电子股份有限公司</font>
             <br>
-            <img class="popphoto" src="images/logo.png" height="18px">
+            <img class="popphoto" src="images/logo.png" height="18">
          </p>
       </div>
       <div data-role="panel" id="panelgrid" data-position-fixed="true" data-position="right" data-display="overlay" data-theme="a">
          <p align="center">
-            <img class="popphoto" src="images/bpmslogo.png" height="23px"></p>
+            <img class="popphoto" src="images/bpmslogo.png" height="23">
+         </p>
          <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
             <li><a href="home.html" rel="external">
                <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font></a></li>
@@ -181,50 +185,20 @@
          </div>
       </div>
    </div>
-   <style>
-      #owl-demo .item img {
-         display: block;
-         width: 100%;
-         height: auto;
-      }
-   </style>
-   <style>
-      #owl-demo2 .item img {
-         display: block;
-         width: 100%;
-         height: auto;
-      }
-   </style>
-   <script>
-      $(document).ready(function () {
-
-         var owl = $("#owl-demo");
-         owl.owlCarousel({
-
-            autoPlay: 5000,
-            singleItem: true,
-            autoHeight: true,
-            pagination: false,
-            transitionStyle: "fadeUp"
-         });
-
-         var owl = $("#owl-demo2");
-
-         owl.owlCarousel({
-
-            autoPlay: 6000,
-            singleItem: true,
-            autoHeight: true,
-            pagination: false,
-            transitionStyle: "goDown"
-         });
-
-      });
-   </script>
    <script src="lib/vendor/OWL/assets/js/bootstrap-collapse.js"></script>
    <script src="lib/vendor/OWL/assets/js/bootstrap-transition.js"></script>
    <script src="lib/vendor/OWL/assets/js/bootstrap-tab.js"></script>
    <script src="lib/vendor/OWL/assets/js/google-code-prettify/prettify.js"></script>
    <script src="lib/vendor/OWL/assets/js/application.js"></script>
+
+   <script type="text/html" id="allItem">
+      <li><a href="taskaction.html">
+         <h2 data-bind="text: desc"></h2>
+         <p style="color: #0b6d5f">
+            <i class="fa fa-user"></i><span data-bind="text: '&nbsp;' + name + '&nbsp;'"></span><i class="fa fa-calendar-check-o"></i>&nbsp;<strong data-bind="   text: date"></strong>
+            <span data-bind="text: '&nbsp;' + time"></span>
+         </p>
+         <span class="ui-li-count">3</span></a></li>
+   </script>
 </body>
 </html>
