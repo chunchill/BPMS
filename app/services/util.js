@@ -129,8 +129,7 @@
          base64_decode: base64_decode,
          getAuthToken: getAuthToken,
          checkLoginStatus: function () {
-            var user = localStorage.getItem("user");
-            user = user && JSON.parse(user);
+            var user = localStorage.getItem("bpms_userId");
             if (!user)
                window.location.href = "RYlogin.html";
          }

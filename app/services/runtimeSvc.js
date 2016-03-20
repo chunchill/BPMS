@@ -9,9 +9,12 @@
         var getTasks = function (options) {
             return BPMS.Services.Utils.restfulRequest('getTasks','runtime/tasks', options);
         };
-
+        var getProcessInstances = function (options) {
+           return BPMS.Services.Utils.restfulRequest('getProcessInstances', 'runtime/process-instances', options);
+        };
         return {
-            getTasks: getTasks
+           getTasks: getTasks,
+           getProcessInstances: getProcessInstances
         };
     })();
 

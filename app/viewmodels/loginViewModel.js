@@ -23,17 +23,18 @@
                window.localStorage.setItem("bpms_token", token);
                window.localStorage.setItem("bpms_userId", username);
                BPMS.Services.RuntimeSvc.getTasks().then(function (data) {
-                  localStorage.setItem("user", JSON.stringify({}));
                   //alert(JSON.stringify(data));
                   window.location.replace('home.html');
                }, function () {
-                  localStorage.removeItem("user");
+                  localStorage.removeItem("bpms_token");
+                  localStorage.removeItem("bpms_userId");
                   self.errorMessage('没有取到任务！');
                   $("#popupMessage").popup("open");
                });
 
             }, function () {
-               localStorage.removeItem("user");
+               localStorage.removeItem("bpms_token");
+               localStorage.removeItem("bpms_userId");
                self.errorMessage('登录失败！');
                $("#popupMessage").popup("open");
 

@@ -27,6 +27,7 @@ $(function () {
       pagination: false,
       transitionStyle: "goDown"
    });
-
-   ko.applyBindings(new window.BPMS.ViewModels.HomeViewModel());
-})
+   var viewModel = new window.BPMS.ViewModels.HomeViewModel();
+   viewModel.getSummary();
+   ko.applyBindings(viewModel);
+});
