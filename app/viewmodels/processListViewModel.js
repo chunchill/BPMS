@@ -1,23 +1,84 @@
-
 /**
  * Created by jasperchiu on 3/19/16.
  */
-(function(BPMS,$,ko){
+
+(function (BPMS, $, ko) {
 
     BPMS.ViewModels = BPMS.ViewModels || {};
-    //登录页面viewmodel
-    BPMS.ViewModels.DemoViewModel = function(){
+    BPMS.ViewModels.ProcessListViewModel = function () {
         var self = this;
-        self.total = ko.observable();
-        self.size = ko.observable();
-        BPMS.Services.IndentitySvc.login().then(function(data){
+        self.start = ko.observable(0);
+        self.size = ko.observable(1);
+        self.datasource = ko.observableArray();
 
-            console.log(JSON.stringify(data));
-                self.total(data.total);
-                self.size(data.size);
+        var bindRealData = function(){
+            var option = {size:self.size(),start:self.start(),startableByUser:'admin'};
+            BPMS.Services.ProcessDefinitionSvc.getProcessDefinitions(option).then(function (result) {
+                self.datasource(result.data);
+            })
+        }
+        //mockdata
+        var mockData = [{//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+            description: '费用报销',
+            name: 'F01',
+            category: 'F'
+        },
+            {
+                description: '出差请假',
+                name: 'C01',
+                category: 'H'
+            },
+            {
+                description: '数据维护',
+                name: 'W01',
+                category: 'M'
+            }];
+        self.init = function () {
+            self.start(0);
+            self.size(1);
+            self.datasource([]);
+            var data = mockData.slice(self.start(), self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+            self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+            /*
+             bindRealData();
+            */
+        },
 
-        })
+            self.nextPage = function () {
+                if (self.datasource().length > 0) {
+                    var currentIndex = self.start();
+                    self.start(currentIndex + self.size());
+                    var data = mockData.slice(self.start(), self.start()+self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+                    self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
 
+                    /*
+                     bindRealData();
+                     */
+                }
+            },
+
+            self.previousPage = function () {
+                var currentIndex = self.start();
+                if (currentIndex > 0) {
+                    self.start(currentIndex - self.size());
+                    var data = mockData.slice(self.start(), self.start()+self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+                    self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+
+                    /*
+                     bindRealData();
+                     */
+                }
+
+            },
+            self.refresh = function(){
+                var currentIndex = self.start();
+                var data = mockData.slice(self.start(), self.start()+self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+                self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+
+                /*
+                 bindRealData();
+                 */
+            }
 
     }
 

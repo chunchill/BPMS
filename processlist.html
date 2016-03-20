@@ -14,10 +14,6 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="style/themes/bootstrap.min.css">
 
-<!-- Owl Carousel Assets -->
-<link href="lib/vendor/OWL/owl-carousel/owl.carousel.css" rel="stylesheet">
-<link href="lib/vendor/OWL/owl-carousel/owl.theme.css" rel="stylesheet">
-<link href="lib/vendor/OWL/owl-carousel/owl.transitions.css" rel="stylesheet">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
@@ -32,16 +28,15 @@
 
 <script src="lib/vendor/jquery/dist/jquery.js"></script>
 <script src="lib/jquery.mobile-1.4.5.js"></script>
-<script src="lib/vendor/OWL/owl-carousel/owl.carousel.js"></script>
 
-   <script src="lib/knockout-3.2.0.min.js"></script>
-   <script src="lib/vendor/amplify/lib/amplify.js"></script>
-   <script src="app/config.js"></script>
-   <script src="app/services/util.js"></script>
-   <script src="app/services/identitySvc.js"></script>
-   <script src="app/services/runtimeSvc.js"></script>
-   <script src="app/viewmodels/processListViewModel.js"></script>
-   <script src="app/processListPage.js"></script>
+<script src="lib/knockout-3.2.0.min.js"></script>
+<script src="lib/vendor/amplify/lib/amplify.js"></script>
+<script src="lib/oex/jqm-knockout.js"></script>
+<script src="app/config.js"></script>
+<script src="app/services/util.js"></script>
+<script src="app/services/processdefinitionSvc.js"></script>
+<script src="app/viewmodels/processListViewModel.js"></script>
+<script src="app/processListPage.js"></script>
 <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
@@ -59,24 +54,25 @@
       <form class="ui-filterable">
         <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索可执行流程...">
       </form>
-      <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
-        <li><a href="processcreate.html">
-          <h2>费用报销</h2>
-          <p>F101</p>
-          <span class="ui-li-count">F</span> </a></li>
-        </li>
-        <li> <a href="processcreate.html">
-          <h2>事假申请</h2>
-          <p>H100</p>
-          <span class="ui-li-count">H</span> </a> </li>
-        <li><a href="processcreate.html">
-          <h2>工艺路线主数据维护</h2>
-          <p>P102</p>
-          <span class="ui-li-count">M</span> </a> </li>
+      <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2"
+          data-bind="jqmTemplate: {name:'listTemplate', foreach:datasource},jqmRefreshList:datasource">
       </ul>
+        <script type="text/html" id="listTemplate">
+            <li><a href="processcreate.html">
+                <h2><span data-bind="text:description"></span></h2>
+                <p><span data-bind="text:name"></span></p>
+                <span class="ui-li-count"><span data-bind="text:category"></span></span> </a>
+            </li>
+        </script>
+
       <div class="ui-nodisc-icon ui-alt-icon" > 
         <!-- Classes added to the wrapper -->
-        <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+        <p align="center">
+            <a data-bind="click:previousPage" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+            <a data-bind="click:refresh" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+            <a data-bind="click:nextPage" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+
+        </p>
       </div>
     </div>
     <p align="center"> <font size="-2s">&copy; 江苏日盈电子股份有限公司</font><br>
@@ -105,50 +101,5 @@
     </div>
   </div>
 </div>
-<style>
-    #owl-demo .item img{
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-    </style>
-<style>
-    #owl-demo2 .item img{
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-    </style>
-<script>
-$(document).ready(function() {
- 
-  var owl = $("#owl-demo");
-  owl.owlCarousel({
-
-    autoPlay : 5000,
-    singleItem : true,
-    autoHeight : true, 
-	pagination : false,
-    transitionStyle : "fadeUp"
-  });
-
-  var owl = $("#owl-demo2");  
- 
-  owl.owlCarousel({
-
-    autoPlay : 6000,
-    singleItem : true,
-    autoHeight : true,
-	pagination : false,
-    transitionStyle : "goDown"
-  });
- 
-});
-</script> 
-<script src="lib/vendor/OWL/assets/js/bootstrap-collapse.js"></script>
-<script src="lib/vendor/OWL/assets/js/bootstrap-transition.js"></script>
-<script src="lib/vendor/OWL/assets/js/bootstrap-tab.js"></script>
-<script src="lib/vendor/OWL/assets/js/google-code-prettify/prettify.js"></script>
-<script src="lib/vendor/OWL/assets/js/application.js"></script>
 </body>
 </html>
