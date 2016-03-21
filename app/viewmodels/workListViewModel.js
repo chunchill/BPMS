@@ -45,7 +45,7 @@
       self.getData = function () {
          var params= {
             "all": {},
-            "due": {"dueBefore":},
+            "due": {"dueBefore":null},
             "critical": {},
             "undo": {},
          }
