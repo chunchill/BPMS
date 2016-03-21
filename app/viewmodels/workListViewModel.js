@@ -17,8 +17,12 @@
             self[currentType].pageIndex(1);
             self.getData();
          }
-
-
+      };
+      self.selectItem = function($data) {
+         localStorage.setItem("task", JSON.stringify($data));
+         var url = 'taskaction.html?taskId=' + $data.id + '&processInstanceId=' + $data.processInstanceId;
+         window.location.href = url;
+         return false;
       };
       self.init = function () {
          var type = BPMS.Services.Utils.getUrlParam(window.location.href, "type") || "all";

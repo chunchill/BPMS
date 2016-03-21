@@ -3,7 +3,7 @@
 <head>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
-   <title>RY-BPMN</title>
+   <title>RY-BPMS</title>
    <!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />-->
    <link href="style/themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
 
@@ -70,26 +70,29 @@
          </div>
          <div class="jqm-block-content" style="margin: 2px 2px; margin-top: 4px; padding: 4px 4px; background-image: url(images/bg.jpg); border-color: #E4E4E4;">
             <div class="ui-body ui-body-a ui-corner-all" style="padding: 8px 8px; background-image: url(images/tweets-bg.jpg)">
-               <h3>审批费用</h3>
-               <p><font color="gray">Task的Desc</font></p>
+               <h3 data-bind="text: name"></h3>
+               <p><font color="gray" data-bind="text:description"></font></p>
             </div>
             <div class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px; background-image: url(images/tweets-bg.jpg)">
                <h3>任务信息</h3>
                <p align="left">
-                  <font size="-1">用款单位: <strong>江苏日盈电子股份有限公司</strong></font>
+                  <!-- ko foreach: $root.tasks -->
+                  <font size="-1"><span data-bind="text: variable.name + '：'">用款单位: </span><strong  data-bind="   text: variable.value"></strong></font>
                   <br>
-                  <font size="-1">金额: <strong>20,000</strong> RMB</font>
-                  <br>
-                  <font size="-1">付款选项: <strong>按发票付款</strong></font>
+                  <!-- /ko -->
                </p>
             </div>
             <div class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px; background-image: url(images/tweets-bg.jpg)">
                <h3>流程历史</h3>
+               <!--fa-play fa-arrow-down fa-stop-->
                <ul data-role="listview" data-inset="true" data-iconpos="left">
-                  <li><a href="#popupdetail" data-rel="popup" data-position-to="window" data-transition="pop"><i class="fa fa-play"></i>&nbsp;&nbsp;2015-4-1 12:00 <strong>陈骏</strong><span class="ui-li-count">创建</span></a></li>
-                  <li><a href="#popupdetail" data-rel="popup" data-position-to="window" data-transition="pop"><i class="fa fa-arrow-down"></i>&nbsp;&nbsp;2016-4-1 13:00 <strong>邵剑秋</strong><span class="ui-li-count">批准</span></a></li>
-                  <li><a href="#popupdetail" data-rel="popup" data-position-to="window" data-transition="pop"><i class="fa fa-arrow-down"></i>&nbsp;&nbsp;2016-4-1 14:30 <strong>王晓新</strong><span class="ui-li-count">批准</span></a></li>
-                  <li><a href="#popupdetail" data-rel="popup" data-position-to="window" data-transition="pop"><i class="fa  fa-stop"></i>&nbsp;&nbsp;2015-4-1 12:00 <strong>CEO</strong><span class="ui-li-count">完成</span></a></li>
+                  <!-- ko foreach: $root.tasks -->
+                  <li>
+                     <a data-position-to="window" data-transition="pop">
+                        <i data-bind="css: { 'fa-play': $index == 0, 'fa-arrow-down': $index != 0 && $index != $root.flows.length - 1, 'fa-stop': $index == $root.flows.length - 1 }" class="fa fa-play"></i>&nbsp;&nbsp;2015-4-1 12:00 <strong>陈骏</strong><span class="ui-li-count">创建</span>
+                     </a>
+                  </li>
+                  <!-- /ko -->
                </ul>
             </div>
 
