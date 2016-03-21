@@ -43,11 +43,11 @@
          }
       };
       self.getData = function () {
-         var params= {
+         var params = {
             "all": {},
-            "due": {"dueBefore":},
-            "critical": {},
-            "undo": {},
+            "due": { "dueBefore": moment().toISOString() },
+            "critical": { "priority": 75 },
+            "undo": {}
          }
          var currentType = self.type();
          var list = self[currentType].items;
