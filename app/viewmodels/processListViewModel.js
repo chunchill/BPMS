@@ -43,8 +43,23 @@
              bindRealData();
             */
         },
+            disableNextPageButton = function () {
+                if(!$("#btnNext").hasClass('ui-disabled'))
+                    $("#btnNext").addClass('ui-disabled')
+                if($("#btnPre").hasClass('ui-disabled')){
+                    $("#btnPre").removeClass('ui-disabled');
+                }
+            },
+            disablePreviousButton = function() {
+                if (!$("#btnPre").hasClass('ui-disabled'))
+                    $("#btnPre").addClass('ui-disabled')
+                if ($("#btnNext").hasClass('ui-disabled')) {
+                    $("#btnNext").removeClass('ui-disabled');
+                }
+            },
 
-            self.nextPage = function () {
+            self.nextPage = function (data,event) {
+
                 if (self.datasource().length > 0) {
                     var currentIndex = self.start();
                     self.start(currentIndex + self.size());
@@ -54,10 +69,12 @@
                     /*
                      bindRealData();
                      */
+                }else{
+                    disableNextPageButton();
                 }
             },
 
-            self.previousPage = function () {
+            self.previousPage = function (data,event)  {
                 var currentIndex = self.start();
                 if (currentIndex > 0) {
                     self.start(currentIndex - self.size());
@@ -67,6 +84,8 @@
                     /*
                      bindRealData();
                      */
+                }else{
+                    disablePreviousButton();
                 }
 
             },

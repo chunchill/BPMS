@@ -14,10 +14,6 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="style/themes/bootstrap.min.css">
 
-<!-- Owl Carousel Assets -->
-<link href="lib/vendor/OWL/owl-carousel/owl.carousel.css" rel="stylesheet">
-<link href="lib/vendor/OWL/owl-carousel/owl.theme.css" rel="stylesheet">
-<link href="lib/vendor/OWL/owl-carousel/owl.transitions.css" rel="stylesheet">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
@@ -32,16 +28,16 @@
 
 <script src="lib/vendor/jquery/dist/jquery.js"></script>
 <script src="lib/jquery.mobile-1.4.5.js"></script>
-<script src="lib/vendor/OWL/owl-carousel/owl.carousel.js"></script>
 
-   <script src="lib/knockout-3.2.0.min.js"></script>
-   <script src="lib/vendor/amplify/lib/amplify.js"></script>
-   <script src="app/config.js"></script>
-   <script src="app/services/util.js"></script>
-   <script src="app/services/identitySvc.js"></script>
-   <script src="app/services/runtimeSvc.js"></script>
-   <script src="app/viewmodels/instanceListViewModel.js"></script>
-   <script src="app/instanceListPage.js"></script>
+
+<script src="lib/knockout-3.2.0.min.js"></script>
+<script src="lib/vendor/amplify/lib/amplify.js"></script>
+<script src="app/config.js"></script>
+<script src="app/services/util.js"></script>
+<script src="app/services/identitySvc.js"></script>
+<script src="app/services/runtimeSvc.js"></script>
+<script src="app/viewmodels/instanceListViewModel.js"></script>
+<script src="app/instanceListPage.js"></script>
 <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
@@ -67,9 +63,9 @@
         </div>
         <div id="all">
           <form class="ui-filterable">
-            <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索待处理任务...">
+            <input id="rich-autocomplete-input1" data-type="search" placeholder="输入关键字搜索待处理任务...">
           </form>
-          <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
+          <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input1">
             <li><a href="instancedetail.html">
               <h2>F001费用申请</h2>
               <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong></font>&nbsp;&nbsp;<font color="#0071B9"><i class="fa fa-refresh"></i><strong>16.03.22</strong> 12:11</font></p>
@@ -95,7 +91,7 @@
           </form>
           <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
             <li><a href="instancedetail.html">
-              <h2>F001费用申请</h2>
+              <h2>F002费用申请</h2>
               <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong></font></p>
               <span class="ui-li-count">M</span> </a></li>
             </li>
@@ -107,11 +103,11 @@
         </div>
         <div id="critical">     
           <form class="ui-filterable">
-            <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索我的流程...">
+            <input id="rich-autocomplete-input3" data-type="search" placeholder="输入关键字搜索我的流程...">
           </form>
-          <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
+          <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input3">
             <li><a href="instancedetail.html">
-              <h2>F001费用申请</h2>
+              <h2>F003费用申请</h2>
               <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong></font></p>
               <span class="ui-li-count">M</span> </a></li>
             </li>
@@ -165,50 +161,6 @@
     </div>
   </div>
 </div>
-<style>
-    #owl-demo .item img{
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-    </style>
-<style>
-    #owl-demo2 .item img{
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-    </style>
-<script>
-$(document).ready(function() {
- 
-  var owl = $("#owl-demo");
-  owl.owlCarousel({
 
-    autoPlay : 5000,
-    singleItem : true,
-    autoHeight : true, 
-	pagination : false,
-    transitionStyle : "fadeUp"
-  });
-
-  var owl = $("#owl-demo2");  
- 
-  owl.owlCarousel({
-
-    autoPlay : 6000,
-    singleItem : true,
-    autoHeight : true,
-	pagination : false,
-    transitionStyle : "goDown"
-  });
- 
-});
-</script> 
-<script src="lib/vendor/OWL/assets/js/bootstrap-collapse.js"></script>
-<script src="lib/vendor/OWL/assets/js/bootstrap-transition.js"></script>
-<script src="lib/vendor/OWL/assets/js/bootstrap-tab.js"></script>
-<script src="lib/vendor/OWL/assets/js/google-code-prettify/prettify.js"></script>
-<script src="lib/vendor/OWL/assets/js/application.js"></script>
 </body>
 </html>

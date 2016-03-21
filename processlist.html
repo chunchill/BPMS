@@ -28,7 +28,8 @@
 
 <script src="lib/vendor/jquery/dist/jquery.js"></script>
 <script src="lib/jquery.mobile-1.4.5.js"></script>
-
+<script src="lib/jquery-ui.min.js"></script>
+<script src="lib/jquery.mobile.pulltorefresh.js"></script>
 <script src="lib/knockout-3.2.0.min.js"></script>
 <script src="lib/vendor/amplify/lib/amplify.js"></script>
 <script src="lib/oex/jqm-knockout.js"></script>
@@ -40,9 +41,9 @@
 <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
-<div data-role="page" id="logonView" data-theme="a" style="background-image:url(images/bg/graphy-xs.png)">
-  <div data-role="content" style="padding: 3px 3px;">
-    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner15.png); background-size:cover; border-color:#E4E4E4;">
+<div data-role="page"  data-theme="a" style="background-image:url(images/bg/graphy-xs.png)">
+  <div  data-role="content" style="padding: 3px 3px;">
+    <div id="draggable"  class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner15.png); background-size:cover; border-color:#E4E4E4;">
       <p align="center"><img class="popphoto" src="images/bpmslogo.png" height="18px"><br>
         <font size="+1"><b>启动流程</b></font></p>
       <div class="ui-nodisc-icon ui-alt-icon" > 
@@ -68,9 +69,9 @@
       <div class="ui-nodisc-icon ui-alt-icon" > 
         <!-- Classes added to the wrapper -->
         <p align="center">
-            <a data-bind="click:previousPage" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
-            <a data-bind="click:refresh" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
-            <a data-bind="click:nextPage" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+            <a data-bind="click:previousPage" id="btnPre" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+            <a data-bind="click:refresh" id="btnRefresh" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+            <a data-bind="click:nextPage" id="btnNext" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
 
         </p>
       </div>
