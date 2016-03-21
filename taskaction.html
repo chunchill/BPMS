@@ -13,12 +13,6 @@
    <link rel="stylesheet" href="style/themes/bladecolor.min.css" />
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="style/themes/bootstrap.min.css">
-
-   <!-- Owl Carousel Assets -->
-   <link href="lib/vendor/OWL/owl-carousel/owl.carousel.css" rel="stylesheet">
-   <link href="lib/vendor/OWL/owl-carousel/owl.theme.css" rel="stylesheet">
-   <link href="lib/vendor/OWL/owl-carousel/owl.transitions.css" rel="stylesheet">
-
    <!-- Optional theme -->
    <link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
    <link rel="stylesheet" href="style/themes/jqm-demos.css">
@@ -32,14 +26,13 @@
 
    <script src="lib/vendor/jquery/dist/jquery.js"></script>
    <script src="lib/jquery.mobile-1.4.5.js"></script>
-   <script src="lib/vendor/OWL/owl-carousel/owl.carousel.js"></script>
 
    <script src="lib/knockout-3.2.0.min.js"></script>
    <script src="lib/vendor/amplify/lib/amplify.js"></script>
    <script src="app/config.js"></script>
    <script src="app/services/util.js"></script>
    <script src="app/services/identitySvc.js"></script>
-   <script src="app/services/runtimeSvc.js"></script>
+   <script src="app/services/historySvc.js"></script>
    <script src="app/viewmodels/taskActionViewModel.js"></script>
    <script src="app/taskActionPage.js"></script>
    <link rel="shortcut icon" href="favicon.ico">
@@ -128,7 +121,8 @@
       </div>
       <div data-role="panel" id="panelgrid" data-position-fixed="true" data-position="right" data-display="overlay" data-theme="a">
          <p align="center">
-            <img class="popphoto" src="images/bpmslogo.png" height="23px"></p>
+            <img class="popphoto" src="images/bpmslogo.png" height="23px">
+         </p>
          <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
             <li><a href="home.html" rel="external">
                <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font></a></li>
@@ -168,50 +162,5 @@
          <p align="center"><a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="d" data-shadow="false" style="margin-right: 0px;">确定</a></p>
       </div>
    </div>
-   <style>
-      #owl-demo .item img {
-         display: block;
-         width: 100%;
-         height: auto;
-      }
-   </style>
-   <style>
-      #owl-demo2 .item img {
-         display: block;
-         width: 100%;
-         height: auto;
-      }
-   </style>
-   <script>
-      $(document).ready(function () {
-
-         var owl = $("#owl-demo");
-         owl.owlCarousel({
-
-            autoPlay: 5000,
-            singleItem: true,
-            autoHeight: true,
-            pagination: false,
-            transitionStyle: "fadeUp"
-         });
-
-         var owl = $("#owl-demo2");
-
-         owl.owlCarousel({
-
-            autoPlay: 6000,
-            singleItem: true,
-            autoHeight: true,
-            pagination: false,
-            transitionStyle: "goDown"
-         });
-
-      });
-   </script>
-   <script src="lib/vendor/OWL/assets/js/bootstrap-collapse.js"></script>
-   <script src="lib/vendor/OWL/assets/js/bootstrap-transition.js"></script>
-   <script src="lib/vendor/OWL/assets/js/bootstrap-tab.js"></script>
-   <script src="lib/vendor/OWL/assets/js/google-code-prettify/prettify.js"></script>
-   <script src="lib/vendor/OWL/assets/js/application.js"></script>
 </body>
 </html>

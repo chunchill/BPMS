@@ -50,7 +50,7 @@
          if (!date) return "";
          return momnet(date).format("HH:mm");
       };
-      self.getData = function () {
+      self.getData = function (callback) {
 
          var currentType = self.type();
          self[currentType].items.removeAll();
@@ -83,6 +83,7 @@
                      var category = item.category ? item.category[0] : "";
                      items[index].category = category;
                      self[currentType].items.push(items[index]);
+                     if (callback) callback();
                   });
                });
             });

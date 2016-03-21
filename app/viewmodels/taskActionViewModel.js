@@ -1,24 +1,19 @@
+(function (BPMS, $, ko) {
 
-/**
- * Created by jasperchiu on 3/19/16.
- */
-(function(BPMS,$,ko){
+   BPMS.ViewModels = BPMS.ViewModels || {};
+   //登录页面viewmodel
+   BPMS.ViewModels.TaskActionViewModel = function () {
+      var self = this;
+      self.taskId = BPMS.Services.Utils.getUrlParam(window.location.href, "taskId");
+      self.processInstanceId = BPMS.Services.Utils.getUrlParam(window.location.href, "processInstanceId");
+      self.init = function () {
+         if (!self.taskId || !self.processInstanceId) window.location.href = "home.html";
+         BPMS.Services.HistoryInstancesSvc.getVariableInstances({ "processInstanceId": self.processInstanceId })
+            .then(function (result) {
+               console.log(result);
+            });
+      };
 
-    BPMS.ViewModels = BPMS.ViewModels || {};
-    //登录页面viewmodel
-    BPMS.ViewModels.DemoViewModel = function(){
-        var self = this;
-        self.total = ko.observable();
-        self.size = ko.observable();
-        BPMS.Services.IndentitySvc.login().then(function(data){
-
-            console.log(JSON.stringify(data));
-                self.total(data.total);
-                self.size(data.size);
-
-        })
-
-
-    }
+   };
 
 })(window.BPMS = window.BPMS || {}, jQuery, ko)

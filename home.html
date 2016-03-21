@@ -66,7 +66,7 @@
          </div>
          <div class="ui-grid-b">
             <div class="ui-block-a">
-               <a href="worklist.html">
+               <a href="worklist.html" rel="external">
                   <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; border-color: #E4E4E4;">
                      <font color="#0b6d5f" size="+1">我的任务</font>
                      <br>
@@ -76,7 +76,7 @@
                            <p style="text-align: left;"><font color="#0b6d5f"><i class="fa fa-3x fa-tasks"></i></font></p>
                         </div>
                         <div class="ui-block-b">
-                           <p style="text-align: right;"><font color="black" size="5"><b data-bind="text: allTaskNumber"></b></font></p>
+                           <p style="text-align: right;"><font color="black" size="5"><b data-bind="text: $root.allTaskNumber"></b></font></p>
                         </div>
                      </div>
                   </div>
@@ -96,7 +96,7 @@
                            </div>
                            <div class="ui-block-b">
                               <a href="javascript:void(0)">
-                                 <p style="text-align: center"><font size="5" data-bind="text: normalTaskNumber"></font></p>
+                                 <p style="text-align: center"><font size="5" data-bind="text: $root.normalTaskNumber"></font></p>
                               </a>
                            </div>
                            <div class="ui-block-c" style="height: 4em;">
@@ -104,7 +104,7 @@
                            </div>
                            <div class="ui-block-d">
                               <a href="javascript:void(0)">
-                                 <p style="text-align: center"><font size="5" data-bind="text: warningTaskNumber"></font></p>
+                                 <p style="text-align: center"><font size="5" data-bind="text: $root.warningTaskNumber"></font></p>
                               </a>
                            </div>
                         </div>
@@ -154,7 +154,7 @@
                            <p style="text-align: left;"><font color="#0b6d5f"><i class="fa fa-3x fa-folder-open"></i></font></p>
                         </div>
                         <div class="ui-block-b" style="height: 4em;">
-                           <p style="text-align: right;"><font color="black" size="5"><b data-bind="text: processNumber"></b></font></p>
+                           <p style="text-align: right;"><font color="black" size="5"><b data-bind="text: $root.processNumber"></b></font></p>
                         </div>
                      </div>
                   </div>
@@ -246,7 +246,7 @@
                   </div>
                   <div class="ui-block-b" style="height: 4em;">
                      <p style="text-align: right;">
-                        <font color="#0b6d5f" size="5"><b data-bind="text: userId"></b></font>
+                        <font color="#0b6d5f" size="5"><b data-bind="text:$root.userId"></b></font>
                         <br>
                         <font size="-1">信息中心</font>
                      </p>

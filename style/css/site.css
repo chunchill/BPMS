@@ -12,9 +12,19 @@
    margin-top: -80px;
    text-align: center;
    vertical-align: bottom;
-   line-height:80px;
+   line-height: 80px;
    /*background-color: rgba(21, 59, 76, 0.15);*/
 }
 /*body {
    font-family: "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
 }*/
+
+.ui-header {
+   z-index: 10;
+}
+
+.pull-header {
+   height: 80px;
+   margin-top: -80px;
+   background-color: rgba(21, 59, 76, 0.15);
+}
