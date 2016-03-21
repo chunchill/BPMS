@@ -7,10 +7,12 @@
       var restfulRequest = function (resourceId, url, options) {
          var serviceUrl = BPMS.config.serviceUrl;
          var token = window.localStorage.getItem("bpms_token");
+         if (url.indexOf(serviceUrl)<0)
+            url = serviceUrl + url;
          amplify.request.define(resourceId, 'ajax', {
             type: 'get',
             dataType: "json",
-            url: serviceUrl + url,
+            url: url,
             crossDomain: true,
             beforeSend: function (xhr) {
                xhr.setRequestHeader("authorization", token);

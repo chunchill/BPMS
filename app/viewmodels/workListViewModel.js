@@ -1,6 +1,5 @@
 
-(function (BPMS, $, ko) {
-   var pageSize = BPMS.config.pageSize;
+(function (BPMS, $, ko, moment) {
    BPMS.ViewModels = BPMS.ViewModels || {};
    //登录页面viewmodel
    BPMS.ViewModels.WorkListViewModel = function () {
@@ -24,7 +23,7 @@
       self.init = function () {
          var type = BPMS.Services.Utils.getUrlParam(window.location.href, "type") || "all";
          $("a[href='#" + type + "']").click();
-         self.type = ko.observable(type);//all due critical undo
+         self.type = ko.observable(type);
       };
       self.getPrev = function () {
          var currentType = self.type();
@@ -42,23 +41,50 @@
             self.getData();
          }
       };
+      self.formatDate = function (date) {
+         if (!date) return "";
+         return momnet(date).format("YYYY-MM-DD");
+      };
+
+      self.formatTime = function (date) {
+         if (!date) return "";
+         return momnet(date).format("HH:mm");
+      };
       self.getData = function () {
-         var params = {
-            "all": {},
-            "due": { "dueBefore": moment().toISOString() },
-            "critical": { "priority": 75 },
-            "undo": {}
-         }
+
          var currentType = self.type();
-         var list = self[currentType].items;
-         list.removeAll();
-
+         self[currentType].items.removeAll();
+         var size = BPMS.config.pageSize;
          var page = self[currentType].pageIndex();
-         var userId = localStorage.getItem("bpms_userId");
+         var start = (page - 1) * size;
 
-         BPMS.Services.RuntimeSvc.getTasks({ "candidateUser": userId, "active": true })
+         var userId = localStorage.getItem("bpms_userId");
+         var filters = {
+            "all": { "candidateUser": userId },
+            "due": { "candidateUser": userId, "dueBefore": moment().toISOString() },
+            "critical": { "candidateUser": userId, "priority": 75 },
+            "undo": { "assignee": userId }
+         };
+         var param = { "active": true, "start": start, "size": size };
+         $.extend(param, filters[currentType]);
+         var items;
+         BPMS.Services.RuntimeSvc.getTasks(param)
             .then(function (result) {
                console.log(result);
+               items = result.data;
+               var pageCount = Math.floor((result.total - 1) / size) + 1;
+               self[currentType].pageCount(pageCount);
+               var requests = result.data.map(function (item) {
+                  return BPMS.Services.Utils.restfulRequest('getProcess', item.processDefinitionUrl, {});
+               });
+               $.when.apply(this, requests).then(function () {
+                  Array.prototype.forEach.call(arguments, function (item, index) {
+                     if (typeof (item) != "object") return;
+                     var category = item.category ? item.category[0] : "";
+                     items[index].category = category;
+                     self[currentType].items.push(items[index]);
+                  });
+               });
             });
       };
 
@@ -95,4 +121,4 @@
 
    };
 
-})(window.BPMS = window.BPMS || {}, jQuery, ko)
+})(window.BPMS = window.BPMS || {}, jQuery, ko, moment)
