@@ -7,7 +7,7 @@
       var restfulRequest = function (resourceId, url, options) {
          var serviceUrl = BPMS.config.serviceUrl;
          var token = window.localStorage.getItem("bpms_token");
-         if (url.indexOf(serviceUrl)<0)
+         if (url.indexOf(serviceUrl) < 0)
             url = serviceUrl + url;
          amplify.request.define(resourceId, 'ajax', {
             type: 'get',
@@ -28,6 +28,31 @@
             });
          }).promise();
       },
+       restfulPost = function (resourceId, url, options) {
+          var serviceUrl = BPMS.config.serviceUrl;
+          var token = window.localStorage.getItem("bpms_token");
+          if (url.indexOf(serviceUrl) < 0)
+             url = serviceUrl + url;
+          amplify.request.define(resourceId, 'ajax', {
+             type: 'post',
+             dataType: "json",
+             url: url,
+             contentType: "application/json;charset=UTF-8",
+             crossDomain: true,
+             beforeSend: function (xhr) {
+                xhr.setRequestHeader("authorization", token);
+             }
+          });
+
+          return $.Deferred(function (dfd) {
+             amplify.request({
+                resourceId: resourceId,
+                data: JSON.stringify(options),
+                success: dfd.resolve,
+                error: dfd.reject
+             });
+          }).promise();
+       },
            base64_encode = function (str) {
               var c1, c2, c3;
               var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -139,6 +164,7 @@
       };
       return {
          restfulRequest: restfulRequest,
+         restfulPost: restfulPost,
          base64_encode: base64_encode,
          base64_decode: base64_decode,
          getAuthToken: getAuthToken,

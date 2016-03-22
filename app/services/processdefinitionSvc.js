@@ -12,9 +12,12 @@
         var getProcessDefinitions = function (options) {
             return BPMS.Services.Utils.restfulRequest('getProcessDefinitions','repository/process-definitions', options);
         };
-
+        var getProcessDefinitionProperties = function (id) {
+           return BPMS.Services.Utils.restfulRequest('processDefinitionProperties', "process-definition/" + id + "/properties");
+        };
         return {
-            getProcessDefinitions: getProcessDefinitions
+           getProcessDefinitions: getProcessDefinitions,
+           getProcessDefinitionProperties: getProcessDefinitionProperties
         };
     })();
 
