@@ -19,16 +19,19 @@
         }
         //mockdata
         var mockData = [{//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+            id:'myProcess:1:5012',
             description: '费用报销',
             name: 'F01',
             category: 'F'
         },
             {
+                id:'myProcess:1:5012',
                 description: '出差请假',
                 name: 'C01',
                 category: 'H'
             },
             {
+                id:'myProcess:1:5012',
                 description: '数据维护',
                 name: 'W01',
                 category: 'M'
@@ -43,6 +46,14 @@
              bindRealData();
             */
         },
+            self.selectToCreate = function(data){
+                selectedProcessInstanceViewModel.processInstanceId = data.id;
+                selectedProcessInstanceViewModel.processDescription = data.description;
+                selectedProcessInstanceViewModel.processDefinitionName = data.name;
+                localStorage.setItem('selectedProcessInstanceViewModel',JSON.stringify(selectedProcessInstanceViewModel));
+                window.location.replace('processcreate.html');
+
+            },
             disableNextPageButton = function () {
                 if(!$("#btnNext").hasClass('ui-disabled'))
                     $("#btnNext").addClass('ui-disabled')

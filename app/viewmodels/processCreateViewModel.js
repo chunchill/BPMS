@@ -6,17 +6,12 @@
 
     BPMS.ViewModels = BPMS.ViewModels || {};
     //登录页面viewmodel
-    BPMS.ViewModels.DemoViewModel = function(){
+    BPMS.ViewModels.ProcessInstanceViewModel = function(){
         var self = this;
-        self.total = ko.observable();
-        self.size = ko.observable();
-        BPMS.Services.IndentitySvc.login().then(function(data){
-
-            console.log(JSON.stringify(data));
-                self.total(data.total);
-                self.size(data.size);
-
-        })
+        self.processDefinitionName = ko.observable();
+        self.processDefinitionId = ko.observable();
+        self.processDescription =ko.observable();
+        self.dynamicFormItems = ko.observableArray();
 
 
     }
