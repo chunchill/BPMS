@@ -12,6 +12,7 @@
    <script src="lib/jquery.mobile-1.4.5.js"></script>
    <script src="lib/knockout-3.2.0.min.js"></script>
    <script src="lib/oex/jqm-knockout.js"></script>
+   <script src="lib/oex/jqm-ctr.js"></script>
    <script src="lib/knockout-switch-case.js"></script>
    <link rel="shortcut icon" href="favicon.ico">
 </head>
@@ -29,10 +30,22 @@
          </div>
          <div class="jqm-block-content" style="margin: 2px 2px; margin-top: 4px; padding: 6px 4px; background-image: url(images/tweets-bg.jpg); border-color: #E4E4E4;">
             <form class="ui-filterable">
-               <div data-bind="template: { name: 'listTemplate', foreach: listItems }">
+               <p>双向绑定测试</p>
+            <input type="input" data-bind="value:mockitem.value"/>
+            <div data-bind="dynamicUIControl:mockitem,with:mockitem"></div>
+
+            </form>
+            <p>下面是场景测试</p>
+            <form class="ui-filterable">
+               <div data-bind="template: { name: 'listTemplate1', foreach: listItems }">
                </div>
+
             </form>
 
+
+            <script type="text/html" id="listTemplate1">
+               <div data-bind="dynamicUIControl:$data"></div>
+            </script>
 
             <script type="text/html" id="listTemplate">
                <div data-bind="text: $data.name"></div>
@@ -49,6 +62,7 @@
                </select>
                <!--/ko-->
                <!-- ko case: 'string' -->
+
                <input type="text" />
                <!--/ko-->
                <!-- ko case: 'boolean' -->
@@ -96,26 +110,53 @@
    <script language="javascript">
       $(function () {
          var list = [{
-            type: "string",
-            name: "txtName",
+            type: "date",
+            name: "strDate",
             id: "txtName",
-            value: "abc"
+            value: "01/01/2016",//javascript的属性名不能有‘-’，代码里已经处理了
+            option:{data_bind:"value:value",data_theme:"b",data_clear_btn:"true",name:"email",id:"email",placeholder:"xxx"}
          },
+            {
+               type: "enum",
+               name: "enumTest",
+               id: "enumTest",
+               value: "kingsize",//javascript的属性名不能有‘-’，代码里已经处理了
+               option:{data_bind:"value:value",data_theme:"b",name:"enumTest",id:"enumTest"},
+               enumValues : [
+                  {
+                     id : "normal",
+                     "name" : "Normal bed"
+                  },
+                  {
+                     id : "kingsize",
+                     name : "Kingsize bed"
+                  }]
+            },
              {
                 type: "boolean",
-                name: "txtGender",
-                id: "txtGender",
-                value: "true"
+                name: "booleanCheck",
+                id: "booleanCheck",
+                value: true,
+                option:{data_bind:"checked:value",data_theme:"b",name:"booleanCheck",id:"booleanCheck"}
              },
              {
                 type: "string",
-                name: "txtGender",
-                id: "txtGender",
-                value: "true"
+                name: "strInput",
+                id: "strInput",
+                value: "adfasdf",
+                option:{data_bind:"value:value",data_theme:"b",data_clear_btn:"true",name:"strInput",id:"strInput",placeholder:"xxx"}
+
              },
 
          ];
-         var viewmodel = { listItems: ko.observableArray(list) };
+         var viewmodel = { listItems: ko.observableArray(list),mockitem:{
+            type: "string",
+            name:"tst" ,
+            id: "tst",
+            value: ko.observable("abcdefg"),
+            option:{data_bind:"value:value",data_theme:"b",data_clear_btn:"true",name:"email",id:"email",placeholder:"xxx"}
+         }
+         };
          ko.applyBindings(viewmodel, document.getElementById("logonView"));
       });
 
