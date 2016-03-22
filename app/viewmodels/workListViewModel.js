@@ -47,12 +47,12 @@
       };
       self.formatDate = function (date) {
          if (!date) return "";
-         return momnet(date).format("YYYY-MM-DD");
+         return moment(date).format("YYYY-MM-DD");
       };
 
       self.formatTime = function (date) {
          if (!date) return "";
-         return momnet(date).format("HH:mm");
+         return moment(date).format("HH:mm");
       };
       self.getData = function (callback) {
 
@@ -84,8 +84,6 @@
                $.when.apply(this, requests).then(function () {
                   Array.prototype.forEach.call(arguments, function (item, index) {
                      if (typeof (item) != "object") return;
-                     var category = item.category ? item.category[0] : "";
-                     items[index].category = category;
                      self[currentType].items.push(items[index]);
                      if (callback) callback();
                   });
