@@ -11,7 +11,11 @@
       self.mappings = [];
       self.processDefinitionId = "";
       self.description = ko.observable();
+      self.started = ko.observable(false);
+
+
       self.tasks = ko.observableArray();
+      self.forms = ko.observableArray();
       self.flows = ko.observableArray();
       self.formatDateTime = function (dateTime) {
          if (!dateTime) return "";
@@ -25,13 +29,17 @@
          if (!dateTime) return "";
          return moment(dateTime).format("HH:mm");
       };
+      //http://localhost:52548/BPMS/taskaction.html?taskId=5040&processInstanceId=5034  writable
       self.start = function () {
          BPMS.Services.RuntimeSvc.postTasks(self.taskId, {
             "action": "claim",
             "assignee": self.userId
          })
-       .then(function (result) {
-          console.log(JSON.stringify(result));
+       .then(function () {
+          self.started(true);
+          $("#").removeClass("ui-listview");
+       }).then(function (r) {
+          console.log(r);
        });
       };
       self.flow = {
@@ -75,14 +83,18 @@
          };
 
          self.description(data.description || "");
-      
+
          self.taskId = BPMS.Services.Utils.getUrlParam(window.location.href, "taskId");
          BPMS.Services.FormSvc.getFormData({ /*"processDefinitionId": self.processDefinitionId */"taskId": self.taskId }).then(
+
             function (result) {
                if (result && result && result.formProperties)
                   result.formProperties.forEach(
                      function (item) {
-                        self.tasks.push(item);
+                        if (!item.writable)
+                           self.tasks.push(item);
+                        else
+                           self.forms.push(item);
                      }
                   );
             }
