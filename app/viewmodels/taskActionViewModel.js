@@ -6,6 +6,7 @@
       var writableFields = [];
       var keyValue = {};
       var self = this;
+
       self.userId = localStorage.getItem("bpms_userId");
       self.taskId = BPMS.Services.Utils.getUrlParam(window.location.href, "taskId");
       self.processInstanceId = BPMS.Services.Utils.getUrlParam(window.location.href, "processInstanceId");
@@ -14,8 +15,7 @@
       self.processDefinitionId = "";
       self.description = ko.observable();
       self.started = ko.observable(false);
-
-
+      self.submitted = ko.observable(false);
       self.tasks = ko.observableArray();
       self.forms = ko.observableArray();
       self.flows = ko.observableArray();
@@ -33,7 +33,7 @@
       };
       self.bindFormData = function () {
          writableFields.forEach(
-         function (item, index) {
+         function (item) {
 
             var formItem = {
                type: item.type,
@@ -56,17 +56,48 @@
       };
       //http://localhost:52548/BPMS/taskaction.html?taskId=5040&processInstanceId=5034  writable
       self.start = function () {
+         if (self.started())
+            return;
          BPMS.Services.RuntimeSvc.postTasks(self.taskId, {
             "action": "claim",
             "assignee": self.userId
-         })
-       .then(function () {
-          self.bindFormData();
-          self.started(true);
-       }).then(function (r) {
-          console.log(r);
-       });
+         }).then(function () {
+            self.bindFormData();
+            self.started(true);
+         });
       };
+
+      //[{ "name": "部门经理审批意见", "value": "同意" }]
+      self.submit = function () {
+         if (self.submitted())
+            return;
+         var values = [];
+         self.forms().forEach(
+         function (item) {
+            var id = item.option.id;
+            if (item.type == "bool" || item.type == "boolean") {
+               for (var key in keyValue) {
+                  if (id == keyValue[key]) {
+                     id = key;
+                  }
+               }
+            }
+            var value = item.value();
+            values.push({ "name": id, "value": value });
+         });
+         BPMS.Services.RuntimeSvc.postTasks(self.taskId, {
+            "action": "complete",
+            "variables": values
+         })
+            .then(function () {
+               self.submitted(true);
+               $("#popupsubmit").popup("open");
+            });
+      };
+      self.finish = function () {
+         window.location.href = "worklist.html";
+      };
+
       self.flow = {
          "decision": ko.observable(),
          "assignee": ko.observable(),

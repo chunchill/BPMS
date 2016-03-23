@@ -84,7 +84,7 @@
                </ul>
             </div>
 
-            <p align="center"><a href="#" data-role="button" data-bind="click: start" data-inline="true" data-transition="flow" data-theme="d"><i class="fa fa-hand-rock-o"></i>&nbsp;开始执行</a></p>
+            <p align="center"><a href="#" data-role="button" data-bind="click: start, css: { 'ui-disabled': started }" data-inline="true" data-transition="flow" data-theme="d"><i class="fa fa-hand-rock-o"></i>&nbsp;开始执行</a></p>
             <div data-bind="visible: started" class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px;">
                <h3>动作</h3>
                <p align="left" style="padding: 2px 2px;">
@@ -94,7 +94,11 @@
 
                <!--               data-bind="jqmTemplate: { name: 'inputTag', foreach: $root.forms }, jqmRefreshList: $root.forms"-->
                <form>
-                  <p align="center"><a href="#popupsubmit" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-btn-a ui-btn-inline" data-transition="pop"><i class="fa fa-check-circle"></i>&nbsp;提交</a></p>
+
+                  <!--                  <p align="center"><a data-bind="submit" href="#popupsubmit" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-btn-a ui-btn-inline" data-transition="pop"><i class="fa fa-check-circle"></i>&nbsp;提交</a></p>
+             -->
+
+                  <p align="center"><a data-bind="click: submit, css: { 'ui-disabled': submitted }" href="javascript:void(0)" class="ui-btn ui-corner-all ui-btn-a ui-btn-inline" data-transition="pop"><i class="fa fa-check-circle"></i>&nbsp;提交</a></p>
                </form>
             </div>
          </div>
@@ -170,12 +174,15 @@
       <div data-role="popup" id="popupsubmit" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 300px; padding: 20px 20px;">
          <p align="center"><i class="fa fa-2x fa-check"></i></p>
          <p align="center">
-            流程实例A12313131231
+            流程实例<span data-bind="text: processInstanceId"></span>
             <br>
             更新成功
          </p>
          <br>
-         <p align="center"><a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="d" data-shadow="false" style="margin-right: 0px;">确定</a></p>
+         <p style="text-align: center;">
+            <a href="#" data-role="button" data-bind="click:finish" data-inline="true" data-rel="back"
+               data-transition="flow" data-theme="d" data-shadow="false" style="margin-right: 0px;">确定</a>
+         </p>
       </div>
 
       <script type="text/html" id="listTemplate">
