@@ -16,7 +16,8 @@
    <!-- <script src="lib/oex/jqm-knockout.js"></script>-->
    <script src="lib/oex/utils.js"></script>
    <script src="lib/oex/jqm-checked.js"></script>
-    <script src="lib/oex/jqm-ctr.js"></script>
+   <script src="lib/oex/jqm-selected.js"></script>
+   <script src="lib/oex/jqm-ctr.js"></script>
    <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
@@ -49,6 +50,10 @@
             </script>
             <!-- string，long，date，enum，boolean-->
             <!--<textarea cols="40" rows="8" id="textarea-18"></textarea>-->
+            <div class="well" style="margin-top: 8px;">
+               <button data-bind="click: selectValue">Select Value</button>
+               <button data-bind="click: checkValue">Check Value</button>
+            </div>
             <div class="well" style="margin-top: 8px;">
                <button data-bind="click: addBoolean">Add Boolean</button>
                <button data-bind="click: addString">Add String</button>
@@ -97,17 +102,17 @@
          },
             {
                type: "number",
-               name: "number0",
-               id: "number0",
+               name: "number1",
+               id: "number1",
                value: "01/01/2016",//javascript的属性名不能有‘-’，代码里已经处理了
-               option: { data_theme: "b", data_clear_btn: "true", name: "number0", id: "number0", placeholder: "" }
+               option: { data_theme: "b", data_clear_btn: "true", name: "number1", id: "number1", placeholder: "" }
             },
          {
             type: "enum",
-            name: "enum0",
-            id: "enum0",
-            value: "kingsize",//javascript的属性名不能有‘-’，代码里已经处理了
-            option: { data_theme: "b", name: "enum0", id: "enum0" },
+            name: "enum2",
+            id: "enum2",
+            value: ko.observable("Value2"),//javascript的属性名不能有‘-’，代码里已经处理了
+            option: { data_theme: "b", name: "enum2", id: "enum2" },
             enumValues: [
             {
                id: "Value1",
@@ -120,20 +125,26 @@
          },
          {
             type: "boolean",
-            name: "boolean0",
-            id: "boolean0",
-            value: true,
-            option: { /*data_bind: "checked:value",*/ data_theme: "b", name: "boolean0", id: "boolean0" }
+            name: "boolean3",
+            id: "boolean3",
+            value: ko.observable(true),
+            option: { /*data_bind: "checked:value",*/ data_theme: "b", name: "boolean3", id: "boolean3" }
          },
          {
             type: "string",
-            name: "string0",
-            id: "string0",
+            name: "string4",
+            id: "string4",
             value: "",
-            option: { data_theme: "b", data_clear_btn: "true", name: "string0", id: "string0", placeholder: "" }
+            option: { data_theme: "b", data_clear_btn: "true", name: "string4", id: "string4", placeholder: "" }
 
          }];
          var viewmodel = {
+            selectValue: function () {
+               alert(this.listItems()[2].value());
+            },
+            checkValue: function () {
+               alert(this.listItems()[3].value());
+            },
             addBoolean: function () {
                var name = "boolean" + this.listItems().length;
                this.listItems.push({
