@@ -1,4 +1,5 @@
 <!doctype html>
+<html>
 <head>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
@@ -10,14 +11,16 @@
    <link rel="stylesheet" href="style/themes/jqm-demos.css">
    <script src="lib/jquery.min.js"></script>
    <script src="lib/jquery.mobile-1.4.5.js"></script>
+
    <script src="lib/knockout-3.2.0.min.js"></script>
-   <script src="lib/oex/jqm-knockout.js"></script>
-   <script src="lib/oex/jqm-ctr.js"></script>
-   <script src="lib/knockout-switch-case.js"></script>
+   <!-- <script src="lib/oex/jqm-knockout.js"></script>-->
+   <script src="lib/oex/utils.js"></script>
+   <script src="lib/oex/jqm-checked.js"></script>
+    <script src="lib/oex/jqm-ctr.js"></script>
    <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
-   <div data-role="page" id="logonView" data-theme="a" style="background-image: url(images/bg/graphy-xs.png)">
+   <div data-role="page" id="pageView" data-theme="a" style="background-image: url(images/bg/graphy-xs.png)">
       <div data-role="content" style="padding: 3px 3px;">
          <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner15.jpg); background-size: cover; border-color: #E4E4E4;">
             <p align="center">
@@ -29,53 +32,29 @@
             </div>
          </div>
          <div class="jqm-block-content" style="margin: 2px 2px; margin-top: 4px; padding: 6px 4px; background-image: url(images/tweets-bg.jpg); border-color: #E4E4E4;">
-            <form class="ui-filterable">
+            <form class="ui-filterable" style="">
                <p>双向绑定测试</p>
-            <input type="input" data-bind="value:mockitem.value"/>
-            <div data-bind="dynamicUIControl:mockitem,with:mockitem"></div>
+               <input type="text" data-bind="value: mockitem.value" />
+               <div data-bind="dynamicUIControl: mockitem, with: mockitem"></div>
 
             </form>
-            <p>下面是场景测试</p>
             <form class="ui-filterable">
-               <div data-bind="template: { name: 'listTemplate1', foreach: listItems }">
+               <div data-bind="template: { name: 'listTemplate', foreach: listItems }">
                </div>
-
             </form>
 
-
-            <script type="text/html" id="listTemplate1">
-               <div data-bind="dynamicUIControl:$data"></div>
-            </script>
 
             <script type="text/html" id="listTemplate">
-               <div data-bind="text: $data.name"></div>
-               <!-- ko switch: $data.type -->
-
-               <!-- ko case: 'date' -->
-               <input type="date" />
-               <!--/ko-->
-               <!-- ko case: 'enum' -->
-               <select data-shadow="false">
-                  <!-- ko foreach: $root.tasks -->
-                  <option data-bind="text: name, value: id"></option>
-                  <!-- /ko -->
-               </select>
-               <!--/ko-->
-               <!-- ko case: 'string' -->
-
-               <input type="text" />
-               <!--/ko-->
-               <!-- ko case: 'boolean' -->
-               <input type="checkbox">
-               <!--/ko-->
-
-               <!--/ko-->
+               <div data-bind="dynamicUIControl: $data"></div>
             </script>
-            
-<!--            <textarea cols="40" rows="8" id="textarea-18"></textarea>-->
+            <!-- string，long，date，enum，boolean-->
+            <!--<textarea cols="40" rows="8" id="textarea-18"></textarea>-->
             <div class="well" style="margin-top: 8px;">
-               <h3 style="padding: 6px 6px;">Simple List 代码说明</h3>
-               <p style="padding: 6px 6px;">对autocomplete起作用的文字有两处filtertext和listtext即 <code>li data-filtertext="NASDAQ:ADBE Adobe Systems Incorporated"</code>双引号中的文字以及List本身的文本代码</p>
+               <button data-bind="click: addBoolean">Add Boolean</button>
+               <button data-bind="click: addString">Add String</button>
+               <button data-bind="click: addDate">Add Date</button>
+               <button data-bind="click: addNumber">Add Number</button>
+               <button data-bind="click: addEnum">Add Enum</button>
             </div>
          </div>
       </div>
@@ -111,53 +90,118 @@
       $(function () {
          var list = [{
             type: "date",
-            name: "strDate",
-            id: "txtName",
+            name: "date0",
+            id: "date0",
             value: "01/01/2016",//javascript的属性名不能有‘-’，代码里已经处理了
-            option:{data_bind:"value:value",data_theme:"b",data_clear_btn:"true",name:"email",id:"email",placeholder:"xxx"}
+            option: { data_theme: "b", data_clear_btn: "true", name: "date0", id: "date0", placeholder: "" }
          },
             {
-               type: "enum",
-               name: "enumTest",
-               id: "enumTest",
-               value: "kingsize",//javascript的属性名不能有‘-’，代码里已经处理了
-               option:{data_bind:"value:value",data_theme:"b",name:"enumTest",id:"enumTest"},
-               enumValues : [
+               type: "number",
+               name: "number0",
+               id: "number0",
+               value: "01/01/2016",//javascript的属性名不能有‘-’，代码里已经处理了
+               option: { data_theme: "b", data_clear_btn: "true", name: "number0", id: "number0", placeholder: "" }
+            },
+         {
+            type: "enum",
+            name: "enum0",
+            id: "enum0",
+            value: "kingsize",//javascript的属性名不能有‘-’，代码里已经处理了
+            option: { data_theme: "b", name: "enum0", id: "enum0" },
+            enumValues: [
+            {
+               id: "Value1",
+               "name": "Value 1"
+            },
+            {
+               id: "Value2",
+               name: "Value 2"
+            }]
+         },
+         {
+            type: "boolean",
+            name: "boolean0",
+            id: "boolean0",
+            value: true,
+            option: { /*data_bind: "checked:value",*/ data_theme: "b", name: "boolean0", id: "boolean0" }
+         },
+         {
+            type: "string",
+            name: "string0",
+            id: "string0",
+            value: "",
+            option: { data_theme: "b", data_clear_btn: "true", name: "string0", id: "string0", placeholder: "" }
+
+         }];
+         var viewmodel = {
+            addBoolean: function () {
+               var name = "boolean" + this.listItems().length;
+               this.listItems.push({
+                  type: "boolean",
+                  name: name,
+                  id: name,
+                  value: true,
+                  option: { data_theme: "b", name: name, id: name }
+               });
+            },
+            addDate: function () {
+               var name = "date" + this.listItems().length;
+               this.listItems.push({
+                  type: "date",
+                  name: name,
+                  id: name,
+                  value: "2012-06-22",
+                  option: { data_theme: "b", data_clear_btn: "true", name: name, id: name, placeholder: "" }
+               });
+            },
+            addString: function () {
+               var name = "string" + this.listItems().length;
+               this.listItems.push({
+                  type: "string",
+                  name: name,
+                  id: name,
+                  value: "a",
+                  option: { data_theme: "b", data_clear_btn: "true", name: name, id: name, placeholder: "" }
+               });
+            },
+            addNumber: function () {
+               var name = "number" + this.listItems().length;
+               this.listItems.push({
+                  type: "number",
+                  name: name,
+                  id: name,
+                  value: 12,
+                  option: { data_theme: "b", data_clear_btn: "true", name: "number0", id: "number0", placeholder: "" }
+               });
+            },
+            addEnum: function () {
+               var name = "enum" + this.listItems().length;
+               this.listItems.push({
+                  type: "enum",
+                  name: name,
+                  id: name,
+                  value: "Value2",//javascript的属性名不能有‘-’，代码里已经处理了
+                  option: { data_theme: "b", name: name, id: name },
+                  enumValues: [
                   {
-                     id : "normal",
-                     "name" : "Normal bed"
+                     id: "Value1",
+                     "name": "Value 1"
                   },
                   {
-                     id : "kingsize",
-                     name : "Kingsize bed"
+                     id: "Value2",
+                     name: "Value 2"
                   }]
+               });
             },
-             {
-                type: "boolean",
-                name: "booleanCheck",
-                id: "booleanCheck",
-                value: true,
-                option:{data_bind:"checked:value",data_theme:"b",name:"booleanCheck",id:"booleanCheck"}
-             },
-             {
-                type: "string",
-                name: "strInput",
-                id: "strInput",
-                value: "adfasdf",
-                option:{data_bind:"value:value",data_theme:"b",data_clear_btn:"true",name:"strInput",id:"strInput",placeholder:"xxx"}
-
-             },
-
-         ];
-         var viewmodel = { listItems: ko.observableArray(list),mockitem:{
-            type: "string",
-            name:"tst" ,
-            id: "tst",
-            value: ko.observable("abcdefg"),
-            option:{data_bind:"value:value",data_theme:"b",data_clear_btn:"true",name:"email",id:"email",placeholder:"xxx"}
-         }
+            listItems: ko.observableArray(list), mockitem: {
+               type: "string",
+               name: "tst",
+               id: "tst",
+               value: ko.observable("abcdefg"),
+               option: { data_theme: "b", data_clear_btn: "true", name: "email", id: "email", placeholder: "" }
+            }
          };
-         ko.applyBindings(viewmodel, document.getElementById("logonView"));
+         ko.applyBindings(viewmodel, document.getElementById("pageView"));
       });
 
    </script>
