@@ -1,166 +1,195 @@
 ﻿<!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
-<title>RY-BPMS</title>
-<!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />-->
-<link href="style/themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+   <title>RY-BPMS</title>
+   <!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />-->
+   <link href="style/themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
 
-<!--<link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" />
+   <!--<link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" />
 <link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" />-->
 
-<link rel="stylesheet" href="style/themes/bladecolor.min.css" />
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="style/themes/bootstrap.min.css">
+   <link rel="stylesheet" href="style/themes/bladecolor.min.css" />
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="style/themes/bootstrap.min.css">
 
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
-<link rel="stylesheet" href="style/themes/jqm-demos.css">
-<link rel="stylesheet" href="style/themes/jquery.mobile.icons.min.css">
-<link rel="stylesheet" href="style/themes/jquery.mobile.structure-1.4.5.min.css">
-<link href="style/themes/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="style/css/site.css" rel="stylesheet" />
-<!--<script src="scripts/lib/jquery-1.8.2.js"></script>
+   <!-- Optional theme -->
+   <link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
+   <link rel="stylesheet" href="style/themes/jqm-demos.css">
+   <link rel="stylesheet" href="style/themes/jquery.mobile.icons.min.css">
+   <link rel="stylesheet" href="style/themes/jquery.mobile.structure-1.4.5.min.css">
+   <link href="style/themes/font-awesome.min.css" rel="stylesheet" type="text/css">
+   <link href="style/css/site.css" rel="stylesheet" />
+   <!--<script src="scripts/lib/jquery-1.8.2.js"></script>
 <!--<script src="scripts/app/knockout.jquery.mobile.js"></script>-->
-<!--<script src="scripts/lib/jquery.mobile-1.3.2.js"></script>-->
+   <!--<script src="scripts/lib/jquery.mobile-1.3.2.js"></script>-->
 
-<script src="lib/vendor/jquery/dist/jquery.js"></script>
-<script src="lib/jquery.mobile-1.4.5.js"></script>
+   <script src="lib/vendor/jquery/dist/jquery.js"></script>
+   <script src="lib/jquery.mobile-1.4.5.js"></script>
 
 
-<script src="lib/knockout-3.2.0.min.js"></script>
-<script src="lib/vendor/amplify/lib/amplify.js"></script>
-<script src="app/config.js"></script>
-<script src="app/services/util.js"></script>
-<script src="app/services/identitySvc.js"></script>
-<script src="app/services/runtimeSvc.js"></script>
-<script src="app/viewmodels/instanceListViewModel.js"></script>
-<script src="app/instanceListPage.js"></script>
-<link rel="shortcut icon" href="favicon.ico">
+   <script src="lib/knockout-3.2.0.min.js"></script>
+   <script src="lib/knockout.mapping-latest.js"></script>
+   <script src="lib/koExternalTemplateEngine_all.js"></script>
+   <script src="lib/ko.extentions.js"></script>
+   <script src="lib/vendor/moment/moment.js"></script>
+   <script src="lib/vendor/amplify/lib/amplify.js"></script>
+   <script src="app/config.js"></script>
+   <script src="app/services/util.js"></script>
+   <script src="app/services/identitySvc.js"></script>
+   <script src="app/services/runtimeSvc.js"></script>
+   <script src="app/services/historySvc.js"></script>
+
+   <script src="app/viewmodels/instanceListViewModel.js"></script>
+   <script src="app/instanceListPage.js"></script>
+   <script src="lib/jquery-ui.min.js"></script>
+   <script src="lib/jquery.mobile.pulltorefresh.js"></script>
+   <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
-<div data-role="page" id="logonView" data-theme="a" style="background-image:url(images/bg/graphy-xs.png)">
-  <div data-role="content" style="padding: 3px 3px;">
-    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner14.png); background-size:cover; border-color:#E4E4E4;">
-      <p align="center"><img class="popphoto" src="images/bpmslogo.png" height="18px"><br>
-        <font size="+1"><b>我的流程</b></font></p>
-      <div class="ui-nodisc-icon ui-alt-icon" > 
-        <!-- Classes added to the wrapper -->
-        <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
-      </div>
-    </div>
-    <div class="jqm-block-content" style="margin: 2px 2px; margin-top:4px; padding: 6px 4px; background-image:url(images/tweets-bg.jpg); border-color:#E4E4E4;">
-      <div data-role="tabs" id="tabs">
-        <div data-role="navbar">
-          <ul>
-            <li><a href="#all" data-ajax="false"  data-theme="b"><i class="fa fa-reorder"></i>&nbsp;全部流程</a></li>
-            <li><a href="#due" data-ajax="false" data-theme="b"><i class="fa fa-clock-o"></i>&nbsp;<strong>延迟流程</strong></a></li>
-            <li><a href="#critical" data-ajax="false"><i class="fa fa-exclamation-circle"></i>&nbsp;<strong>重要</strong></a></li>
-            <li><a href="#close" data-ajax="false"><i class="fa fa-check-square"></i>&nbsp;<strong>已关闭</strong></a></li>
-          </ul>
-        </div>
-        <div id="all">
-          <form class="ui-filterable">
-            <input id="rich-autocomplete-input1" data-type="search" placeholder="输入关键字搜索待处理任务...">
-          </form>
-          <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input1">
-            <li><a href="instancedetail.html">
-              <h2>F001费用申请</h2>
-              <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong></font>&nbsp;&nbsp;<font color="#0071B9"><i class="fa fa-refresh"></i><strong>16.03.22</strong> 12:11</font></p>
-              <span class="ui-li-count">3</span> </a></li>
-            </li>
-            <li> <a href="instancedetail.html">
-              <h2>流程ID+NAME</h2>
-              <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>创建日期时间</strong></font>&nbsp;&nbsp;<font color="#0071B9"><i class="fa fa-refresh"></i><strong>最后任务日期时间</strong></font></p>
-              <span class="ui-li-count">2</span> </a> </li>
-            <li><a href="instancedetail.html">
-              <h2>流程ID+NAME</h2>
-              <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong> 14:00</font>&nbsp;&nbsp;<font color="#0071B9"><i class="fa fa-refresh"></i><strong>16.03.22</strong> 12:11</font></p>
-              <span class="ui-li-count">1</span> </a> </li>
-          </ul>
-          <div class="ui-nodisc-icon ui-alt-icon" > 
-            <!-- Classes added to the wrapper -->
-            <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
-          </div>
-        </div>
-        <div id="due">     
-          <form class="ui-filterable">
-            <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索我的流程...">
-          </form>
-          <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
-            <li><a href="instancedetail.html">
-              <h2>F002费用申请</h2>
-              <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong></font></p>
-              <span class="ui-li-count">M</span> </a></li>
-            </li>
-          </ul>
-          <div class="ui-nodisc-icon ui-alt-icon" > 
-            <!-- Classes added to the wrapper -->
-            <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
-          </div>
-        </div>
-        <div id="critical">     
-          <form class="ui-filterable">
-            <input id="rich-autocomplete-input3" data-type="search" placeholder="输入关键字搜索我的流程...">
-          </form>
-          <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input3">
-            <li><a href="instancedetail.html">
-              <h2>F003费用申请</h2>
-              <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong></font></p>
-              <span class="ui-li-count">M</span> </a></li>
-            </li>
-          </ul>
-          <div class="ui-nodisc-icon ui-alt-icon" > 
-            <!-- Classes added to the wrapper -->
-            <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
-          </div>
-        </div>
-        <div id="close">     
-          <form class="ui-filterable">
-            <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜我的流程...">
-          </form>
-          <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
-            <li><a href="instancedetail.html">
-              <h2>F001费用申请</h2>
-              <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong></font></p>
-              <span class="ui-li-count">M</span> </a></li>
-            </li>
-          </ul>
-          <div class="ui-nodisc-icon ui-alt-icon" > 
-            <!-- Classes added to the wrapper -->
-            <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p align="center"> <font size="-2s">&copy; 江苏日盈电子股份有限公司</font><br>
-      <img class="popphoto" src="images/logo.png" height="18px"> </p>
-  </div>
-  <div data-role="panel" id="panelgrid" data-position-fixed="true" data-position="right" data-display="overlay" data-theme="a">
-    <p align="center"><img class="popphoto" src="images/bpmslogo.png" height="23px"></p>
-    <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
-      <li><a href="home.html" rel="external"> <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font></a></li>
-      <li><a href="worklist.html" rel="external"> <img src="images/tasks.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">我的任务</font></a></li>
-      <li><a href="processlist.html" rel="external"> <img src="images/bpm.png" alt="plan" class="ui-li-icon"><font size="3">启动流程</font></a></li>
-      <li><a href="instancelist.html" rel="external"> <img src="images/folder.png" alt="plan" class="ui-li-icon"><font size="3">我的流程</font></a></li>
-      <li><a href="help.html" rel="external"> <img src="images/pie25.png" alt="plan" class="ui-li-icon"><font size="3">报表</font></a></li>
-    </ul>
-    <div class="ui-nodisc-icon ui-alt-icon">
-      <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
-    </div>
-  </div>
-  <div data-role="popup" id="popupMessage" data-overlay-theme="a" data-theme="b" data-transition="pop" style="max-width:320px;" class="ui-corner-all">
-    <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-      <p align="center"><i class="fa fa-2x fa-frown-o"></i><br>
-        <br>
-        <font size="2">检查网络连接及用户名和密码</font></p>
-      <br>
-      <p align="center"><a href="#" data-role="button"  data-rel="back" data-transition="flow" data-theme="d">确定</a></p>
-    </div>
-  </div>
-</div>
+   <div data-role="page" id="logonView" data-theme="a" style="background-image: url(images/bg/graphy-xs.png)">
+      <div data-role="content" style="padding: 3px 3px;">
+         <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner14.png); background-size: cover; border-color: #E4E4E4;">
+            <p align="center">
+               <img class="popphoto" src="images/bpmslogo.png" height="18"><br>
+               <font size="+1"><b>我的流程</b></font>
+            </p>
+            <div class="ui-nodisc-icon ui-alt-icon">
+               <!-- Classes added to the wrapper -->
+               <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+            </div>
+         </div>
+         <div class="jqm-block-content" style="margin: 2px 2px; margin-top: 4px; padding: 6px 4px; background-image: url(images/tweets-bg.jpg); border-color: #E4E4E4;">
+            <div data-role="tabs" id="tabs">
+               <div data-role="navbar">
+                  <ul>
+                     <li><a href="#all" id="allMenu" data-bind="click: function () { switchTab('all') }" data-ajax="false" data-theme="b"><i class="fa fa-reorder"></i>&nbsp;全部流程</a></li>
+                     <li><a href="#due" data-bind="click: function () { switchTab('due') }" data-ajax="false" data-theme="b"><i class="fa fa-clock-o"></i>&nbsp;<strong>延迟流程</strong></a></li>
+                     <li><a href="#critical" data-bind="click: function () { switchTab('critical') }" data-ajax="false"><i class="fa fa-exclamation-circle"></i>&nbsp;<strong>重要</strong></a></li>
+                     <li><a href="#close" data-bind="click: function () { switchTab('close') }" data-ajax="false"><i class="fa fa-check-square"></i>&nbsp;<strong>已关闭</strong></a></li>
+                  </ul>
+               </div>
+               <div id="all">
+                  <form class="ui-filterable">
+                     <input id="rich-autocomplete-input1" data-type="search" placeholder="输入关键字搜索待处理任务...">
+                  </form>
+                  <ul data-bind="jqmTemplate: { name: 'item', foreach: all.items }, jqmRefreshList: all.items" data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input1">
 
+
+                     <!--                     <li><a href="instancedetail.html">
+                        <h2>F001费用申请</h2>
+                        <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong></font>&nbsp;&nbsp;<font color="#0071B9"><i class="fa fa-refresh"></i><strong>16.03.22</strong> 12:11</font></p>
+                        <span class="ui-li-count">3</span> </a></li>-->
+
+                  </ul>
+                  <div class="ui-nodisc-icon ui-alt-icon">
+                     <p style="text-align: center;">
+                        <a data-bind="click: getPrev, css: { 'ui-disabled': !all.hasPrev() }" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getData" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getNext, css: { 'ui-disabled': !all.hasNext() }" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                     </p>
+                  </div>
+               </div>
+               <div id="due">
+                  <form class="ui-filterable">
+                     <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索我的流程...">
+                  </form>
+                  <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
+                  </ul>
+                  <div class="ui-nodisc-icon ui-alt-icon">
+                     <!-- Classes added to the wrapper -->
+                     <p style="text-align: center;">
+                        <a data-bind="click: getPrev, css: { 'ui-disabled': !due.hasPrev() }" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getData" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getNext, css: { 'ui-disabled': !due.hasNext() }" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                     </p>
+                  </div>
+               </div>
+               <div id="critical">
+                  <form class="ui-filterable">
+                     <input id="rich-autocomplete-input3" data-type="search" placeholder="输入关键字搜索我的流程...">
+                  </form>
+                  <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input3">
+                  </ul>
+                  <div class="ui-nodisc-icon ui-alt-icon">
+                     <!-- Classes added to the wrapper -->
+                     <p align="center">
+                        <a data-bind="click: getPrev, css: { 'ui-disabled': !critical.hasPrev() }" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getData" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getNext, css: { 'ui-disabled': !critical.hasNext() }" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                     </p>
+                  </div>
+               </div>
+               <div id="close">
+                  <form class="ui-filterable">
+                     <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜我的流程...">
+                  </form>
+                  <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
+                  </ul>
+                  <div class="ui-nodisc-icon ui-alt-icon">
+                     <!-- Classes added to the wrapper -->
+                     <p style="text-align: center;">
+                        <a data-bind="click: getPrev, css: { 'ui-disabled': !close.hasPrev() }" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getData" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                        <a data-bind="click: getNext, css: { 'ui-disabled': !close.hasNext() }" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <p align="center">
+            <font size="-2s">&copy; 江苏日盈电子股份有限公司</font>
+            <br>
+            <img class="popphoto" src="images/logo.png" height="18px">
+         </p>
+      </div>
+      <div data-role="panel" id="panelgrid" data-position-fixed="true" data-position="right" data-display="overlay" data-theme="a">
+         <p align="center">
+            <img class="popphoto" src="images/bpmslogo.png" height="23">
+         </p>
+         <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
+            <li><a href="home.html" rel="external">
+               <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font></a></li>
+            <li><a href="worklist.html" rel="external">
+               <img src="images/tasks.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">我的任务</font></a></li>
+            <li><a href="processlist.html" rel="external">
+               <img src="images/bpm.png" alt="plan" class="ui-li-icon"><font size="3">启动流程</font></a></li>
+            <li><a href="instancelist.html" rel="external">
+               <img src="images/folder.png" alt="plan" class="ui-li-icon"><font size="3">我的流程</font></a></li>
+            <li><a href="help.html" rel="external">
+               <img src="images/pie25.png" alt="plan" class="ui-li-icon"><font size="3">报表</font></a></li>
+         </ul>
+         <div class="ui-nodisc-icon ui-alt-icon">
+            <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
+         </div>
+      </div>
+      <div data-role="popup" id="popupMessage" data-overlay-theme="a" data-theme="b" data-transition="pop" style="max-width: 320px;" class="ui-corner-all">
+         <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+            <p align="center">
+               <i class="fa fa-2x fa-frown-o"></i>
+               <br>
+               <br>
+               <font size="2">检查网络连接及用户名和密码</font>
+            </p>
+            <br>
+            <p align="center"><a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="d">确定</a></p>
+         </div>
+      </div>
+   </div>
+
+   <script type="text/html" id="item">
+      <li>
+         <a href="#" data-bind="click: $root.selectItem">
+            <h2 data-bind="text: id + '&nbsp;' + processName"></h2>
+            <p style="color: #0b6d5f">
+             <!--  <i class="fa fa-user" data-bind="visible: owner"></i><span data-bind="   visible: owner, text: '&nbsp;' + (owner || '') + '&nbsp;'"></span>-->
+               <i class="fa fa-calendar-check-o" data-bind="visible: startTime"></i>&nbsp;<strong data-bind="   text: $root.formatDate(startTime)"></strong>
+               <span data-bind="text: '&nbsp;' + $root.formatTime(startTime)"></span>
+            </p>
+            <span class="ui-li-count" data-bind="visible: category, text: category"></span></a>
+      </li>
+   </script>
 </body>
 </html>
