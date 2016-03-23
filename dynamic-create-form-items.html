@@ -37,7 +37,6 @@
                <p>双向绑定测试</p>
                <input type="text" data-bind="value: mockitem.value" />
                <div data-bind="dynamicUIControl: mockitem, with: mockitem"></div>
-
             </form>
             <form class="ui-filterable">
                <div data-bind="template: { name: 'listTemplate', foreach: listItems }">
@@ -219,3 +218,18 @@
 </body>
 
 </html>
+
+
+
+<!--
+<div data-bind="dynamicUIControl: $data">
+   <div class="ui-checkbox">
+      <input type="checkbox" name="boolean33" id="Checkbox1" data-theme="b" data-bind="checked: value">
+   </div>
+</div>
+
+
+
+<div class="ui-checkbox">
+   <label for="boolean33" class="ui-btn ui-corner-all ui-btn-b ui-btn-icon-left ui-checkbox-on">boolean33</label>
+   <input type="checkbox" name="boolean33" id="boolean33" data-theme="b" data-bind="checked: value"></div>-->

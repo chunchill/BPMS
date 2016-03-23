@@ -36,11 +36,14 @@
    <script src="app/services/runtimeSvc.js"></script>
    <script src="app/viewmodels/taskActionViewModel.js"></script>
    <script src="app/taskActionPage.js"></script>
+   <script src="lib/oex/utils.js"></script>
+   <script src="lib/oex/jqm-checked.js"></script>
+   <script src="lib/oex/jqm-selected.js"></script>
+   <script src="lib/oex/jqm-ctr.js"></script>
    <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
    <div data-role="page" id="logonView" data-theme="a" style="background-image: url(images/bg/graphy-xs.png)">
-
       <div data-role="content" style="padding: 3px 3px;">
          <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner13.png); background-size: cover; border-color: #E4E4E4;">
             <p align="center">
@@ -85,16 +88,28 @@
             <div data-bind="visible: started" class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px;">
                <h3>动作</h3>
                <p align="left" style="padding: 2px 2px;">
-                  <form id="inputForm" data-bind="jqmTemplate: { name: 'inputTag', foreach: $root.forms }, jqmRefreshList: $root.forms">
+                  <form id="inputForm" data-bind="template: { name: 'listTemplate', foreach: $root.forms }">
                   </form>
                </p>
+
+               <!--               data-bind="jqmTemplate: { name: 'inputTag', foreach: $root.forms }, jqmRefreshList: $root.forms"-->
                <form>
                   <p align="center"><a href="#popupsubmit" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-btn-a ui-btn-inline" data-transition="pop"><i class="fa fa-check-circle"></i>&nbsp;提交</a></p>
                </form>
             </div>
-            
-            
          </div>
+
+
+         <!--<div class="jqm-block-content" style="margin: 2px 2px; margin-top: 4px; padding: 6px 4px; background-image: url(images/tweets-bg.jpg); border-color: #E4E4E4;">
+
+            <form class="ui-filterable">
+               <div data-bind="template: { name: 'listTemplate', foreach: listItems }">
+               </div>
+            </form>
+
+
+         </div>-->
+
          <p align="center">
             <font size="-2s">&copy; 江苏日盈电子股份有限公司</font>
             <br>
@@ -162,6 +177,10 @@
          <br>
          <p align="center"><a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="d" data-shadow="false" style="margin-right: 0px;">确定</a></p>
       </div>
+
+      <script type="text/html" id="listTemplate">
+         <div data-bind="dynamicUIControl: $data"></div>
+      </script>
       <script type="text/html" id="inputTag">
          <span data-bind="text: $data.name"></span>
 
