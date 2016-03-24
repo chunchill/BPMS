@@ -69,9 +69,9 @@
          var userId = localStorage.getItem("bpms_userId");
          var filters = {
             "all": { "involvedUser": userId },
-            "due": { "involvedUser": userId, "dueBefore": moment().toISOString() },
-            "critical": { "involvedUser": userId, "priority": 75 },
-            "close": { "assignee": userId }
+            "due": { "involvedUser": userId/*, "dueBefore": moment().toISOString() */ },
+            "critical": { "involvedUser": userId/*, "priority": 75 */ },
+            "close": { "involvedUser": userId, "finished": true }
          };
          var param = { "start": start, "size": size };
          $.extend(param, filters[currentType]);

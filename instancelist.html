@@ -96,7 +96,7 @@
                   <form class="ui-filterable">
                      <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索我的流程...">
                   </form>
-                  <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
+                  <ul data-role="listview"  data-bind="jqmTemplate: { name: 'item', foreach: due.items }, jqmRefreshList: due.items"  data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
                   </ul>
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
@@ -111,7 +111,7 @@
                   <form class="ui-filterable">
                      <input id="rich-autocomplete-input3" data-type="search" placeholder="输入关键字搜索我的流程...">
                   </form>
-                  <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input3">
+                  <ul data-role="listview"  data-bind="jqmTemplate: { name: 'item', foreach: critical.items }, jqmRefreshList: critical.items"  data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input3">
                   </ul>
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
@@ -126,7 +126,7 @@
                   <form class="ui-filterable">
                      <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜我的流程...">
                   </form>
-                  <ul data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
+                  <ul data-role="listview"  data-bind="jqmTemplate: { name: 'item', foreach: close.items }, jqmRefreshList: close.items"   data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
                   </ul>
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
