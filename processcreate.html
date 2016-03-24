@@ -31,11 +31,13 @@
 
    <script src="lib/knockout-3.2.0.min.js"></script>
    <script src="lib/vendor/amplify/lib/amplify.js"></script>
+  <script src="lib/oex/jqm-ctr.js"></script>
    <script src="app/config.js"></script>
    <script src="app/services/util.js"></script>
    <script src="app/services/identitySvc.js"></script>
    <script src="app/services/runtimeSvc.js"></script>
-   <script src="app/viewmodels/processCreateViewModel.js"></script>
+  <script src="app/services/processdefinitionSvc.js"></script>
+  <script src="app/viewmodels/processCreateViewModel.js"></script>
    <script src="app/processCreatePage.js"></script>
 <link rel="shortcut icon" href="favicon.ico">
 </head>
@@ -57,29 +59,36 @@
       </div>
       <div class="ui-body ui-body-a ui-corner-all" style="margin-top:4px;">
         <p align="left" style="padding:2px 2px;">
+        <!--<form>-->
+          <!--用款单位-->
+          <!--<select name="select-native-1" id="select-native-1" data-shadow="false">-->
+            <!--<option value="1">江苏日盈</option>-->
+            <!--<option value="2">江门容宇</option>-->
+            <!--<option value="3">日盈电子(长春)</option>-->
+          <!--</select>-->
+          <!--付款选项-->
+          <!--<fieldset data-role="controlgroup" data-theme="b">-->
+            <!--<input type="radio" name="radio-choice-v-2" id="radio-choice-v-2a" value="on" checked="checked">-->
+            <!--<label for="radio-choice-v-2a">按发票付款</label>-->
+            <!--<input type="radio" name="radio-choice-v-2" id="radio-choice-v-2b" value="off">-->
+            <!--<label for="radio-choice-v-2b">预付款无发票</label>-->
+          <!--</fieldset>-->
+          <!--费用日期-->
+          <!--<input type="date" data-clear-btn="false" name="date-1" id="date-1" data-inline="true">-->
+          <!--发票金额-->
+          <!--<input type="number" data-clear-btn="true" name="amount" id="amount" data-inline="true">-->
+        <!--</form>-->
         <form>
-          用款单位
-          <select name="select-native-1" id="select-native-1" data-shadow="false">
-            <option value="1">江苏日盈</option>
-            <option value="2">江门容宇</option>
-            <option value="3">日盈电子(长春)</option>
-          </select>
-          付款选项
-          <fieldset data-role="controlgroup" data-theme="b">
-            <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2a" value="on" checked="checked">
-            <label for="radio-choice-v-2a">按发票付款</label>
-            <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2b" value="off">
-            <label for="radio-choice-v-2b">预付款无发票</label>
-          </fieldset>
-          费用日期
-          <input type="date" data-clear-btn="false" name="date-1" id="date-1" data-inline="true">
-          发票金额
-          <input type="number" data-clear-btn="true" name="amount" id="amount" data-inline="true">
+          <div data-bind="template: { name: 'listTemplate', foreach: dynamicFormItems }">
+          </div>
         </form>
+        <script type="text/html" id="listTemplate">
+          <div data-bind="dynamicUIControl: $data"></div>
+        </script>
         </p>
       </div>
       <form>
-        <a href="#popupsubmit" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-btn-a" data-transition="pop">提交</a>
+        <a href="#" data-bind="click:submit" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-btn-a" data-transition="pop">提交</a>
       </form>
     </div>
     <p align="center"> <font size="-2s">&copy; 江苏日盈电子股份有限公司</font><br>
@@ -109,7 +118,7 @@
   </div>
   <div data-role="popup" id="popupsubmit" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:300px; padding: 20px 20px;">
     <p align="center"><i class="fa fa-2x fa-check"></i></p>
-    <p align="center">流程实例A12313131231 <br>
+    <p align="center"><span data-bind="text:processInstanceId"></span><br>
       创建成功</p>
     <br>
     <p align="center"><a href="#" data-role="button"  data-inline="true" data-rel="back" data-transition="flow" data-theme="d" data-shadow="false" style="margin-right:0px;">确定</a></p>

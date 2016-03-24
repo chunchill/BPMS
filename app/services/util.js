@@ -148,7 +148,24 @@
               var encodeStr = base64_encode(rawStr);
               var token = "Basic " + encodeStr;
               return token;
-           };
+           },
+          handleUIControlItem = function(item){
+             var formItem = {
+                type: item.type,
+                value: ko.observable(item.value),
+                option: { name: item.name, id: item.id },
+                enumValues: item.enumValues
+             };
+             if (formItem.type == "text") {
+                formItem.option.data_clear_btn = true;
+             }
+             //jqm has a bug that id should be same as name for checkbox
+             if (formItem.type == "bool" || formItem.type == "boolean") {
+                keyValue[formItem.option.id] = formItem.option.name;
+                formItem.option.id = formItem.option.name;
+             }
+             return formItem;
+          };
       var getUrlParams = function (url) {
          var vars = [], hash;
          var hashes = url.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -174,7 +191,8 @@
                window.location.href = "RYlogin.html";
          },
          getUrlParams: getUrlParams,
-         getUrlParam: getUrlParam
+         getUrlParam: getUrlParam,
+         handleUIControlItem:handleUIControlItem
       };
    })();
 
