@@ -11,9 +11,6 @@
       var self = this;
 
       self.type = ko.observable();//all due critical close
-      self.viewItem = function (data, e) {
-
-      };
       self.switchTab = function (currentType) {
          self.type(currentType);
          var page = self[currentType].pageIndex();
