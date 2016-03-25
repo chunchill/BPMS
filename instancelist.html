@@ -184,8 +184,8 @@
          <a href="#" data-bind="click: $root.selectItem">
             <h2 data-bind="text: id + '&nbsp;' + processName"></h2>
             <p style="color: #0b6d5f">
-             <!--  <i class="fa fa-user" data-bind="visible: owner"></i><span data-bind="   visible: owner, text: '&nbsp;' + (owner || '') + '&nbsp;'"></span>-->
-               <i class="fa fa-calendar-check-o" data-bind="visible: startTime"></i>&nbsp;<strong data-bind="   text: $root.formatDate(startTime)"></strong>
+             <!--  <i class="fa fa-user" data-bind="visible: owner"></i><span data-bind="visible: owner, text: '&nbsp;' + (owner || '') + '&nbsp;'"></span>-->
+               <i class="fa fa-calendar-check-o" data-bind="visible: startTime"></i>&nbsp;<strong data-bind="text: $root.formatDate(startTime)"></strong>
                <span data-bind="text: '&nbsp;' + $root.formatTime(startTime)"></span>
             </p>
             <span class="ui-li-count" data-bind="visible: category, text: category"></span></a>

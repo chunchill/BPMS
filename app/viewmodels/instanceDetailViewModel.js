@@ -7,10 +7,7 @@
       self.userId = localStorage.getItem("bpms_userId");
       self.processInstanceId = BPMS.Services.Utils.getUrlParam(window.location.href, "processInstanceId");
       self.processDefinitionId = BPMS.Services.Utils.getUrlParam(window.location.href, "processDefinitionId");
-      console.log(self.processInstanceId);
-      console.log(self.processDefinitionId);
       var data = localStorage.getItem("instance");
-      console.log(data);
       data = data && JSON.parse(data);
       if (!self.processInstanceId || !self.processDefinitionId
          || !data || !data.id || !data.processDefinitionId
@@ -20,6 +17,7 @@
       self.data = data;
 
       self.flows = ko.observableArray();
+      self.tasks = ko.observableArray();
 
       self.flow = {
          "decision": ko.observable(),
@@ -28,7 +26,7 @@
          "time": ko.observable(),
          "comment": ko.observable()
       };
-      
+
       self.formatDate = function (date) {
          if (!date) return "";
          return moment(date).format("YYYY-MM-DD");
@@ -37,6 +35,21 @@
       self.formatTime = function (date) {
          if (!date) return "";
          return moment(date).format("HH:mm");
+      };
+      self.formatDateTime = function (dateTime) {
+         if (!dateTime) return "";
+         return moment(dateTime).format("YYYY-MM-DD HH:mm");
+      };
+      self.translateValue = function (value) {
+         if (value == null || typeof (value) == "undefined")
+            return "";
+         if (value === "true")
+            return "同意";
+         if (value === "false")
+            return "拒绝";
+
+         if (typeof (value) == "boolean") return value ? "同意" : "拒绝";
+         return value;
       };
 
       self.selectFlow = function ($data) {
@@ -49,7 +62,42 @@
       self.init = function () {
 
          self.flows.removeAll();
-      }
-   };
+         self.tasks.removeAll();
 
-})(window.BPMS = window.BPMS || {}, jQuery, ko)
+         BPMS.Services.FormSvc.getFormData({ "processDefinitionId": self.processDefinitionId }).then(
+          function (result) {
+             if (result && result && result.formProperties)
+                result.formProperties.forEach(
+                   function (item) {
+                      // if (!item.writable)
+                      self.tasks.push(item);
+                   }
+                );
+          });
+
+
+         BPMS.Services.HistoryInstancesSvc.getActivityInstances({ "processInstanceId": self.processInstanceId })
+            .then(function (result) {
+               result.data.forEach(
+                  function (item) {
+                     self.flows.push(item);
+                  });
+            });
+
+
+
+         BPMS.Services.HistoryInstancesSvc.getVariableInstances({ "processInstanceId": self.processInstanceId })
+            .then(function (result) {
+               result.data.forEach(
+                  function (item) {
+
+                  }
+               );
+            });
+
+
+      }
+   }
+}
+
+)(window.BPMS = window.BPMS || {}, jQuery, ko)

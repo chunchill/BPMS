@@ -53,13 +53,13 @@
                <font size="3">备注信息</font>
             </p>
             <div class="ui-body ui-body-a ui-corner-all" style="padding: 8px 8px;">
-               <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-user"></i>&nbsp;邵剑秋</p>
-               <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-gear"></i>&nbsp;批准</p>
-               <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-calendar-check-o"></i>&nbsp;<strong>2016.04.01 </strong>13:11</p>
+               <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-user"></i><span data-bind="text: '&nbsp' + flow.assignee()"></span></p>
+               <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-gear"></i><span data-bind="text: '&nbsp' + flow.decision()"></span></p>
+               <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-calendar-check-o"></i>&nbsp;<strong data-bind="text: flow.date()"></strong>&nbsp;<span data-bind="text: flow.time"></span></p>
             </div>
             <div class="ui-body ui-body-a ui-corner-all" style="padding: 8px 8px; margin-top: 4px;">
                <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-commenting"></i></p>
-               <p align="left" style="padding: 4px 4px; margin: 0px;">备注信息备注信息</p>
+               <p align="left" style="padding: 4px 4px; margin: 0px;" data-bind="text: flow.comment()"></p>
             </div>
          </div>
       </div>
@@ -76,17 +76,17 @@
          </div>
          <div class="jqm-block-content" style="margin: 2px 2px; margin-top: 4px; padding: 4px 4px; background-image: url(images/bg.jpg); border-color: #E4E4E4;">
             <div class="ui-body ui-body-a ui-corner-all" style="padding: 8px 8px; background-image: url(images/tweets-bg.jpg)">
-               <h3 data-bind="data.processName"></h3>
-               <p><font color="gray">Process Instance Desc</font></p>
+               <h3 data-bind="text:data.processName"></h3>
+               <p><font color="gray"></font></p>
             </div>
             <div class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px; background-image: url(images/tweets-bg.jpg)">
                <h3>任务信息</h3>
                <p align="left">
-                  <font size="-1">用款单位: <strong>江苏日盈电子股份有限公司</strong></font>
+
+                  <!-- ko foreach: $root.tasks -->
+                  <font size="-1"><span data-bind="text: name + '： '"></span><strong data-bind="text: $root.translateValue(value)"></strong></font>
                   <br>
-                  <font size="-1">金额: <strong>20,000</strong> RMB</font>
-                  <br>
-                  <font size="-1">付款选项: <strong>按发票付款</strong></font>
+                  <!-- /ko -->
                </p>
             </div>
             <div class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px; background-image: url(images/tweets-bg.jpg)">
@@ -96,14 +96,10 @@
                   <li>
                      <a href="#popupdetail" data-bind="click: $root.selectFlow($data)" data-rel="popup" data-position-to="window" data-transition="pop">
                         <i data-bind="css: { 'fa-play': $index() == 0, 'fa-arrow-down': $index() != 0 && $index() != $root.flows().length - 1, 'fa-stop': $index() == $root.flows().length - 1 }"
-                           class="fa"></i><span data-bind="text: '&nbsp;' + $root.formatDateTime(endTime) + '&nbsp;'"></span><strong data-bind="   text: (assignee || '')"></strong><span class="ui-li-count">创建</span>
+                           class="fa"></i><span data-bind="text: '&nbsp;' + $root.formatDateTime(endTime) + '&nbsp;'"></span><strong data-bind="text: (assignee || '')"></strong><span class="ui-li-count">创建</span>
                      </a>
                   </li>
                   <!-- /ko -->
-                  <li><a href="#popupdetail" data-rel="popup" data-position-to="window" data-transition="pop"><i class="fa fa-play"></i>&nbsp;&nbsp;2015-4-1 12:00 <strong>陈骏</strong><span class="ui-li-count">创建</span></a></li>
-                  <li><a href="#popupdetail" data-rel="popup" data-position-to="window" data-transition="pop"><i class="fa fa-arrow-down"></i>&nbsp;&nbsp;2016-4-1 13:00 <strong>邵剑秋</strong><span class="ui-li-count">批准</span></a></li>
-                  <li><a href="#popupdetail" data-rel="popup" data-position-to="window" data-transition="pop"><i class="fa fa-arrow-down"></i>&nbsp;&nbsp;2016-4-1 14:30 <strong>王晓新</strong><span class="ui-li-count">批准</span></a></li>
-                  <li><a href="#popupdetail" data-rel="popup" data-position-to="window" data-transition="pop"><i class="fa  fa-stop"></i>&nbsp;&nbsp;2015-4-1 12:00 <strong>CEO</strong><span class="ui-li-count">完成</span></a></li>
                </ul>
             </div>
          </div>

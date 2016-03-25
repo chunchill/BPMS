@@ -142,7 +142,6 @@
 
          self.taskId = BPMS.Services.Utils.getUrlParam(window.location.href, "taskId");
          BPMS.Services.FormSvc.getFormData({ /*"processDefinitionId": self.processDefinitionId */"taskId": self.taskId }).then(
-
             function (result) {
                if (result && result && result.formProperties)
                   result.formProperties.forEach(
@@ -153,9 +152,6 @@
                            writableFields.push(item);
                      }
                   );
-
-
-
             }
          );
 
