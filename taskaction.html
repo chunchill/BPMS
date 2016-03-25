@@ -4,12 +4,7 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
    <title>RY-BPMS</title>
-   <!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />-->
    <link href="style/themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
-
-   <!--<link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" />
-<link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" />-->
-
    <link rel="stylesheet" href="style/themes/bladecolor.min.css" />
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="style/themes/bootstrap.min.css">
@@ -64,7 +59,7 @@
                <h3>任务信息</h3>
                <p align="left">
                   <!-- ko foreach: $root.tasks -->
-                  <font size="-1"><span data-bind="text: name + '： '"></span><strong  data-bind="text: $root.translateValue(value)"></strong></font>
+                  <font size="-1"><span data-bind="text: name + '： '"></span><strong data-bind="text: $root.translateValue(value)"></strong></font>
                   <br>
                   <!-- /ko -->
                </p>
@@ -83,37 +78,17 @@
                   <!-- /ko -->
                </ul>
             </div>
-
             <p align="center"><a href="#" data-role="button" data-bind="click: start, css: { 'ui-disabled': started }" data-inline="true" data-transition="flow" data-theme="d"><i class="fa fa-hand-rock-o"></i>&nbsp;开始执行</a></p>
             <div data-bind="visible: started" class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px;">
                <h3>动作</h3>
                <p align="left" style="padding: 2px 2px;">
-                  <form id="inputForm" data-bind="template: { name: 'listTemplate', foreach: $root.forms }">
-                  </form>
+                  <form id="inputForm" data-bind="template: { name: 'listTemplate', foreach: $root.forms }"></form>
                </p>
-
-               <!--               data-bind="jqmTemplate: { name: 'inputTag', foreach: $root.forms }, jqmRefreshList: $root.forms"-->
                <form>
-
-                  <!--                  <p align="center"><a data-bind="submit" href="#popupsubmit" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-btn-a ui-btn-inline" data-transition="pop"><i class="fa fa-check-circle"></i>&nbsp;提交</a></p>
-             -->
-
                   <p align="center"><a data-bind="click: submit, css: { 'ui-disabled': submitted }" href="javascript:void(0)" class="ui-btn ui-corner-all ui-btn-a ui-btn-inline" data-transition="pop"><i class="fa fa-check-circle"></i>&nbsp;提交</a></p>
                </form>
             </div>
          </div>
-
-
-         <!--<div class="jqm-block-content" style="margin: 2px 2px; margin-top: 4px; padding: 6px 4px; background-image: url(images/tweets-bg.jpg); border-color: #E4E4E4;">
-
-            <form class="ui-filterable">
-               <div data-bind="template: { name: 'listTemplate', foreach: listItems }">
-               </div>
-            </form>
-
-
-         </div>-->
-
          <p align="center">
             <font size="-2s">&copy; 江苏日盈电子股份有限公司</font>
             <br>
@@ -125,16 +100,31 @@
             <img class="popphoto" src="images/bpmslogo.png" height="23px">
          </p>
          <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
-            <li><a href="home.html" rel="external">
-               <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font></a></li>
-            <li><a href="worklist.html" rel="external">
-               <img src="images/tasks.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">我的任务</font></a></li>
-            <li><a href="processlist.html" rel="external">
-               <img src="images/bpm.png" alt="plan" class="ui-li-icon"><font size="3">启动流程</font></a></li>
-            <li><a href="instancelist.html" rel="external">
-               <img src="images/folder.png" alt="plan" class="ui-li-icon"><font size="3">我的流程</font></a></li>
-            <li><a href="help.html" rel="external">
-               <img src="images/pie25.png" alt="plan" class="ui-li-icon"><font size="3">报表</font></a></li>
+            <li>
+               <a href="home.html" rel="external">
+                  <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font>
+               </a>
+            </li>
+            <li>
+               <a href="worklist.html" rel="external">
+                  <img src="images/tasks.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">我的任务</font>
+               </a>
+            </li>
+            <li>
+               <a href="processlist.html" rel="external">
+                  <img src="images/bpm.png" alt="plan" class="ui-li-icon"><font size="3">启动流程</font>
+               </a>
+            </li>
+            <li>
+               <a href="instancelist.html" rel="external">
+                  <img src="images/folder.png" alt="plan" class="ui-li-icon"><font size="3">我的流程</font>
+               </a>
+            </li>
+            <li>
+               <a href="help.html" rel="external">
+                  <img src="images/pie25.png" alt="plan" class="ui-li-icon"><font size="3">报表</font>
+               </a>
+            </li>
          </ul>
          <div class="ui-nodisc-icon ui-alt-icon">
             <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
@@ -187,38 +177,6 @@
 
       <script type="text/html" id="listTemplate">
          <div data-bind="dynamicUIControl: $data"></div>
-      </script>
-      <script type="text/html" id="inputTag">
-         <span data-bind="text: $data.name"></span>
-
-
-         <!-- ko if: ($data.type==='date') -->
-         <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
-            <input type="date">
-         </div>
-         <!--/ko-->
-         <!-- ko if: ($data.type==='enum') -->
-         <div class="ui-select">
-            <div class="ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all">
-               <span>&nbsp;</span>
-               <select data-shadow="false">
-                  <!-- ko foreach:enumValues -->
-                  <option data-bind="text: name, value: id"></option>
-                  <!-- /ko -->
-               </select>
-            </div>
-         </div>
-         <!--/ko-->
-         <!-- ko if: ($data.type==='string') -->
-         <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
-            <input type="text">
-         </div>
-         <!--/ko-->
-         <!-- ko if: ($data.type==='boolean') -->
-         <div class="ui-checkbox ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
-            <input type="checkbox">
-         </div>
-         <!--/ko-->
       </script>
    </div>
 </body>

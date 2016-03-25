@@ -4,17 +4,9 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
    <title>RY-BPMS</title>
-   <!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />-->
    <link href="style/themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
-
-   <!--<link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" />
-<link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" />-->
-
    <link rel="stylesheet" href="style/themes/bladecolor.min.css" />
-   <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="style/themes/bootstrap.min.css">
-
-
    <!-- Optional theme -->
    <link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
    <link rel="stylesheet" href="style/themes/jqm-demos.css">
@@ -22,14 +14,8 @@
    <link rel="stylesheet" href="style/themes/jquery.mobile.structure-1.4.5.min.css">
    <link href="style/themes/font-awesome.min.css" rel="stylesheet" type="text/css">
    <link href="style/css/site.css" rel="stylesheet" />
-   <!--<script src="scripts/lib/jquery-1.8.2.js"></script>
-<!--<script src="scripts/app/knockout.jquery.mobile.js"></script>-->
-   <!--<script src="scripts/lib/jquery.mobile-1.3.2.js"></script>-->
-
    <script src="lib/vendor/jquery/dist/jquery.js"></script>
    <script src="lib/jquery.mobile-1.4.5.js"></script>
-
-
    <script src="lib/knockout-3.2.0.min.js"></script>
    <script src="lib/knockout.mapping-latest.js"></script>
    <script src="lib/koExternalTemplateEngine_all.js"></script>
@@ -41,7 +27,6 @@
    <script src="app/services/identitySvc.js"></script>
    <script src="app/services/runtimeSvc.js"></script>
    <script src="app/services/historySvc.js"></script>
-
    <script src="app/viewmodels/instanceListViewModel.js"></script>
    <script src="app/instanceListPage.js"></script>
    <script src="lib/jquery-ui.min.js"></script>
@@ -75,15 +60,7 @@
                   <form class="ui-filterable">
                      <input id="rich-autocomplete-input1" data-type="search" placeholder="输入关键字搜索待处理任务...">
                   </form>
-                  <ul data-bind="jqmTemplate: { name: 'item', foreach: all.items }, jqmRefreshList: all.items" data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input1">
-
-
-                     <!--                     <li><a href="instancedetail.html">
-                        <h2>F001费用申请</h2>
-                        <p><font color="0b6d5f"><i class="fa fa-calendar-check-o"></i><strong>16.04.01</strong></font>&nbsp;&nbsp;<font color="#0071B9"><i class="fa fa-refresh"></i><strong>16.03.22</strong> 12:11</font></p>
-                        <span class="ui-li-count">3</span> </a></li>-->
-
-                  </ul>
+                  <ul data-bind="jqmTemplate: { name: 'item', foreach: all.items }, jqmRefreshList: all.items" data-role="listview" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input1"></ul>
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <p style="text-align: center;">
                         <a data-bind="click: getPrev, css: { 'ui-disabled': !all.hasPrev() }" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
@@ -96,8 +73,7 @@
                   <form class="ui-filterable">
                      <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜索我的流程...">
                   </form>
-                  <ul data-role="listview"  data-bind="jqmTemplate: { name: 'item', foreach: due.items }, jqmRefreshList: due.items"  data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
-                  </ul>
+                  <ul data-role="listview" data-bind="jqmTemplate: { name: 'item', foreach: due.items }, jqmRefreshList: due.items" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2"></ul>
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
                      <p style="text-align: center;">
@@ -111,8 +87,7 @@
                   <form class="ui-filterable">
                      <input id="rich-autocomplete-input3" data-type="search" placeholder="输入关键字搜索我的流程...">
                   </form>
-                  <ul data-role="listview"  data-bind="jqmTemplate: { name: 'item', foreach: critical.items }, jqmRefreshList: critical.items"  data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input3">
-                  </ul>
+                  <ul data-role="listview" data-bind="jqmTemplate: { name: 'item', foreach: critical.items }, jqmRefreshList: critical.items" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input3"></ul>
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
                      <p align="center">
@@ -126,8 +101,7 @@
                   <form class="ui-filterable">
                      <input id="rich-autocomplete-input2" data-type="search" placeholder="输入关键字搜我的流程...">
                   </form>
-                  <ul data-role="listview"  data-bind="jqmTemplate: { name: 'item', foreach: close.items }, jqmRefreshList: close.items"   data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2">
-                  </ul>
+                  <ul data-role="listview" data-bind="jqmTemplate: { name: 'item', foreach: close.items }, jqmRefreshList: close.items" data-theme="b" data-filter="true" data-inset="true" data-input="#rich-autocomplete-input2"></ul>
                   <div class="ui-nodisc-icon ui-alt-icon">
                      <!-- Classes added to the wrapper -->
                      <p style="text-align: center;">
@@ -150,16 +124,31 @@
             <img class="popphoto" src="images/bpmslogo.png" height="23">
          </p>
          <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
-            <li><a href="home.html" rel="external">
-               <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font></a></li>
-            <li><a href="worklist.html" rel="external">
-               <img src="images/tasks.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">我的任务</font></a></li>
-            <li><a href="processlist.html" rel="external">
-               <img src="images/bpm.png" alt="plan" class="ui-li-icon"><font size="3">启动流程</font></a></li>
-            <li><a href="instancelist.html" rel="external">
-               <img src="images/folder.png" alt="plan" class="ui-li-icon"><font size="3">我的流程</font></a></li>
-            <li><a href="help.html" rel="external">
-               <img src="images/pie25.png" alt="plan" class="ui-li-icon"><font size="3">报表</font></a></li>
+            <li>
+               <a href="home.html" rel="external">
+                  <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font>
+               </a>
+            </li>
+            <li>
+               <a href="worklist.html" rel="external">
+                  <img src="images/tasks.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">我的任务</font>
+               </a>
+            </li>
+            <li>
+               <a href="processlist.html" rel="external">
+                  <img src="images/bpm.png" alt="plan" class="ui-li-icon"><font size="3">启动流程</font>
+               </a>
+            </li>
+            <li>
+               <a href="instancelist.html" rel="external">
+                  <img src="images/folder.png" alt="plan" class="ui-li-icon"><font size="3">我的流程</font>
+               </a>
+            </li>
+            <li>
+               <a href="help.html" rel="external">
+                  <img src="images/pie25.png" alt="plan" class="ui-li-icon"><font size="3">报表</font>
+               </a>
+            </li>
          </ul>
          <div class="ui-nodisc-icon ui-alt-icon">
             <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
@@ -184,11 +173,12 @@
          <a href="#" data-bind="click: $root.selectItem">
             <h2 data-bind="text: id + '&nbsp;' + processName"></h2>
             <p style="color: #0b6d5f">
-             <!--  <i class="fa fa-user" data-bind="visible: owner"></i><span data-bind="visible: owner, text: '&nbsp;' + (owner || '') + '&nbsp;'"></span>-->
+               <!--  <i class="fa fa-user" data-bind="visible: owner"></i><span data-bind="visible: owner, text: '&nbsp;' + (owner || '') + '&nbsp;'"></span>-->
                <i class="fa fa-calendar-check-o" data-bind="visible: startTime"></i>&nbsp;<strong data-bind="text: $root.formatDate(startTime)"></strong>
                <span data-bind="text: '&nbsp;' + $root.formatTime(startTime)"></span>
             </p>
-            <span class="ui-li-count" data-bind="visible: category, text: category"></span></a>
+            <span class="ui-li-count" data-bind="visible: category, text: category"></span>
+         </a>
       </li>
    </script>
 </body>

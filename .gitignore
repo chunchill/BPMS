@@ -4,3 +4,6 @@
 /_ReSharper.BPMS
 /*.suo
 /*.tgitconfig
+/.vs/BPMS/v14/.suo
+/.vs/config/applicationhost.config
+/docs/~$RY_BPM_FS.XLSX

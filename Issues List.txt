@@ -1,5 +1,9 @@
-Server Issues:
-
+﻿Server Issues:
+1.我的流程页面，history/historic-process-instances接口没有返回Category
+2.我的流程页面，延迟流程、重要流程，没有对应的过滤条件
+3.流程实例页面，无法获取实例的Description
+4.流程实例页面，流程历史部分，右侧“创建”对应的字段
+5.流程实例页面，流程历史的弹框中，备注应该绑定的字段
 
 
 Client Issues:
