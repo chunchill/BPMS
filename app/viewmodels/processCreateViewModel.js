@@ -13,6 +13,7 @@
         self.processInstanceId = ko.observable();
         self.processDescription =ko.observable();
         self.dynamicFormItems = ko.observableArray();
+        self.errormsg = ko.observable();
 
         self.submit = function () {
             var data = {
@@ -36,26 +37,13 @@
             BPMS.Services.RuntimeSvc.postProcessInstance(data).then(function (result) {
 
                 console.log(JSON.stringify(result));
-                var instanceId = result.id;
-                //runtime/process-instances/{processInstanceId}/identitylinks
-                var userId= window.localStorage.getItem("bpms_userId");
-                if(userId === null){ window.location.replace("RYLogin.html");}
-                var option_1 = {userId:userId,type:"owner"};
-                self.processInstanceId(instanceId);
-                BPMS.Services.RuntimeSvc.postProcessInstanceIndentityLinks(instanceId,option_1).then(function(result){
-                    console.log(JSON.stringify(result));
+                self.processInstanceId(result.id);
+                $("#popupsubmit").popup("open");
 
-                    BPMS.Services.RuntimeSvc.postProcessInstanceVariables(instanceId,data2).then(function (result) {
-
-                        $("#popupMessage").popup("open");
-
-                    }, function () {
-                        //ERR handle
-                    })
-                });
 
             },function(){
-
+                self.errormsg("提交数据出错了！")
+                $("#popupMessage").popup("open");
             });
         };
         //selectedProcessInstanceViewModel.processInstanceId = data.id;
@@ -77,7 +65,9 @@
                 })
                 console.log(result);
             },function(){
-                //error handle
+                self.errormsg("取数据出错了！")
+                $("#popupMessage").popup("open");
+
             });
         }else{
             window.location.replace("home.html");
