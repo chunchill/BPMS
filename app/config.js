@@ -5,7 +5,7 @@
 
    //站点配置信息
    BPMS.config = {
-      serviceUrl: "http://211.144.85.15/bpmn/",
+      serviceUrl: "http://211.144.85.15:8080/activiti-rest/service/",
       user: "",
       pwd: "",
       pageSize: 5

@@ -13,9 +13,12 @@
                     dataType : "json",
                     url: serviceUrl + 'history/historic-activity-instances',
                     crossDomain: true,
-                    beforeSend: function( xhr ) {
-                        xhr.setRequestHeader("authorization", token);
+                    headers:{
+                        'Authorization':token
                     }
+                    //beforeSend: function( xhr ) {
+                    //    xhr.setRequestHeader("authorization", token);
+                    //}
                 });
             },
 

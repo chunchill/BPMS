@@ -14,9 +14,12 @@
             dataType: "json",
             url: url,
             crossDomain: true,
-            beforeSend: function (xhr) {
-               xhr.setRequestHeader("authorization", token);
+            headers:{
+               'Authorization':token
             }
+            //beforeSend: function (xhr) {
+            //   xhr.setRequestHeader("authorization", token);
+            //}
          });
 
          return $.Deferred(function (dfd) {
@@ -39,9 +42,12 @@
              url: url,
              contentType: "application/json;charset=UTF-8",
              crossDomain: true,
-             beforeSend: function (xhr) {
-                xhr.setRequestHeader("authorization", token);
+             headers:{
+                'Authorization':token
              }
+             //beforeSend: function (xhr) {
+             //   xhr.setRequestHeader("authorization", token);
+             //}
           });
 
           return $.Deferred(function (dfd) {
