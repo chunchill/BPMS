@@ -53,7 +53,7 @@
                      <input type="hidden" data-bind="value:id" />
                      <h2><span data-bind="text:description"></span></h2>
                      <p><span data-bind="text:name"></span></p>
-                     <span class="ui-li-count"><span data-bind="text:category"></span></span>
+                     <span class="ui-li-count"><span data-bind="text:$root.getCategory(category)"></span></span>
                   </a>
                </li>
             </script>

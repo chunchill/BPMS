@@ -15,6 +15,7 @@
       self.processDefinitionId = "";
       self.description = ko.observable();
       self.started = ko.observable(false);
+      self.showStart = ko.observable(true);
       self.submitted = ko.observable(false);
       self.tasks = ko.observableArray();
       self.forms = ko.observableArray();
@@ -54,7 +55,6 @@
          });
 
       };
-      //http://localhost:52548/BPMS/taskaction.html?taskId=5040&processInstanceId=5034  writable
       self.start = function () {
          if (self.started())
             return;
@@ -62,7 +62,8 @@
             "action": "claim",
             "assignee": self.userId
          }).then(function () {
-            self.bindFormData();
+            self.started(true);
+         }, function () {
             self.started(true);
          });
       };
@@ -119,7 +120,13 @@
          self.flows.removeAll();
 
          var data = localStorage.getItem("task");
+
          data = data && JSON.parse(data);
+         if (data.assignee && data.assignee == self.userId) {
+            self.showStart(false);
+            self.started(true);
+
+         }
          if (!self.taskId || !self.processInstanceId
             || !data || !data.id || !data.processInstanceId
             || data.id != self.taskId || data.processInstanceId != self.processInstanceId) window.location.href = "home.html";
@@ -150,8 +157,10 @@
                            self.tasks.push(item);
                         else
                            writableFields.push(item);
+
                      }
                   );
+               self.bindFormData();
             }
          );
 

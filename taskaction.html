@@ -59,7 +59,7 @@
                <h3>任务信息</h3>
                <p align="left">
                   <!-- ko foreach: $root.tasks -->
-                  <font size="-1"><span data-bind="text: name + '： '"></span><strong data-bind="text: $root.translateValue(value)"></strong></font>
+                  <font size="-1"><span data-bind="text: name + '： '"></span><strong data-bind="   text: $root.translateValue(value)"></strong></font>
                   <br>
                   <!-- /ko -->
                </p>
@@ -72,13 +72,13 @@
                   <li>
                      <a href="#popupdetail" data-bind="click: $root.selectFlow($data)" data-rel="popup" data-position-to="window" data-transition="pop">
                         <i data-bind="css: { 'fa-play': $index() == 0, 'fa-arrow-down': $index() != 0 && $index() != $root.flows().length - 1, 'fa-stop': $index() == $root.flows().length - 1 }"
-                           class="fa"></i><span data-bind="text: '&nbsp;' + $root.formatDateTime(endTime) + '&nbsp;'"></span><strong data-bind="text: (assignee || '')"></strong><span class="ui-li-count">创建</span>
+                           class="fa"></i><span data-bind="text: '&nbsp;' + $root.formatDateTime(endTime) + '&nbsp;'"></span><strong data-bind="   text: (assignee || '')"></strong><span class="ui-li-count">创建</span>
                      </a>
                   </li>
                   <!-- /ko -->
                </ul>
             </div>
-            <p align="center"><a href="#" data-role="button" data-bind="click: start, css: { 'ui-disabled': started }" data-inline="true" data-transition="flow" data-theme="d"><i class="fa fa-hand-rock-o"></i>&nbsp;开始执行</a></p>
+            <p align="center"><a href="#" data-role="button" data-bind="visible: showStart, click: start, css: { 'ui-disabled': started }" data-inline="true" data-transition="flow" data-theme="d"><i class="fa fa-hand-rock-o"></i>&nbsp;开始执行</a></p>
             <div data-bind="visible: started" class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px;">
                <h3>动作</h3>
                <p align="left" style="padding: 2px 2px;">
@@ -140,7 +140,7 @@
             <div class="ui-body ui-body-a ui-corner-all" style="padding: 8px 8px;">
                <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-user"></i><span data-bind="text: '&nbsp' + flow.assignee()"></span></p>
                <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-gear"></i><span data-bind="text: '&nbsp' + flow.decision()"></span></p>
-               <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-calendar-check-o"></i>&nbsp;<strong data-bind="text: flow.date()"></strong>&nbsp;<span data-bind="text: flow.time"></span></p>
+               <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-calendar-check-o"></i>&nbsp;<strong data-bind="text: flow.date()"></strong>&nbsp;<span data-bind="   text: flow.time"></span></p>
             </div>
             <div class="ui-body ui-body-a ui-corner-all" style="padding: 8px 8px; margin-top: 4px;">
                <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-commenting"></i></p>
@@ -170,7 +170,7 @@
          </p>
          <br>
          <p style="text-align: center;">
-            <a href="#" data-role="button" data-bind="click:finish" data-inline="true" data-rel="back"
+            <a href="#" data-role="button" data-bind="click: finish" data-inline="true" data-rel="back"
                data-transition="flow" data-theme="d" data-shadow="false" style="margin-right: 0px;">确定</a>
          </p>
       </div>
