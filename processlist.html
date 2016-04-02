@@ -61,10 +61,9 @@
             <div class="ui-nodisc-icon ui-alt-icon">
                <!-- Classes added to the wrapper -->
                <p align="center">
-                  <a data-bind="click:previousPage" id="btnPre" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
+                  <a data-bind="click: previousPage, css: { 'ui-disabled': !hasPrev() }" id="btnPre" class="ui-btn ui-shadow ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
                   <a data-bind="click:refresh" id="btnRefresh" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
-                  <a data-bind="click:nextPage" id="btnNext" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
-
+                  <a data-bind="click: nextPage, css: { 'ui-disabled': !hasNext() }" id="btnNext" class="ui-btn ui-shadow ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a>
                </p>
             </div>
          </div>

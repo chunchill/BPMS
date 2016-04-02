@@ -71,7 +71,6 @@
          var items;
          BPMS.Services.RuntimeSvc.getTasks(param)
             .then(function (result) {
-               console.log(result);
                items = result.data;
                var pageCount = Math.floor((result.total - 1) / size) + 1;
                self[currentType].pageCount(pageCount);

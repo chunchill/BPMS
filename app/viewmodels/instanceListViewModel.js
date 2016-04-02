@@ -84,7 +84,6 @@
          };
          BPMS.Services.HistoryInstancesSvc.getProcessInstances(param)
                .then(function (result) {
-                  //console.log(JSON.stringify(result));
                   items = result.data;
                   var pageCount = Math.floor((result.total - 1) / size) + 1;
                   self[currentType].pageCount(pageCount);
@@ -99,7 +98,7 @@
 
                         items[index].category = getCategory(item.category);
                         items[index].processName = item.name;
-                        console.log(JSON.stringify(items[index]));
+                        items[index].version = item.version;
                         self[currentType].items.push(items[index]);
 
                         if (callback) callback();

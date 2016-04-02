@@ -8,6 +8,7 @@
    BPMS.ViewModels.ProcessListViewModel = function () {
       var self = this;
       self.start = ko.observable(0);
+      self.total = ko.observable(0);
       self.size = ko.observable(BPMS.config.pageSize);
       self.datasource = ko.observableArray();
       self.getCategory = function (url) {
@@ -17,12 +18,23 @@
             return url[i + 1];
          return "";
       };
+      self.hasPrev = ko.observable(false);
+      self.hasNext = ko.observable(false);
       var bindRealData = function () {
-         var option = { size: self.size(), start: self.start(), startableByUser: localStorage.getItem("bpms_userId") };
+         var option = {
+            size: self.size(),
+            start: self.start(),
+            startableByUser: localStorage.getItem("bpms_userId"),
+            suspended: false
+         };
          BPMS.Services.ProcessDefinitionSvc.getProcessDefinitions(option).then(function (result) {
             self.datasource(result.data);
-         })
-      }
+            self.total(result.total);
+            self.hasPrev(self.start() > 0);
+            self.hasNext(self.start() + self.size() < self.total());
+         });
+      };
+
       //mockdata
       //var mockData = [{//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
       //    id:'myProcess:1:5012',
@@ -43,79 +55,48 @@
       //        category: 'M'
       //    }];
       self.init = function () {
-         self.start(0);
-         self.size(1);
+         //self.start(0);
+         //self.size(1);
          self.datasource([]);
          //var data = mockData.slice(self.start(), self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
          //self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
 
          bindRealData();
 
-      },
-          self.selectToCreate = function (data) {
-             //selectedProcessInstanceViewModel.processInstanceId = data.id;
-             //selectedProcessInstanceViewModel.processDescription = data.description;
-             //selectedProcessInstanceViewModel.processDefinitionName = data.name;
-             localStorage.setItem('selectedProcessInstanceViewModel', JSON.stringify(data));
-             window.location.replace('processcreate.html');
+      };
+      self.selectToCreate = function (data) {
+         //selectedProcessInstanceViewModel.processInstanceId = data.id;
+         //selectedProcessInstanceViewModel.processDescription = data.description;
+         //selectedProcessInstanceViewModel.processDefinitionName = data.name;
+         localStorage.setItem('selectedProcessInstanceViewModel', JSON.stringify(data));
+         window.location.replace('processcreate.html');
 
-          },
-          disableNextPageButton = function () {
-             if (!$("#btnNext").hasClass('ui-disabled'))
-                $("#btnNext").addClass('ui-disabled')
-             if ($("#btnPre").hasClass('ui-disabled')) {
-                $("#btnPre").removeClass('ui-disabled');
-             }
-          },
-          disablePreviousButton = function () {
-             if (!$("#btnPre").hasClass('ui-disabled'))
-                $("#btnPre").addClass('ui-disabled')
-             if ($("#btnNext").hasClass('ui-disabled')) {
-                $("#btnNext").removeClass('ui-disabled');
-             }
-          },
+      };
 
-          self.nextPage = function (data, event) {
+      self.nextPage = function () {
+         if (self.hasNext()) {
+            var currentIndex = self.start();
+            self.start(currentIndex + self.size());
+            //var data = mockData.slice(self.start(), self.start()+self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+            //self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+            bindRealData();
+         }
+      };
 
-             if (self.datasource().length > 0) {
-                var currentIndex = self.start();
-                self.start(currentIndex + self.size());
-                //var data = mockData.slice(self.start(), self.start()+self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
-                //self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+      self.previousPage = function () {
+         var currentIndex = self.start();
+         if (self.hasPrev()) {
+            self.start(currentIndex - self.size());
+            //var data = mockData.slice(self.start(), self.start()+self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+            //self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+            bindRealData();
+         }
 
-
-                bindRealData();
-
-             } else {
-                disableNextPageButton();
-             }
-          },
-
-          self.previousPage = function (data, event) {
-             var currentIndex = self.start();
-             if (currentIndex > 0) {
-                self.start(currentIndex - self.size());
-                //var data = mockData.slice(self.start(), self.start()+self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
-                //self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
-
-
-                bindRealData();
-
-             } else {
-                disablePreviousButton();
-             }
-
-          },
-          self.refresh = function () {
-             var currentIndex = self.start();
-             //var data = mockData.slice(self.start(), self.start()+self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
-             //self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
-
-
-             bindRealData();
-
-          }
-
-   }
-
+      };
+      self.refresh = function () {
+         //var data = mockData.slice(self.start(), self.start()+self.size());//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+         //self.datasource(data);//TODO:SHOULD BE COMMENTED OUT IF USE THE bindRealData function
+         bindRealData();
+      };
+   };
 })(window.BPMS = window.BPMS || {}, jQuery, ko)

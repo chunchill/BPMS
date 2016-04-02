@@ -35,8 +35,6 @@
             data2.variables.push(_data2);
          });
          BPMS.Services.RuntimeSvc.postProcessInstance(data).then(function(result) {
-
-            console.log(JSON.stringify(result));
             self.processInstanceId(result.id);
             $("#popupsubmit").popup("open");
 
@@ -63,8 +61,6 @@
                var itemToPush = BPMS.Services.Utils.handleUIControlItem(item);
                self.dynamicFormItems.push(itemToPush);
             });
-            console.log(result);
-         }, function() {
             self.errormsg("取数据出错了！");
             $("#popupMessage").popup("open");
 
