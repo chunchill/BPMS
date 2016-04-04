@@ -25,14 +25,18 @@
                BPMS.Services.RuntimeSvc.getTasks().then(function (data) {
                   //alert(JSON.stringify(data));
                   window.location.replace('home.html');
-               }, function () {
+               }, function (a, b, c) {
+                  var message = JSON.stringify(a) + ";" + JSON.stringify(b) + ";" + JSON.stringify(c);
+                  alert(message);
                   localStorage.removeItem("bpms_token");
                   localStorage.removeItem("bpms_userId");
                   self.errorMessage('没有取到任务！');
                   $("#popupMessage").popup("open");
                });
 
-            }, function () {
+            }, function (a, b, c) {
+               var message = JSON.stringify(a) + ";" + JSON.stringify(b) + ";" + JSON.stringify(c);
+               alert(message);
                localStorage.removeItem("bpms_token");
                localStorage.removeItem("bpms_userId");
                self.errorMessage('登录失败！');
