@@ -64,7 +64,7 @@
          }).then(function () {
             self.started(true);
          }, function () {
-            self.started(true);
+            $("#popupMessage").popup("open");
          });
       };
 
@@ -93,6 +93,9 @@
             .then(function () {
                self.submitted(true);
                $("#popupsubmit").popup("open");
+            }, function () {
+               self.submitted(true);
+               $("#popupMessage").popup("open");
             });
       };
       self.finish = function () {
