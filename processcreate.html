@@ -1,132 +1,137 @@
 ﻿<!doctype html>
 <html>
 <head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
-   <title>RY-BPMS</title>
-   <!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />-->
-   <link href="style/themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+    <title>RY-BPMS</title>
+    <!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />-->
+    <link href="style/themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
 
-   <!--<link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" />
-   <link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" />-->
+    <!--<link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" />
+    <link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" />-->
 
-   <link rel="stylesheet" href="style/themes/bladecolor.min.css" />
-   <!-- Latest compiled and minified CSS -->
-   <link rel="stylesheet" href="style/themes/bootstrap.min.css">
+    <link rel="stylesheet" href="style/themes/bladecolor.min.css" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="style/themes/bootstrap.min.css">
 
-   <!-- Optional theme -->
-   <link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
-   <link rel="stylesheet" href="style/themes/jqm-demos.css">
-   <link rel="stylesheet" href="style/themes/jquery.mobile.icons.min.css">
-   <link rel="stylesheet" href="style/themes/jquery.mobile.structure-1.4.5.min.css">
-   <link href="style/themes/font-awesome.min.css" rel="stylesheet" type="text/css">
-   <link href="style/css/site.css" rel="stylesheet" />
-   <script src="lib/vendor/jquery/dist/jquery.js"></script>
-   <script src="lib/jquery.mobile-1.4.5.js"></script>
-   <script src="lib/vendor/OWL/owl-carousel/owl.carousel.js"></script>
-   <script src="lib/knockout-3.2.0.min.js"></script>
-   <script src="lib/vendor/amplify/lib/amplify.js"></script>
-   <script src="lib/oex/jqm-ctr.js"></script>
-   <script src="app/config.js"></script>
-   <script src="app/services/util.js"></script>
-   <script src="app/services/identitySvc.js"></script>
-   <script src="app/services/runtimeSvc.js"></script>
-   <script src="app/services/processdefinitionSvc.js"></script>
-   <script src="app/viewmodels/processCreateViewModel.js"></script>
-   <script src="app/processCreatePage.js"></script>
-   <link rel="shortcut icon" href="favicon.ico">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style/themes/jqm-demos.css">
+    <link rel="stylesheet" href="style/themes/jquery.mobile.icons.min.css">
+    <link rel="stylesheet" href="style/themes/jquery.mobile.structure-1.4.5.min.css">
+    <link href="style/themes/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="style/css/site.css" rel="stylesheet" />
+    <script src="lib/vendor/jquery/dist/jquery.js"></script>
+    <script src="lib/jquery.mobile-1.4.5.js"></script>
+    <script src="lib/vendor/OWL/owl-carousel/owl.carousel.js"></script>
+    <script src="lib/knockout-3.2.0.min.js"></script>
+    <script src="lib/vendor/amplify/lib/amplify.js"></script>
+    <script src="lib/oex/jqm-ctr.js"></script>
+    <script src="app/config.js"></script>
+    <script src="app/services/util.js"></script>
+    <script src="app/services/identitySvc.js"></script>
+    <script src="app/services/runtimeSvc.js"></script>
+    <script src="app/services/processdefinitionSvc.js"></script>
+    <script src="app/viewmodels/processCreateViewModel.js"></script>
+    <script src="app/processCreatePage.js"></script>
+    <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
-   <div data-role="page" id="logonView" data-theme="a" style="background-image:url(images/bg/graphy-xs.png)">
-      <div data-role="content" style="padding: 3px 3px;">
-         <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner15.png); background-size:cover; border-color:#E4E4E4;">
+    <div data-role="page" id="logonView" data-theme="a" style="background-image:url(images/bg/graphy-xs.png)">
+        <div data-role="content" style="padding: 3px 3px;">
+            <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner15.png); background-size:cover; border-color:#E4E4E4;">
+                <p align="center">
+                    <img class="popphoto" src="images/bpmslogo.png" height="18px"><br>
+                    <font size="+1"><b>启动流程</b></font>
+                </p>
+                <div class="ui-nodisc-icon ui-alt-icon">
+                    <!-- Classes added to the wrapper -->
+                    <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+                </div>
+            </div>
+            <div class="jqm-block-content" style="margin: 2px 2px; margin-top:4px; padding: 4px 4px; background-image:url(images/tweets-bg.jpg); border-color:#E4E4E4;">
+                <div class="ui-body ui-body-a ui-corner-all">
+                    <h3><span data-bind="text:processDefinitionName"></span></h3>
+                    <p><font color="gray"><span data-bind="text:processDescription"></span></font></p>
+                </div>
+                <div class="ui-body ui-body-a ui-corner-all" style="margin-top:4px;">
+                    <p align="left" style="padding:2px 2px;">
+                        <!--<form>-->
+                        <!--用款单位-->
+                        <!--<select name="select-native-1" id="select-native-1" data-shadow="false">-->
+                        <!--<option value="1">江苏日盈</option>-->
+                        <!--<option value="2">江门容宇</option>-->
+                        <!--<option value="3">日盈电子(长春)</option>-->
+                        <!--</select>-->
+                        <!--付款选项-->
+                        <!--<fieldset data-role="controlgroup" data-theme="b">-->
+                        <!--<input type="radio" name="radio-choice-v-2" id="radio-choice-v-2a" value="on" checked="checked">-->
+                        <!--<label for="radio-choice-v-2a">按发票付款</label>-->
+                        <!--<input type="radio" name="radio-choice-v-2" id="radio-choice-v-2b" value="off">-->
+                        <!--<label for="radio-choice-v-2b">预付款无发票</label>-->
+                        <!--</fieldset>-->
+                        <!--费用日期-->
+                        <!--<input type="date" data-clear-btn="false" name="date-1" id="date-1" data-inline="true">-->
+                        <!--发票金额-->
+                        <!--<input type="number" data-clear-btn="true" name="amount" id="amount" data-inline="true">-->
+                        <!--</form>-->
+                        <form>
+                            <div data-bind="template: { name: 'listTemplate', foreach: dynamicFormItems }">
+                            </div>
+                        </form>
+                        <script type="text/html" id="listTemplate">
+                            <div data-bind="dynamicUIControl: $data"></div>
+                        </script>
+                    </p>
+                </div>
+                <form>
+                    <a href="#" data-bind="click:submit" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-btn-a" data-transition="pop">提交</a>
+                </form>
+            </div>
             <p align="center">
-               <img class="popphoto" src="images/bpmslogo.png" height="18px"><br>
-               <font size="+1"><b>启动流程</b></font>
+                <font size="-2s">&copy; 江苏日盈电子股份有限公司</font><br>
+                <img class="popphoto" src="images/logo.png" height="18px">
             </p>
+        </div>
+        <div data-role="panel" id="panelgrid" data-position-fixed="true" data-position="right" data-display="overlay" data-theme="a">
+            <p align="center"><img class="popphoto" src="images/bpmslogo.png" height="23px"></p>
+            <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
+                <li><a href="home.html" rel="external"> <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font></a></li>
+                <li><a href="worklist.html" rel="external"> <img src="images/tasks.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">我的任务</font></a></li>
+                <li><a href="processlist.html" rel="external"> <img src="images/bpm.png" alt="plan" class="ui-li-icon"><font size="3">启动流程</font></a></li>
+                <li><a href="processlist.html" rel="external"> <img src="images/folder.png" alt="plan" class="ui-li-icon"><font size="3">我的流程</font></a></li>
+                <li><a href="help.html" rel="external"> <img src="images/pie25.png" alt="plan" class="ui-li-icon"><font size="3">报表</font></a></li>
+            </ul>
             <div class="ui-nodisc-icon ui-alt-icon">
-               <!-- Classes added to the wrapper -->
-               <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+                <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
             </div>
-         </div>
-         <div class="jqm-block-content" style="margin: 2px 2px; margin-top:4px; padding: 4px 4px; background-image:url(images/tweets-bg.jpg); border-color:#E4E4E4;">
-            <div class="ui-body ui-body-a ui-corner-all">
-               <h3><span data-bind="text:processDefinitionName"></span></h3>
-               <p><font color="gray"><span data-bind="text:processDescription"></span></font></p>
+        </div>
+        <div data-role="popup" id="popupMessage" data-overlay-theme="a" data-theme="b" data-transition="pop" style="max-width:320px;" class="ui-corner-all">
+            <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+                <p align="center">
+                    <i class="fa fa-2x fa-frown-o"></i><br>
+                    <br>
+                    <font size="2"><span data-bind="text:errormsg"></span></font>
+                </p>
+                <br>
+                <p align="center"><a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="d">确定</a></p>
             </div>
-            <div class="ui-body ui-body-a ui-corner-all" style="margin-top:4px;">
-               <p align="left" style="padding:2px 2px;">
-                  <!--<form>-->
-                  <!--用款单位-->
-                  <!--<select name="select-native-1" id="select-native-1" data-shadow="false">-->
-                  <!--<option value="1">江苏日盈</option>-->
-                  <!--<option value="2">江门容宇</option>-->
-                  <!--<option value="3">日盈电子(长春)</option>-->
-                  <!--</select>-->
-                  <!--付款选项-->
-                  <!--<fieldset data-role="controlgroup" data-theme="b">-->
-                  <!--<input type="radio" name="radio-choice-v-2" id="radio-choice-v-2a" value="on" checked="checked">-->
-                  <!--<label for="radio-choice-v-2a">按发票付款</label>-->
-                  <!--<input type="radio" name="radio-choice-v-2" id="radio-choice-v-2b" value="off">-->
-                  <!--<label for="radio-choice-v-2b">预付款无发票</label>-->
-                  <!--</fieldset>-->
-                  <!--费用日期-->
-                  <!--<input type="date" data-clear-btn="false" name="date-1" id="date-1" data-inline="true">-->
-                  <!--发票金额-->
-                  <!--<input type="number" data-clear-btn="true" name="amount" id="amount" data-inline="true">-->
-                  <!--</form>-->
-                  <form>
-                     <div data-bind="template: { name: 'listTemplate', foreach: dynamicFormItems }">
-                     </div>
-                  </form>
-                  <script type="text/html" id="listTemplate">
-                     <div data-bind="dynamicUIControl: $data"></div>
-                  </script>
-               </p>
-            </div>
-            <form>
-               <a href="#" data-bind="click:submit" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-btn-a" data-transition="pop">提交</a>
-            </form>
-         </div>
-         <p align="center">
-            <font size="-2s">&copy; 江苏日盈电子股份有限公司</font><br>
-            <img class="popphoto" src="images/logo.png" height="18px">
-         </p>
-      </div>
-      <div data-role="panel" id="panelgrid" data-position-fixed="true" data-position="right" data-display="overlay" data-theme="a">
-         <p align="center"><img class="popphoto" src="images/bpmslogo.png" height="23px"></p>
-         <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
-            <li><a href="home.html" rel="external"> <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font></a></li>
-            <li><a href="worklist.html" rel="external"> <img src="images/tasks.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">我的任务</font></a></li>
-            <li><a href="processlist.html" rel="external"> <img src="images/bpm.png" alt="plan" class="ui-li-icon"><font size="3">启动流程</font></a></li>
-            <li><a href="processlist.html" rel="external"> <img src="images/folder.png" alt="plan" class="ui-li-icon"><font size="3">我的流程</font></a></li>
-            <li><a href="help.html" rel="external"> <img src="images/pie25.png" alt="plan" class="ui-li-icon"><font size="3">报表</font></a></li>
-         </ul>
-         <div class="ui-nodisc-icon ui-alt-icon">
-            <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
-         </div>
-      </div>
-      <div data-role="popup" id="popupMessage" data-overlay-theme="a" data-theme="b" data-transition="pop" style="max-width:320px;" class="ui-corner-all">
-         <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+        </div>
+        <div data-role="popup" id="popupsubmit" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:300px; padding: 20px 20px;">
+            <p align="center"><i class="fa fa-2x fa-check"></i></p>
             <p align="center">
-               <i class="fa fa-2x fa-frown-o"></i><br>
-               <br>
-               <font size="2"><span data-bind="text:errormsg"></span></font>
+                <span data-bind="text:processInstanceId"></span><br>
+                创建成功
             </p>
             <br>
-            <p align="center"><a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="d">确定</a></p>
-         </div>
-      </div>
-      <div data-role="popup" id="popupsubmit" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:300px; padding: 20px 20px;">
-         <p align="center"><i class="fa fa-2x fa-check"></i></p>
-         <p align="center">
-            <span data-bind="text:processInstanceId"></span><br>
-            创建成功
-         </p>
-         <br>
-         <p align="center"><a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="d" data-shadow="false" style="margin-right:0px;">确定</a></p>
-      </div>
-   </div>
+            <p align="center">
+                <a href="#" data-role="button" data-inline="true" data-rel="back"
+                   data-bind="click:finish"
+                   data-transition="flow" data-theme="d"
+                   data-shadow="false" style="margin-right:0px;">确定</a>
+            </p>
+        </div>
+    </div>
 
 </body>
 </html>

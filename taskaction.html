@@ -45,6 +45,7 @@
                <img class="popphoto" src="images/bpmslogo.png" height="18px"><br>
                <font size="+1"><b>我的任务</b></font>
             </p>
+             <!--<button onclick="location.hash = '#formArea';">Test</button>-->
             <div class="ui-nodisc-icon ui-alt-icon">
                <!-- Classes added to the wrapper -->
                <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
@@ -79,7 +80,7 @@
                </ul>
             </div>
             <p align="center"><a href="#" data-role="button" data-bind="visible: showStart, click: start, css: { 'ui-disabled': started }" data-inline="true" data-transition="flow" data-theme="d"><i class="fa fa-hand-rock-o"></i>&nbsp;开始执行</a></p>
-            <div data-bind="visible: started" class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px;">
+            <div data-bind="visible: started" name="formArea" id="formArea" class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px;">
                <h3>动作</h3>
                <p align="left" style="padding: 2px 2px;">
                   <form id="inputForm" data-bind="template: { name: 'listTemplate', foreach: $root.forms }"></form>
@@ -160,7 +161,6 @@
             <p align="center"><a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="d">确定</a></p>
          </div>
       </div>
-
       <div data-role="popup" id="popupsubmit" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 300px; padding: 20px 20px;">
          <p align="center"><i class="fa fa-2x fa-check"></i></p>
          <p align="center">
@@ -179,5 +179,25 @@
          <div data-bind="dynamicUIControl: $data"></div>
       </script>
    </div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

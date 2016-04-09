@@ -62,7 +62,8 @@
             "action": "claim",
             "assignee": self.userId
          }).then(function () {
-            self.started(true);
+             self.started(true);
+             location.hash = '#formArea';
          }, function () {
             $("#popupMessage").popup("open");
          });
