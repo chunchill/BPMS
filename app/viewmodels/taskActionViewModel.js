@@ -154,29 +154,39 @@
             self.taskId = BPMS.Services.Utils.getUrlParam(window.location.href, "taskId");
             BPMS.Services.FormSvc.getFormData({ /*"processDefinitionId": self.processDefinitionId */"taskId": self.taskId }).then(
                function (result) {
+                   var formProperties = [];
                    if (result && result && result.formProperties)
-                       result.formProperties.forEach(
-                          function (item) {
-                              if (!item.writable)
-                                  self.tasks.push(item);
-                              else
-                                  writableFields.push(item);
+                       formProperties = result.formProperties;
 
-                          }
-                       );
-                   self.bindFormData();
+
+                   BPMS.Services.HistoryInstancesSvc.getVariableInstances({ "processInstanceId": self.processInstanceId })
+                      .then(function (variables) {
+
+
+                          result.formProperties.forEach(
+                             function (item) {
+                                 if (!item.writable) {
+                                     for (var i = 0; i < variables.data.length; i++) {
+                                         var variableInfo = variables.data[i];
+                                         if (variableInfo.variable.name == item.id) {
+                                             //item.value = variableInfo.variable.value;
+                                             break;
+                                         }
+                                     }
+                                     self.tasks.push(item);
+
+                                 }
+                                 else
+                                     writableFields.push(item);
+
+                             }
+                          );
+                          self.bindFormData();
+                      });
+
                }
             );
 
-
-            BPMS.Services.HistoryInstancesSvc.getVariableInstances({ "processInstanceId": self.processInstanceId })
-               .then(function (result) {
-                   result.data.forEach(
-                      function (item) {
-
-                      }
-                   );
-               });
 
 
 
