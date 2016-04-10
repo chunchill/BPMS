@@ -2,6 +2,8 @@
 
    BPMS.ViewModels = BPMS.ViewModels || {};
    BPMS.ViewModels.HomeViewModel = function () {
+      var loader = $.mobile.loading();
+      loader.show();
       var self = this;
       this.processNumber = ko.observable();
       this.allTaskNumber = ko.observable();
@@ -30,9 +32,11 @@
                self.normalTaskNumber(normal);
                self.warningTaskNumber(warning);
             });
+         
          BPMS.Services.RuntimeSvc.getProcessInstances({ "involvedUser": userId })
       .then(function (result) {
          self.processNumber(result.total);
+         loader.hide();
       });
       };
    };

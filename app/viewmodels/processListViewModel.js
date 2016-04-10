@@ -21,6 +21,8 @@
       self.hasPrev = ko.observable(false);
       self.hasNext = ko.observable(false);
       var bindRealData = function () {
+         var loader = $.mobile.loading();
+         loader.show();
          var option = {
             size: self.size(),
             start: self.start(),
@@ -32,6 +34,7 @@
             self.total(result.total);
             self.hasPrev(self.start() > 0);
             self.hasNext(self.start() + self.size() < self.total());
+            loader.hide();
          });
       };
 

@@ -52,7 +52,8 @@
          return moment(date).format("HH:mm");
       };
       self.getData = function (callback) {
-
+         var loader = $.mobile.loading();
+         loader.show();
          var currentType = self.type();
          self[currentType].items.removeAll();
          var size = BPMS.config.pageSize;
@@ -84,6 +85,7 @@
                      self[currentType].items.push(items[index]);
                   });
                   if (typeof (callback) == "function") callback();
+                  loader.hide();
                });
             });
       };
