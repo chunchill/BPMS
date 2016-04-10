@@ -1,203 +1,186 @@
 ﻿<!doctype html>
 <html>
 <head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
-   <title>RY-BPMS</title>
-   <link href="style/themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
-   <link rel="stylesheet" href="style/themes/bladecolor.min.css" />
-   <!-- Latest compiled and minified CSS -->
-   <link rel="stylesheet" href="style/themes/bootstrap.min.css">
-   <!-- Optional theme -->
-   <link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
-   <link rel="stylesheet" href="style/themes/jqm-demos.css">
-   <link rel="stylesheet" href="style/themes/jquery.mobile.icons.min.css">
-   <link rel="stylesheet" href="style/themes/jquery.mobile.structure-1.4.5.min.css">
-   <link href="style/themes/font-awesome.min.css" rel="stylesheet" type="text/css">
-   <link href="style/css/site.css" rel="stylesheet" />
-   <script src="lib/vendor/jquery/dist/jquery.js"></script>
-   <script src="lib/jquery.mobile-1.4.5.js"></script>
-   <script src="lib/vendor/moment/moment.js"></script>
-   <script src="lib/knockout-3.2.0.min.js"></script>
-   <script src="lib/koExternalTemplateEngine_all.js"></script>
-   <script src="lib/ko.extentions.js"></script>
-   <script src="lib/vendor/amplify/lib/amplify.js"></script>
-   <script src="app/config.js"></script>
-   <script src="app/services/util.js"></script>
-   <script src="app/services/identitySvc.js"></script>
-   <script src="app/services/historySvc.js"></script>
-   <script src="app/services/processdefinitionSvc.js"></script>
-   <script src="app/services/formSvc.js"></script>
-   <script src="app/services/runtimeSvc.js"></script>
-   <script src="app/viewmodels/taskActionViewModel.js"></script>
-   <script src="app/taskActionPage.js"></script>
-   <script src="lib/oex/utils.js"></script>
-   <script src="lib/oex/jqm-checked.js"></script>
-   <script src="lib/oex/jqm-selected.js"></script>
-   <script src="lib/oex/jqm-ctr.js"></script>
-   <link rel="shortcut icon" href="favicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+    <title>RY-BPMS</title>
+    <link href="style/themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="style/themes/bladecolor.min.css" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="style/themes/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style/themes/jqm-demos.css">
+    <link rel="stylesheet" href="style/themes/jquery.mobile.icons.min.css">
+    <link rel="stylesheet" href="style/themes/jquery.mobile.structure-1.4.5.min.css">
+    <link href="style/themes/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="style/css/site.css" rel="stylesheet" />
+    <script src="lib/vendor/jquery/dist/jquery.js"></script>
+    <script src="lib/jquery.mobile-1.4.5.js"></script>
+    <script src="lib/vendor/moment/moment.js"></script>
+    <script src="lib/knockout-3.2.0.min.js"></script>
+    <script src="lib/koExternalTemplateEngine_all.js"></script>
+    <script src="lib/ko.extentions.js"></script>
+    <script src="lib/vendor/amplify/lib/amplify.js"></script>
+    <script src="app/config.js"></script>
+    <script src="app/services/util.js"></script>
+    <script src="app/services/identitySvc.js"></script>
+    <script src="app/services/historySvc.js"></script>
+    <script src="app/services/processdefinitionSvc.js"></script>
+    <script src="app/services/formSvc.js"></script>
+    <script src="app/services/runtimeSvc.js"></script>
+    <script src="app/viewmodels/taskActionViewModel.js"></script>
+    <script src="app/taskActionPage.js"></script>
+    <script src="lib/oex/utils.js"></script>
+    <script src="lib/oex/jqm-checked.js"></script>
+    <script src="lib/oex/jqm-selected.js"></script>
+    <script src="lib/oex/jqm-ctr.js"></script>
+    <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
-   <div data-role="page" id="logonView" data-theme="a" style="background-image: url(images/bg/graphy-xs.png)">
-      <div data-role="content" style="padding: 3px 3px;">
-         <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner13.png); background-size: cover; border-color: #E4E4E4;">
+    <div data-role="page" id="logonView" data-theme="a" style="background-image: url(images/bg/graphy-xs.png)">
+        <div data-role="content" style="padding: 3px 3px;">
+            <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner13.png); background-size: cover; border-color: #E4E4E4;">
+                <p align="center">
+                    <img class="popphoto" src="images/bpmslogo.png" height="18px"><br>
+                    <font size="+1"><b>我的任务</b></font>
+                </p>
+                <!--<button onclick="location.hash = '#formArea';">Test</button>-->
+                <div class="ui-nodisc-icon ui-alt-icon">
+                    <!-- Classes added to the wrapper -->
+                    <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+                </div>
+            </div>
+            <div class="jqm-block-content" style="margin: 2px 2px; margin-top: 4px; padding: 4px 4px; background-image: url(images/bg.jpg); border-color: #E4E4E4;">
+                <div class="ui-body ui-body-a ui-corner-all" style="padding: 8px 8px; background-image: url(images/tweets-bg.jpg)">
+                    <h3 data-bind="text: name"></h3>
+                    <p><font color="gray" data-bind="text:description"></font></p>
+                </div>
+                <div class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px; background-image: url(images/tweets-bg.jpg)">
+                    <h3>任务信息</h3>
+                    <p align="left">
+                        <!-- ko foreach: $root.tasks -->
+                        <font size="-1"><span data-bind="text: name + '： '"></span><strong data-bind="   text: $root.translateValue(value)"></strong></font>
+                        <br>
+                        <!-- /ko -->
+                    </p>
+                </div>
+                <div class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px; background-image: url(images/tweets-bg.jpg)">
+                    <h3>流程历史</h3>
+                    <!--fa-play fa-arrow-down fa-stop-->
+                    <ul data-role="listview" data-inset="true" data-iconpos="left"
+                        data-bind="jqmTemplate: { name: 'item', foreach: $root.flows }, jqmRefreshList: $root.flows">
+                     
+                    </ul>
+                </div>
+                <p align="center"><a href="#" data-role="button" data-bind="visible: showStart, click: start, css: { 'ui-disabled': started }" data-inline="true" data-transition="flow" data-theme="d"><i class="fa fa-hand-rock-o"></i>&nbsp;开始执行</a></p>
+                <div data-bind="visible: started" name="formArea" id="formArea" class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px;">
+                    <h3>动作</h3>
+                    <p align="left" style="padding: 2px 2px;">
+                        <form id="inputForm" data-bind="template: { name: 'listTemplate', foreach: $root.forms }"></form>
+                    </p>
+                    <form>
+                        <p align="center"><a data-bind="click: submit, css: { 'ui-disabled': submitted }" href="javascript:void(0)" class="ui-btn ui-corner-all ui-btn-a ui-btn-inline" data-transition="pop"><i class="fa fa-check-circle"></i>&nbsp;提交</a></p>
+                    </form>
+                </div>
+            </div>
             <p align="center">
-               <img class="popphoto" src="images/bpmslogo.png" height="18px"><br>
-               <font size="+1"><b>我的任务</b></font>
+                <font size="-2s">&copy; 江苏日盈电子股份有限公司</font>
+                <br>
+                <img class="popphoto" src="images/logo.png" height="18px">
             </p>
-             <!--<button onclick="location.hash = '#formArea';">Test</button>-->
+        </div>
+        <div data-role="panel" id="panelgrid" data-position-fixed="true" data-position="right" data-display="overlay" data-theme="a">
+            <p align="center">
+                <img class="popphoto" src="images/bpmslogo.png" height="23px">
+            </p>
+            <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
+                <li>
+                    <a href="home.html" rel="external">
+                        <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font>
+                    </a>
+                </li>
+                <li>
+                    <a href="worklist.html" rel="external">
+                        <img src="images/tasks.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">我的任务</font>
+                    </a>
+                </li>
+                <li>
+                    <a href="processlist.html" rel="external">
+                        <img src="images/bpm.png" alt="plan" class="ui-li-icon"><font size="3">启动流程</font>
+                    </a>
+                </li>
+                <li>
+                    <a href="instancelist.html" rel="external">
+                        <img src="images/folder.png" alt="plan" class="ui-li-icon"><font size="3">我的流程</font>
+                    </a>
+                </li>
+                <li>
+                    <a href="help.html" rel="external">
+                        <img src="images/pie25.png" alt="plan" class="ui-li-icon"><font size="3">报表</font>
+                    </a>
+                </li>
+            </ul>
             <div class="ui-nodisc-icon ui-alt-icon">
-               <!-- Classes added to the wrapper -->
-               <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+                <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
             </div>
-         </div>
-         <div class="jqm-block-content" style="margin: 2px 2px; margin-top: 4px; padding: 4px 4px; background-image: url(images/bg.jpg); border-color: #E4E4E4;">
-            <div class="ui-body ui-body-a ui-corner-all" style="padding: 8px 8px; background-image: url(images/tweets-bg.jpg)">
-               <h3 data-bind="text: name"></h3>
-               <p><font color="gray" data-bind="text:description"></font></p>
+        </div>
+        <div data-role="popup" id="popupdetail" data-theme="b" data-overlay-theme="a" class="ui-corner-all" style="min-width: 300px; max-width: 300px; background-image: url(images/tweets-bg.jpg)">
+            <a href="#" data-rel="back" class="ui-btn ui-nodisc-icon ui-alt-icon ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <div data-role="content" style="padding: 4px 4px;">
+                <p align="center" style="margin: 8px 8px;">
+                    &nbsp;<i class="fa fa-2x fa-info-circle"></i><br>
+                    <font size="3">备注信息</font>
+                </p>
+                <div class="ui-body ui-body-a ui-corner-all" style="padding: 8px 8px;">
+                    <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-user"></i><span data-bind="text: '&nbsp' + flow.assignee()"></span></p>
+                    <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-gear"></i><span data-bind="text: '&nbsp' + flow.decision()"></span></p>
+                    <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-calendar-check-o"></i>&nbsp;<strong data-bind="text: flow.date()"></strong>&nbsp;<span data-bind="   text: flow.time"></span></p>
+                </div>
+                <div class="ui-body ui-body-a ui-corner-all" style="padding: 8px 8px; margin-top: 4px;">
+                    <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-commenting"></i></p>
+                    <p align="left" style="padding: 4px 4px; margin: 0px;" data-bind="text: flow.comment()"></p>
+                </div>
             </div>
-            <div class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px; background-image: url(images/tweets-bg.jpg)">
-               <h3>任务信息</h3>
-               <p align="left">
-                  <!-- ko foreach: $root.tasks -->
-                  <font size="-1"><span data-bind="text: name + '： '"></span><strong data-bind="   text: $root.translateValue(value)"></strong></font>
-                  <br>
-                  <!-- /ko -->
-               </p>
+        </div>
+        <div data-role="popup" id="popupMessage" data-overlay-theme="a" data-theme="b" data-transition="pop" style="max-width: 320px;" class="ui-corner-all">
+            <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+                <p align="center">
+                    <i class="fa fa-2x fa-frown-o"></i>
+                    <br>
+                    <br>
+                    <font size="2">提交数据出错！</font>
+                </p>
+                <br>
+                <p align="center"><a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="d">确定</a></p>
             </div>
-            <div class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px; background-image: url(images/tweets-bg.jpg)">
-               <h3>流程历史</h3>
-               <!--fa-play fa-arrow-down fa-stop-->
-               <ul data-role="listview" data-inset="true" data-iconpos="left">
-                  <!-- ko foreach: $root.flows -->
-                  <li>
-                     <a href="#popupdetail" data-bind="click: $root.selectFlow($data)" data-rel="popup" data-position-to="window" data-transition="pop">
-                        <i data-bind="css: { 'fa-play': $index() == 0, 'fa-arrow-down': $index() != 0 && $index() != $root.flows().length - 1, 'fa-stop': $index() == $root.flows().length - 1 }"
-                           class="fa"></i><span data-bind="text: '&nbsp;' + $root.formatDateTime(endTime) + '&nbsp;'"></span><strong data-bind="   text: (assignee || '')"></strong><span class="ui-li-count">创建</span>
-                     </a>
-                  </li>
-                  <!-- /ko -->
-               </ul>
-            </div>
-            <p align="center"><a href="#" data-role="button" data-bind="visible: showStart, click: start, css: { 'ui-disabled': started }" data-inline="true" data-transition="flow" data-theme="d"><i class="fa fa-hand-rock-o"></i>&nbsp;开始执行</a></p>
-            <div data-bind="visible: started" name="formArea" id="formArea" class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px; padding: 8px 8px;">
-               <h3>动作</h3>
-               <p align="left" style="padding: 2px 2px;">
-                  <form id="inputForm" data-bind="template: { name: 'listTemplate', foreach: $root.forms }"></form>
-               </p>
-               <form>
-                  <p align="center"><a data-bind="click: submit, css: { 'ui-disabled': submitted }" href="javascript:void(0)" class="ui-btn ui-corner-all ui-btn-a ui-btn-inline" data-transition="pop"><i class="fa fa-check-circle"></i>&nbsp;提交</a></p>
-               </form>
-            </div>
-         </div>
-         <p align="center">
-            <font size="-2s">&copy; 江苏日盈电子股份有限公司</font>
-            <br>
-            <img class="popphoto" src="images/logo.png" height="18px">
-         </p>
-      </div>
-      <div data-role="panel" id="panelgrid" data-position-fixed="true" data-position="right" data-display="overlay" data-theme="a">
-         <p align="center">
-            <img class="popphoto" src="images/bpmslogo.png" height="23px">
-         </p>
-         <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
-            <li>
-               <a href="home.html" rel="external">
-                  <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font>
-               </a>
-            </li>
-            <li>
-               <a href="worklist.html" rel="external">
-                  <img src="images/tasks.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">我的任务</font>
-               </a>
-            </li>
-            <li>
-               <a href="processlist.html" rel="external">
-                  <img src="images/bpm.png" alt="plan" class="ui-li-icon"><font size="3">启动流程</font>
-               </a>
-            </li>
-            <li>
-               <a href="instancelist.html" rel="external">
-                  <img src="images/folder.png" alt="plan" class="ui-li-icon"><font size="3">我的流程</font>
-               </a>
-            </li>
-            <li>
-               <a href="help.html" rel="external">
-                  <img src="images/pie25.png" alt="plan" class="ui-li-icon"><font size="3">报表</font>
-               </a>
-            </li>
-         </ul>
-         <div class="ui-nodisc-icon ui-alt-icon">
-            <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
-         </div>
-      </div>
-      <div data-role="popup" id="popupdetail" data-theme="b" data-overlay-theme="a" class="ui-corner-all" style="min-width: 300px; max-width: 300px; background-image: url(images/tweets-bg.jpg)">
-         <a href="#" data-rel="back" class="ui-btn ui-nodisc-icon ui-alt-icon ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-         <div data-role="content" style="padding: 4px 4px;">
-            <p align="center" style="margin: 8px 8px;">
-               &nbsp;<i class="fa fa-2x fa-info-circle"></i><br>
-               <font size="3">备注信息</font>
-            </p>
-            <div class="ui-body ui-body-a ui-corner-all" style="padding: 8px 8px;">
-               <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-user"></i><span data-bind="text: '&nbsp' + flow.assignee()"></span></p>
-               <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-gear"></i><span data-bind="text: '&nbsp' + flow.decision()"></span></p>
-               <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-calendar-check-o"></i>&nbsp;<strong data-bind="text: flow.date()"></strong>&nbsp;<span data-bind="   text: flow.time"></span></p>
-            </div>
-            <div class="ui-body ui-body-a ui-corner-all" style="padding: 8px 8px; margin-top: 4px;">
-               <p align="left" style="padding: 4px 4px; margin: 0px;"><i class="fa fa-commenting"></i></p>
-               <p align="left" style="padding: 4px 4px; margin: 0px;" data-bind="text: flow.comment()"></p>
-            </div>
-         </div>
-      </div>
-      <div data-role="popup" id="popupMessage" data-overlay-theme="a" data-theme="b" data-transition="pop" style="max-width: 320px;" class="ui-corner-all">
-         <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+        </div>
+        <div data-role="popup" id="popupsubmit" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 300px; padding: 20px 20px;">
+            <p align="center"><i class="fa fa-2x fa-check"></i></p>
             <p align="center">
-               <i class="fa fa-2x fa-frown-o"></i>
-               <br>
-               <br>
-               <font size="2">提交数据出错！</font>
+                流程实例<span data-bind="text: processInstanceId"></span>
+                <br>
+                更新成功
             </p>
             <br>
-            <p align="center"><a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="d">确定</a></p>
-         </div>
-      </div>
-      <div data-role="popup" id="popupsubmit" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 300px; padding: 20px 20px;">
-         <p align="center"><i class="fa fa-2x fa-check"></i></p>
-         <p align="center">
-            流程实例<span data-bind="text: processInstanceId"></span>
-            <br>
-            更新成功
-         </p>
-         <br>
-         <p style="text-align: center;">
-            <a href="#" data-role="button" data-bind="click: finish" data-inline="true" data-rel="back"
-               data-transition="flow" data-theme="d" data-shadow="false" style="margin-right: 0px;">确定</a>
-         </p>
-      </div>
+            <p style="text-align: center;">
+                <a href="#" data-role="button" data-bind="click: finish" data-inline="true" data-rel="back"
+                   data-transition="flow" data-theme="d" data-shadow="false" style="margin-right: 0px;">确定</a>
+            </p>
+        </div>
 
-      <script type="text/html" id="listTemplate">
-         <div data-bind="dynamicUIControl: $data"></div>
-      </script>
-   </div>
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <script type="text/html" id="listTemplate">
+            <div data-bind="dynamicUIControl: $data"></div>
+        </script>
+    </div>
+    <script type="text/html" id="item">
+        <li>
+            <a href="#popupdetail" data-bind="click: $root.selectFlow($data)" data-rel="popup" data-position-to="window" data-transition="pop">
+                <i data-bind="css: { 'fa-check-circle':true}" class="fa"></i>
+                <span data-bind="text: '&nbsp;' + $root.formatDateTime(endTime) + '&nbsp;'"></span>
+                <strong data-bind="   text: (assignee || '')"></strong><span class="ui-li-count">创建</span>
+            </a>
+        </li>
+    </script>
 </body>
 </html>
