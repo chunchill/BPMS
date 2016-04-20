@@ -4,6 +4,5 @@
 //这个文件主要用来操作dom元素
 
 $(function () {
-    ko.applyBindings(new window.BPMS.ViewModels.ProcessInstanceViewModel());
-
+   ko.applyBindings(new window.BPMS.ViewModels.ProcessCreateViewModel());
 })

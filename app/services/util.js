@@ -14,8 +14,8 @@
             dataType: "json",
             url: url,
             crossDomain: true,
-            headers:{
-               'Authorization':token
+            headers: {
+               'Authorization': token
             }
             //beforeSend: function (xhr) {
             //   xhr.setRequestHeader("authorization", token);
@@ -42,8 +42,8 @@
              url: url,
              contentType: "application/json;charset=UTF-8",
              crossDomain: true,
-             headers:{
-                'Authorization':token
+             headers: {
+                'Authorization': token
              }
              //beforeSend: function (xhr) {
              //   xhr.setRequestHeader("authorization", token);
@@ -155,7 +155,7 @@
               var token = "Basic " + encodeStr;
               return token;
            },
-          handleUIControlItem = function(item){
+          handleUIControlItem = function (item) {
              var formItem = {
                 type: item.type,
                 value: ko.observable(item.value),
@@ -164,6 +164,15 @@
              };
              if (formItem.type == "text") {
                 formItem.option.data_clear_btn = true;
+             }
+             if (formItem.type == "enum") {
+                var initSelected = formItem.value();
+                if (typeof (initSelected) == "undefined" || initSelected == null) {
+                   if (formItem.enumValues && formItem.enumValues.length) {
+                      initSelected = formItem.enumValues[0].id;
+                      formItem.value(initSelected);
+                   }
+                }
              }
              //jqm has a bug that id should be same as name for checkbox
              if (formItem.type == "bool" || formItem.type == "boolean") {
@@ -198,7 +207,7 @@
          },
          getUrlParams: getUrlParams,
          getUrlParam: getUrlParam,
-         handleUIControlItem:handleUIControlItem
+         handleUIControlItem: handleUIControlItem
       };
    })();
 

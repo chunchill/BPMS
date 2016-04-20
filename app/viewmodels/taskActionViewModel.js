@@ -38,21 +38,7 @@
          writableFields.forEach(
          function (item) {
 
-            var formItem = {
-               type: item.type,
-               value: ko.observable(item.value),
-               option: { name: item.name, id: item.id },
-               enumValues: item.enumValues
-            };
-            if (formItem.type == "text") {
-               formItem.option.data_clear_btn = true;
-            }
-            //jqm has a bug that id should be same as name for checkbox
-            if (formItem.type == "bool" || formItem.type == "boolean") {
-               keyValue[formItem.option.id] = formItem.option.name;
-               formItem.option.id = formItem.option.name;
-            }
-
+            var formItem = BPMS.Services.Utils.handleUIControlItem(item);
             self.forms.push(formItem);
          });
          loader.hide();

@@ -68,10 +68,7 @@
 
       };
       self.selectToCreate = function (data) {
-         //selectedProcessInstanceViewModel.processInstanceId = data.id;
-         //selectedProcessInstanceViewModel.processDescription = data.description;
-         //selectedProcessInstanceViewModel.processDefinitionName = data.name;
-         localStorage.setItem('selectedProcessInstanceViewModel', JSON.stringify(data));
+         localStorage.setItem('selectedProcessCreateViewModel', JSON.stringify(data));
          window.location.replace('processcreate.html');
 
       };

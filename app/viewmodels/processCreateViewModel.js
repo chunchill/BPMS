@@ -6,7 +6,7 @@
 
    BPMS.ViewModels = BPMS.ViewModels || {};
    //登录页面viewmodel
-   BPMS.ViewModels.ProcessInstanceViewModel = function () {
+   BPMS.ViewModels.ProcessCreateViewModel = function () {
       var loader = $.mobile.loading();
       var self = this;
       self.processDefinitionName = ko.observable();
@@ -48,11 +48,8 @@
             loader.hide();
          });
       };
-      //selectedProcessInstanceViewModel.processInstanceId = data.id;
-      //selectedProcessInstanceViewModel.processDescription = data.description;
-      //selectedProcessInstanceViewModel.processDefinitionName = data.name;
-
-      var data = localStorage.getItem("selectedProcessInstanceViewModel");
+  
+      var data = localStorage.getItem("selectedProcessCreateViewModel");
       var selectInstance = JSON.parse(data);
       if (selectInstance) {
          loader.show();
