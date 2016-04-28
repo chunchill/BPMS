@@ -7,6 +7,7 @@
    BPMS.ViewModels = BPMS.ViewModels || {};
    //登录页面viewmodel
    BPMS.ViewModels.ProcessCreateViewModel = function () {
+      var keyValue = {};
       var loader = $.mobile.loading();
       var self = this;
       self.processDefinitionName = ko.observable();
@@ -24,19 +25,16 @@
             processDefinitionId: self.processDefinitionId(),
             variables: []
          };
-         var data2 = {
-            processDefinitionId: self.processDefinitionId(),
-            variables: []
-         };
          ko.utils.arrayForEach(self.dynamicFormItems(), function (item) {
-            var _data = {};
-            var _data2 = {};
-            _data.name = item.option.id;
-            _data2.name = item.option.id;
-            _data.value = item.value();
-            _data2.type = item.type;
-            data.variables.push(_data);
-            data2.variables.push(_data2);
+            var tempData = { "name": item.option.id, "value": item.value() };
+            if (item.type == "bool" || item.type == "boolean") {
+               for (var key in keyValue) {
+                  if (tempData.name == keyValue[key]) {
+                     tempData.name = key;
+                  }
+               }
+            }
+            data.variables.push(tempData);
          });
          BPMS.Services.RuntimeSvc.postProcessInstance(data).then(function (result) {
             self.processInstanceId(result.id);
@@ -48,7 +46,7 @@
             loader.hide();
          });
       };
-  
+
       var data = localStorage.getItem("selectedProcessCreateViewModel");
       var selectInstance = JSON.parse(data);
       if (selectInstance) {
@@ -61,7 +59,7 @@
 
             var properites = result.data;
             properites.forEach(function (item) {
-               var itemToPush = BPMS.Services.Utils.handleUIControlItem(item);
+               var itemToPush = BPMS.Services.Utils.handleUIControlItem(item, keyValue);
                self.dynamicFormItems.push(itemToPush);
             });
             loader.hide();

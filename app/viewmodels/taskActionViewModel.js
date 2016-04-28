@@ -38,7 +38,7 @@
          writableFields.forEach(
          function (item) {
 
-            var formItem = BPMS.Services.Utils.handleUIControlItem(item);
+            var formItem = BPMS.Services.Utils.handleUIControlItem(item, keyValue);
             self.forms.push(formItem);
          });
          loader.hide();

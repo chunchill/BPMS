@@ -155,7 +155,7 @@
               var token = "Basic " + encodeStr;
               return token;
            },
-          handleUIControlItem = function (item) {
+          handleUIControlItem = function (item, keyValue) {
              var formItem = {
                 type: item.type,
                 value: ko.observable(item.value),
