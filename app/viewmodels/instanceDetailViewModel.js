@@ -66,18 +66,8 @@
          self.flows.removeAll();
          self.tasks.removeAll();
 
-         BPMS.Services.FormSvc.getFormData({ "processDefinitionId": self.processDefinitionId }).then(
-          function (result) {
-             if (result && result && result.formProperties)
-                result.formProperties.forEach(
-                   function (item) {
-                      // if (!item.writable)
-                      self.tasks.push(item);
-                   }
-                );
-          });
 
-
+         var maxTask = 0;
          BPMS.Services.HistoryInstancesSvc.getActivityInstances({
             "processInstanceId": self.processInstanceId,
             "sort": "startTime",
@@ -86,12 +76,23 @@
            .then(function (result) {
               result.data.forEach(
                  function (item) {
+                    if (item.taskId && item.taskId > maxTask)
+                       maxTask = item.taskId;
                     self.flows.push(item);
                  });
               loader.hide();
+
+              BPMS.Services.FormSvc.getFormData({ "taskId": maxTask }).then(
+               function (formResult) {
+                  if (formResult && formResult && formResult.formProperties)
+                     formResult.formProperties.forEach(
+                        function (task) {
+                           // if (!task.writable)
+                           self.tasks.push(task);
+                        }
+                     );
+               });
            });
-
-
 
          BPMS.Services.HistoryInstancesSvc.getVariableInstances({ "processInstanceId": self.processInstanceId })
             .then(function (result) {
