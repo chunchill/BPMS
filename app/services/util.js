@@ -157,7 +157,10 @@
            },
           handleUIControlItem = function (item, keyValue) {
              var formItem = {
-                type: item.type,
+                 type: item.type,
+                 required: item.required,
+                 readable: item.readable,
+                 writable: item.writable,
                 value: ko.observable(item.value),
                 option: { name: item.name, id: item.id },
                 enumValues: item.enumValues

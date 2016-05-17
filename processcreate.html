@@ -58,40 +58,65 @@
                <h3><span data-bind="text: processDefinitionName"></span></h3>
                <p><font color="gray"><span data-bind="text: processDescription"></span></font></p>
             </div>
-            <div class="ui-body ui-body-a ui-corner-all" style="margin-top: 4px;">
-               <p align="left" style="padding: 2px 2px;">
-                  <!--<form>-->
-                  <!--用款单位-->
-                  <!--<select name="select-native-1" id="select-native-1" data-shadow="false">-->
-                  <!--<option value="1">江苏日盈</option>-->
-                  <!--<option value="2">江门容宇</option>-->
-                  <!--<option value="3">日盈电子(长春)</option>-->
-                  <!--</select>-->
-                  <!--付款选项-->
-                  <!--<fieldset data-role="controlgroup" data-theme="b">-->
-                  <!--<input type="radio" name="radio-choice-v-2" id="radio-choice-v-2a" value="on" checked="checked">-->
-                  <!--<label for="radio-choice-v-2a">按发票付款</label>-->
-                  <!--<input type="radio" name="radio-choice-v-2" id="radio-choice-v-2b" value="off">-->
-                  <!--<label for="radio-choice-v-2b">预付款无发票</label>-->
-                  <!--</fieldset>-->
-                  <!--费用日期-->
-                  <!--<input type="date" data-clear-btn="false" name="date-1" id="date-1" data-inline="true">-->
-                  <!--发票金额-->
-                  <!--<input type="number" data-clear-btn="true" name="amount" id="amount" data-inline="true">-->
-                  <!--</form>-->
-                  <form>
-                     <div data-bind="template: { name: 'listTemplate', foreach: dynamicFormItems }">
-                     </div>
-                  </form>
-                  <script type="text/html" id="listTemplate">
-                     <div data-bind="dynamicUIControl: $data"></div>
-                  </script>
-               </p>
-            </div>
-            <form>
-               <a href="#" data-bind="click: submit" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-btn-a" data-transition="pop">提交</a>
-            </form>
          </div>
+
+          <div class="jqm-block-content" style="margin: 2px 2px; margin-top:4px; padding: 4px 4px; background-image:url(images/tweets-bg.jpg); border-color:#E4E4E4;">
+              <div data-role="collapsibleset" data-theme="a" data-content-theme="a" style="margin-top: 0px;">
+                  <div data-role="collapsible" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="info">
+                      <h4>概要</h4>
+                      <form>
+                          <div data-bind="template: { name: 'listTemplate', foreach: dynamicFormItems }">
+                          </div>
+                      </form>
+                      <script type="text/html" id="listTemplate">
+                          <div data-bind="dynamicUIControl: $data"></div>
+                      </script>
+                  </div>
+                  <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="bullets">
+                      <h4>明细</h4>
+                      <form>
+                          <div data-bind="template: { name: 'listTemplate', foreach: tableItems }"></div>
+                      </form>
+                      <div class="ui-nodisc-icon ui-alt-icon">
+                          <!-- Classes added to the wrapper -->
+                          <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+                      </div>
+                      <table data-role="table" id="movie-table-custom" class="ui-body-d ui-shadow table-stripe ui-responsive movie-list table-stroke" data-mode="reflow" style="margin-bottom: 8px; margin-top:8px">
+                          <thead>
+                              <tr class="ui-bar-d">
+                                  <th data-priority="2">#</th>
+                                  <th>类型</th>
+                                  <th data-priority="3">日期</th>
+                                  <th data-priority="1">金额</th>
+                                  <th data-priority="5">操作</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <th>1</th>
+                                  <td>交通</td>
+                                  <td>2016-4-1</td>
+                                  <td>74</td>
+                                  <td><a href="#"><i class="fa fa-minus-circle"></i></a></td>
+                              </tr>
+                              <tr>
+                                  <th>2</th>
+                                  <td>餐饮</td>
+                                  <td>2016-4-2</td>
+                                  <td>98</td>
+                                  <td><a href="#"><i class="fa fa-minus-circle"></i></a></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+              <form>
+                  <p align="center" style="margin: 8px 8px;">
+                      <a data-bind="click: submit"  data-rel="popup" data-position-to="window"
+                         class="ui-btn ui-btn-inline ui-corner-all ui-btn-a ui-icon-check ui-btn-icon-right"
+                         data-transition="pop" style="background-color: #488186; text-shadow: 0 0 0; color:#F5F5F5;">提交</a></p>
+              </form>
+          </div>
          <p align="center">
             <font size="-2s">&copy; 江苏日盈电子股份有限公司</font>
             <br>
