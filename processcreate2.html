@@ -1,0 +1,265 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+    <title>RY-BPMS</title>
+    <!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />-->
+    <link href="style/themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
+
+    <!--<link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" />
+    <link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" />-->
+
+    <link rel="stylesheet" href="style/themes/bladecolor.min.css" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="style/themes/bootstrap.min.css">
+
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="style/themes/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style/themes/jqm-demos.css">
+    <link rel="stylesheet" href="style/themes/jquery.mobile.icons.min.css">
+    <link rel="stylesheet" href="style/themes/jquery.mobile.structure-1.4.5.min.css">
+    <link href="style/themes/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="style/css/site.css" rel="stylesheet" />
+    <script src="lib/vendor/jquery/dist/jquery.js"></script>
+
+    <script src="lib/vendor/amplify/lib/amplify.js"></script>
+    <script src="lib/jquery.mobile-1.4.5.js"></script>
+    <script src="app/services/util.js"></script>
+    <script src="lib/knockout-3.2.0.min.js"></script>
+
+
+    <!--<script src="scripts/lib/knockout.mapping-latest.js"></script>
+    <script src="scripts/lib/koExternalTemplateEngine_all.js"></script>
+    <script src="scripts/app/services/user.js"></script>
+    <script src="scripts/app/viewmodel/LogonViewModel.js"></script>
+    <script src="scripts/app/ko.extentions.js"></script>
+    <script src="scripts/app/app.js"></script>
+    <script src="scripts/app/logonApp.js"></script>-->
+
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        /* These apply across all breakpoints because they are outside of a media query */
+        /* Make the labels light gray all caps across the board */
+
+        /* White bg, large blue text for rank and title */
+        .movie-list tbody th {
+            font-size: 1.2em;
+            background-color: #fff;
+            color: #77bbff;
+            margin-top: 0em;
+            text-align: center;
+        }
+        /*  Add a bit of extra left padding for the title */
+        .movie-list tbody td.title {
+            padding-left: .8em;
+        }
+        /* Add strokes */
+        .movie-list thead th {
+            border-bottom: 1px solid #d6d6d6; /* non-RGBA fallback */
+            border-bottom: 1px solid rgba(0,0,0,.1);
+        }
+
+        .movie-list tbody th, .movie-list tbody td {
+            border-bottom: 1px solid #e6e6e6; /* non-RGBA fallback  */
+            border-bottom: 1px solid rgba(0,0,0,.05);
+        }
+
+        /*  Custom stacked styles for mobile sizes */
+        /*  Use a max-width media query so we don't have to undo these styles */
+        @media (max-width: 40em) {
+            /*  Negate the margin between sections */
+            .movie-list tbody th {
+                margin-top: 0;
+                text-align: left;
+            }
+            /*  White bg, large blue text for rank and title */
+            .movie-list tbody th, .movie-list tbody td.title {
+                display: block;
+                font-size: 1.2em;
+                line-height: 110%;
+                margin-top: 0em;
+                padding: .5em .5em;
+                background-color: #fff;
+                color: #77bbff;
+                -moz-box-shadow: 0 1px 6px rgba(0,0,0,.1);
+                -webkit-box-shadow: 0 1px 6px rgba(0,0,0,.1);
+                box-shadow: 0 1px 6px rgba(0,0,0,.1);
+            }
+                /*  Hide labels for rank and title */
+                .movie-list tbody th .ui-table-cell-label, .movie-list tbody td.title .ui-table-cell-label {
+                    display: none;
+                }
+            /*  Position the title next to the rank, pad to the left */
+            .movie-list tbody td.title {
+                margin-top: -2.1em;
+                padding-left: 2.2em;
+                border-bottom: 1px solid rgba(0,0,0,.15);
+            }
+            /*  Make the data bold */
+            .movie-list th, .movie-list td {
+                font-weight: bold;
+            }
+                /* Make the label elements a percentage width */
+                .movie-list td .ui-table-cell-label, .movie-list th .ui-table-cell-label {
+                    min-width: 20%;
+                }
+        }
+
+        /* Media query to show as a standard table at wider widths */
+        @media ( min-width: 40em ) {
+            /* Show the table header rows */
+            .movie-list td, .movie-list th, .movie-list tbody th, .movie-list tbody td, .movie-list thead td, .movie-list thead th {
+                display: table-cell;
+                margin: 0;
+            }
+                /* Hide the labels in each cell */
+                .movie-list td .ui-table-cell-label, .movie-list th .ui-table-cell-label {
+                    display: none;
+                }
+        }
+
+        /* Hack to make IE9 and WP7.5 treat cells like block level elements */
+        /* Applied in a max-width media query up to the table layout breakpoint so we don't need to negate this */
+        @media ( max-width: 40em ) {
+            .movie-list td, .movie-list th {
+                width: 100%;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                float: left;
+                clear: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div data-role="page" id="logonView" data-theme="a" style="background-image:url(images/bg/graphy-xs.png)">
+        <div data-role="content" style="padding: 3px 3px;">
+            <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner15.png); background-size:cover; border-color:#E4E4E4;">
+                <p align="center">
+                    <img class="popphoto" src="images/bpmslogo.png" height="18px"><br>
+                    <font size="+1"><b>启动流程</b></font>
+                </p>
+                <div class="ui-nodisc-icon ui-alt-icon">
+                    <!-- Classes added to the wrapper -->
+                    <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+                </div>
+            </div>
+            <div class="jqm-block-content" style="margin: 2px 2px; margin-top:4px; padding: 4px 4px; background-image:url(images/tweets-bg.jpg); border-color:#E4E4E4;">
+                <div class="ui-body ui-body-a ui-corner-all">
+                    <h3>F001费用报销</h3>
+                    <p><font color="gray">流程的Desc</font></p>
+                </div>
+            </div>
+            <div class="jqm-block-content" style="margin: 2px 2px; margin-top:4px; padding: 4px 4px; background-image:url(images/tweets-bg.jpg); border-color:#E4E4E4;">
+                <div data-role="collapsibleset" data-theme="a" data-content-theme="a" style="margin-top: 0px;">
+                    <div data-role="collapsible" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="info">
+                        <h4>概要</h4>
+                        <form>
+                            用款单位
+                            <select name="select-native-a" id="select-native-a" data-shadow="false">
+                                <option value="1">江苏日盈</option>
+                                <option value="2">江门容宇</option>
+                                <option value="3">日盈电子(长春)</option>
+                            </select>
+                            报销人
+                            <input type="text" data-clear-btn="true" name="amount" id="amount" data-inline="true">
+                        </form>
+                    </div>
+                    <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="bullets">
+                        <h4>明细</h4>
+                        <form>
+                            费用类型
+                            <select name="select-native-3" id="select-native-3" data-shadow="false">
+                                <option value="1">交通</option>
+                                <option value="2">住宿</option>
+                                <option value="3">餐饮</option>
+                            </select>
+                            费用日期
+                            <input type="date" data-clear-btn="false" name="date-1" id="date-1" data-inline="true">
+                            发票金额
+                            <input type="number" data-clear-btn="true" name="amount" id="amount" data-inline="true">
+                        </form>
+                        <div class="ui-nodisc-icon ui-alt-icon">
+                            <!-- Classes added to the wrapper -->
+                            <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+                        </div>
+                        <table data-role="table" id="movie-table-custom" class="ui-body-d ui-shadow table-stripe ui-responsive movie-list table-stroke" data-mode="reflow" style="margin-bottom: 8px; margin-top:8px">
+                            <thead>
+                                <tr class="ui-bar-d">
+                                    <th data-priority="2">#</th>
+                                    <th>类型</th>
+                                    <th data-priority="3">日期</th>
+                                    <th data-priority="1">金额</th>
+                                    <th data-priority="5">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>1</th>
+                                    <td>交通</td>
+                                    <td>2016-4-1</td>
+                                    <td>74</td>
+                                    <td><a href="#"><i class="fa fa-minus-circle"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <th>2</th>
+                                    <td>餐饮</td>
+                                    <td>2016-4-2</td>
+                                    <td>98</td>
+                                    <td><a href="#"><i class="fa fa-minus-circle"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <form>
+                    <p align="center" style="margin: 8px 8px;"><a href="#popupsubmit" data-rel="popup" data-position-to="window" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a ui-icon-check ui-btn-icon-right" data-transition="pop" style="background-color: #488186; text-shadow: 0 0 0; color:#F5F5F5;">提交</a></p>
+                </form>
+            </div>
+            <p align="center">
+                <font size="-2s">&copy; 江苏日盈电子股份有限公司</font><br>
+                <img class="popphoto" src="images/logo.png" height="18px">
+            </p>
+        </div>
+        <div data-role="panel" id="panelgrid" data-position-fixed="true" data-position="right" data-display="overlay" data-theme="a">
+            <p align="center"><img class="popphoto" src="images/bpmslogo.png" height="23px"></p>
+            <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
+                <li><a href="home.html" rel="external"> <img src="images/user62.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">BPMS</font></a></li>
+                <li><a href="worklist.html" rel="external"> <img src="images/tasks.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="3">我的任务</font></a></li>
+                <li><a href="processlist.html" rel="external"> <img src="images/bpm.png" alt="plan" class="ui-li-icon"><font size="3">启动流程</font></a></li>
+                <li><a href="processlist.html" rel="external"> <img src="images/folder.png" alt="plan" class="ui-li-icon"><font size="3">我的流程</font></a></li>
+                <li><a href="help.html" rel="external"> <img src="images/pie25.png" alt="plan" class="ui-li-icon"><font size="3">报表</font></a></li>
+            </ul>
+            <div class="ui-nodisc-icon ui-alt-icon">
+                <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
+            </div>
+        </div>
+        <div data-role="popup" id="popupMessage" data-overlay-theme="a" data-theme="b" data-transition="pop" style="max-width:320px;" class="ui-corner-all">
+            <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+                <p align="center">
+                    <i class="fa fa-2x fa-frown-o"></i><br>
+                    <br>
+                    <font size="2">检查网络连接及用户名和密码</font>
+                </p>
+                <br>
+                <p align="center"><a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="d">确定</a></p>
+            </div>
+        </div>
+        <div data-role="popup" id="popupsubmit" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:300px; padding: 20px 20px;">
+            <p align="center"><i class="fa fa-2x fa-check"></i></p>
+            <p align="center">
+                流程实例A12313131231 <br>
+                创建成功
+            </p>
+            <br>
+            <p align="center"><a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="d" data-shadow="false" style="margin-right:0px;">确定</a></p>
+        </div>
+    </div>
+   
+
+</body>
+</html>
