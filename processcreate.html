@@ -60,63 +60,70 @@
             </div>
          </div>
 
-          <div class="jqm-block-content" style="margin: 2px 2px; margin-top:4px; padding: 4px 4px; background-image:url(images/tweets-bg.jpg); border-color:#E4E4E4;">
-              <div data-role="collapsibleset" data-theme="a" data-content-theme="a" style="margin-top: 0px;">
-                  <div data-role="collapsible" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="info">
-                      <h4>概要</h4>
-                      <form>
-                          <div data-bind="template: { name: 'listTemplate', foreach: dynamicFormItems }">
-                          </div>
-                      </form>
-                      <script type="text/html" id="listTemplate">
-                          <div data-bind="dynamicUIControl: $data"></div>
-                      </script>
+         <div class="jqm-block-content" style="margin: 2px 2px; margin-top: 4px; padding: 4px 4px; background-image: url(images/tweets-bg.jpg); border-color: #E4E4E4;">
+            <div data-role="collapsibleset" data-theme="a" data-content-theme="a" style="margin-top: 0px;">
+               <div data-role="collapsible" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="info">
+                  <h4>概要</h4>
+                  <form>
+                     <div data-bind="template: { name: 'listTemplate', foreach: dynamicFormItems }">
+                     </div>
+                  </form>
+                  <script type="text/html" id="listTemplate">
+                     <div data-bind="dynamicUIControl: $data"></div>
+                  </script>
+               </div>
+               <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="bullets">
+                  <h4>明细</h4>
+                  <form>
+                     <div data-bind="template: { name: 'listTemplate', foreach: tableItems }"></div>
+                  </form>
+                  <div class="ui-nodisc-icon ui-alt-icon">
+                     <!-- Classes added to the wrapper -->
+                     <p align="center">
+                        <a href="javascript:void(0);" data-bind="click: appendData"
+                           class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-inline"
+                           style="margin-right: 0px;">grid</a>
+                     </p>
                   </div>
-                  <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="bullets">
-                      <h4>明细</h4>
-                      <form>
-                          <div data-bind="template: { name: 'listTemplate', foreach: tableItems }"></div>
-                      </form>
-                      <div class="ui-nodisc-icon ui-alt-icon">
-                          <!-- Classes added to the wrapper -->
-                          <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
-                      </div>
-                      <table data-role="table" id="movie-table-custom" class="ui-body-d ui-shadow table-stripe ui-responsive movie-list table-stroke" data-mode="reflow" style="margin-bottom: 8px; margin-top:8px">
-                          <thead>
-                              <tr class="ui-bar-d">
-                                  <th data-priority="2">#</th>
-                                  <th>类型</th>
-                                  <th data-priority="3">日期</th>
-                                  <th data-priority="1">金额</th>
-                                  <th data-priority="5">操作</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <th>1</th>
-                                  <td>交通</td>
-                                  <td>2016-4-1</td>
-                                  <td>74</td>
-                                  <td><a href="#"><i class="fa fa-minus-circle"></i></a></td>
-                              </tr>
-                              <tr>
-                                  <th>2</th>
-                                  <td>餐饮</td>
-                                  <td>2016-4-2</td>
-                                  <td>98</td>
-                                  <td><a href="#"><i class="fa fa-minus-circle"></i></a></td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-              <form>
-                  <p align="center" style="margin: 8px 8px;">
-                      <a data-bind="click: submit"  data-rel="popup" data-position-to="window"
-                         class="ui-btn ui-btn-inline ui-corner-all ui-btn-a ui-icon-check ui-btn-icon-right"
-                         data-transition="pop" style="background-color: #488186; text-shadow: 0 0 0; color:#F5F5F5;">提交</a></p>
-              </form>
-          </div>
+
+                  <!-- <table data-bind="responsiveTable: { headers: tableData.headers, rows: tableData.rows }" data-role="table" id="movie-table-custom" class="ui-body-d ui-shadow table-stripe ui-responsive movie-list table-stroke" data-mode="reflow" style="margin-bottom: 8px; margin-top: 8px">
+                  </table>-->
+                  <script type="text/html" id="tableHeader">
+                     <th data-bind="text: $data"></th>
+                  </script>
+                  <script type="text/html" id="tableCell">
+                     <!-- ko if:  $index() ==0 -->
+                     <th data-bind="text: $data"></th>
+                     <!-- /ko -->
+                     <!-- ko if:  $index() >0 &&  $index() <($parent.length-1) -->
+                     <td data-bind="text: $data"></td>
+                     <!-- /ko -->
+                     <!-- ko if:  $index() ==($parent.length-1) -->
+                     <td data-bind="click: function () { $root.removeItem($parent) }"><a href="javascript:void(0);"><i class="fa fa-minus-circle"></i></a></td>
+                     <!-- /ko -->
+
+                  </script>
+                  <script type="text/html" id="tableRow">
+                     <tr data-bind="template: { name: 'tableCell', foreach: $data }"></tr>
+                  </script>
+                  <table data-role="table" class="ui-body-d ui-shadow table-stripe ui-responsive movie-list table-stroke" data-mode="reflow" style="margin-bottom: 8px; margin-top: 8px">
+                     <thead>
+                        <tr class="ui-bar-d" data-bind="template: { name: 'tableHeader', foreach: $root.tableData.headers }">
+                        </tr>
+                     </thead>
+                     <tbody data-bind="template: { name: 'tableRow', foreach: $root.tableData.rows }">
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <form>
+               <p align="center" style="margin: 8px 8px;">
+                  <a data-bind="click: submit" data-rel="popup" data-position-to="window"
+                     class="ui-btn ui-btn-inline ui-corner-all ui-btn-a ui-icon-check ui-btn-icon-right"
+                     data-transition="pop" style="background-color: #488186; text-shadow: 0 0 0; color: #F5F5F5;">提交</a>
+               </p>
+            </form>
+         </div>
          <p align="center">
             <font size="-2s">&copy; 江苏日盈电子股份有限公司</font>
             <br>
