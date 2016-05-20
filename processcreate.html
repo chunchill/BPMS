@@ -106,7 +106,7 @@
                   <script type="text/html" id="tableRow">
                      <tr data-bind="template: { name: 'tableCell', foreach: $data }"></tr>
                   </script>
-                  <table data-role="table" class="ui-body-d ui-shadow table-stripe ui-responsive movie-list table-stroke" data-mode="reflow" style="margin-bottom: 8px; margin-top: 8px">
+                  <table id="table" data-role="table" class="ui-body-d ui-shadow table-stripe ui-responsive movie-list table-stroke" data-mode="reflow" style="margin-bottom: 8px; margin-top: 8px">
                      <thead>
                         <tr class="ui-bar-d" data-bind="template: { name: 'tableHeader', foreach: $root.tableData.headers }">
                         </tr>
@@ -118,7 +118,7 @@
             </div>
             <form>
                <p align="center" style="margin: 8px 8px;">
-                  <a data-bind="click: submit" data-rel="popup" data-position-to="window"
+                  <a data-bind="" onclick="showTable();" data-rel="popup" data-position-to="window"
                      class="ui-btn ui-btn-inline ui-corner-all ui-btn-a ui-icon-check ui-btn-icon-right"
                      data-transition="pop" style="background-color: #488186; text-shadow: 0 0 0; color: #F5F5F5;">提交</a>
                </p>
@@ -178,6 +178,12 @@
          </p>
       </div>
    </div>
+    <script>
 
+        var showTable = function () {
+            var content = $("#table").html();
+            alert(content);
+        }
+    </script>
 </body>
 </html>
